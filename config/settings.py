@@ -87,10 +87,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': DATABASE,
-        'Password': PASSWORD,
-        'Host': SERVER,
-        'Port': "",
-        "Options":{
+        'PASSWORD': PASSWORD,
+        'HOST': SERVER,
+        'PORT': "",
+        "OPTIONS":{
             'driver': DRIVER
         }
     }
