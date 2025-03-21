@@ -1,5 +1,3 @@
-from idlelib.undo import Command
-from symtable import Class
 
 from django.core.management import BaseCommand
 
