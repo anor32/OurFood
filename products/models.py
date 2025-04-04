@@ -10,7 +10,7 @@ from users.models import NULLABLE
 # максимально общие
 class ParrentCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name="category_name")
-
+    image = models.ImageField(upload_to='media/parent_categories_images/',**NULLABLE, verbose_name='parent Category Image')
     class Meta:
         verbose_name = "ParentCategory"
         verbose_name_plural = "ParentCategories"
