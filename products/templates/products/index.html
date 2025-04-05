@@ -9,7 +9,19 @@
         {% include 'products/includes/parent_card.html' with object=object %}
 
     {% endfor %}
+    <div>
+<div class="col-md-4">
+      <div class="card mb-4 box-shadow" >
+        <div class="card-body" style="border: 1px solid black; width:400px; height:170px;">
+             <a href="{% url 'products:create' %}" class="btn btn-primary "  style=" width:400px; height:170px; font-size:80px; ">+</a>
 
+        </div>
+      </div>
+    </div>
+
+    </div>
 </div>
 
 {%endblock%}
+
+ <a href="{% url 'products:create' %}" class="btn btn-primary">Создать новую карточку</a>
