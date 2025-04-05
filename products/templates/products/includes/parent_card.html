@@ -1,13 +1,15 @@
+
+{% load my_tags %}
 <div class="col-md-4">
       <div class="card mb-4 box-shadow" >
-        <div class="card-body" >
+        <div class="card-body" style="border: 1px solid black">
           <a href="#">
-          <img src="https://main-cdn.sbermegamarket.ru/big1/hlr-system/703/963/118/221/18/100048551482b0.jpg"
-               alt="" width="100" height="100">
-          </a>
-          <p class="card-text" >{{ object.name }}</p>
+          <img src='{{ object.image|products_media}}'
+               alt="" width="100" height="100"></a>
+            <p class="card-text" >{{ object.name }}</p>
 
-<a href="#" class="btn btn-default" style="color:black">Default</a>
+            <a href="#" class="btn btn-default" style="color:black">Default</a>
+            <a href="{% url 'products:change' }" class="btn btn-default" style="color:black">изменить</a>
 
         </div>
       </div>

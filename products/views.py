@@ -1,8 +1,10 @@
-from lib2to3.fixes.fix_input import context
 
-from django.shortcuts import render
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, reverse, get_object_or_404
 from django.template.context_processors import request
 
+from products.forms import ParentCategoryForm
 from products.models import ParrentCategory ,Category , Product
 # Create your views here.
 
@@ -21,7 +23,7 @@ def categories_list_view(request):
         "title": "Все основные Категории"
     }
     return render (request, 'products/categories',context)
-def category_products_view(requests,pk):
+def category_products_view(request,pk):
     category_item = Category.objects.get(pk = pk)
     context = {
         "objects_list": Product.filter(category_id = pk),
@@ -35,7 +37,22 @@ def all_list_products_view(request):
         "title": "Все Товары Категории"
     }
     return render(request,'products/product.html',context)
-# пока что так написал позже как больше пониманияя появится я перепишу сейчас в основном пишу с  урока
-# конкретно под свой вариант
-# пока что я не особо понимаю как у меня будет структура в целом выглядть где куда я что нажимать буду и какие шаблоны нужны будут
-# дальше понятнее будет
+
+def parent_category_change_view(request,pk=None):
+    if pk:
+        category_object = get_object_or_404(ParrentCategory, pk=pk)
+    else:
+        category_object = None
+    if request.method == "POST":
+
+        form = ParentCategoryForm(request.POST, request.FILES, instance=category_object)
+        if form.is_valid():
+            parent_object = form.save()
+            parent_object.owner = request.user
+            parent_object.save()
+            return HttpResponseRedirect(reverse('products:index'))
+    context ={
+        'form': ParentCategoryForm(),
+        'object':category_object
+              }
+    return render(request, 'products/change.html', context)
