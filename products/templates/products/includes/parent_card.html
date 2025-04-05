@@ -1,17 +1,21 @@
 
+
 {% load my_tags %}
-<div class="col-md-4 mb-1" style="width:210px; padding:5px">
-      <div class="card mb-4 box-shadow"  style="width:200px;">
-        <div class="card-body">
-            <p class="card-text" >{{ object.name }}</p>
-          <a href="#">
-          <img src='{{ object.image|products_media}}'
-               class="image-container"></a>
+
+    <div class="col-md-4 mb-1" style="width:210px; padding:5px">
+
+        <div class="card mb-4 box-shadow" style="width:200px;">
+
+            <div class="card-body">
+                <a href="{% url 'products:categories' %}">
+                <p class="card-text">{{ object.name }}</p>
+
+                    <img src='{{ object.image|products_media}}'
+                         class="image-container">
+                </a>
 
 
-            <a href="{% url 'products:change' object.pk %}" class="btn btn-primary">Изменить</a>
-
+                <a href="{% url 'products:change' object.pk %}" class="btn btn-primary">Изменить</a>
+            </div>
         </div>
-
-      </div>
     </div>

@@ -22,7 +22,7 @@ def categories_list_view(request):
         "objects_list" : Category.objects.all(),
         "title": "Все основные Категории"
     }
-    return render (request, 'products/categories',context)
+    return render (request, 'products/categories.html',context)
 def category_products_view(request,pk):
     category_item = Category.objects.get(pk = pk)
     context = {

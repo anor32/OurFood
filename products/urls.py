@@ -9,8 +9,8 @@ app_name = ProductsConfig.name
 
 urlpatterns = [
     path('',index_view,name='index'),
-    path('Categories/',category_products_view, name = 'categories'),
-    path('categories/<int:pk>/products/',categories_list_view, name = 'categories_list'),
+    # path('',category_products_view, name = 'categories'),
+    path('products/categories/',categories_list_view, name = 'categories'),
     path('product/',all_list_products_view,name = 'products'),
     path('product/<int:pk>/change',parent_category_change_view,name = 'change'),
     path('product/create',parent_category_change_view,name = 'create')
