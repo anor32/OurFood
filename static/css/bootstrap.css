@@ -14,20 +14,65 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+.card-body:hover {
+  transition: transform 0.2s, box-shadow 0.2s;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card{
+  width: 200px;
+}
+.card-body img{
+  object-fit: cover;
+}
+.card-body {
+  text-align: center; 
+  
+  border: 1px solid rgb(113, 113, 241);
+  border-radius: 30px;
+  width: 200px;
+
+}
+.card-text{
+  font-size: 17px;
+  font-weight: 10px;
+}
+.image-container {
+  width: 100%;
+  height:200px; 
+  background-size: cover; 
+  background-position: center; 
+  border-radius: 30px;
+}
+
+
+
+.btn-primary {
+  background-color: #007bff; 
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #0056b3; 
+}
 
 html, body {
     height: 100%;
     margin: 0;
+  
 }
 body {
     display: flex;
     flex-direction: column;
 }
 main {
-    flex: 1; /* позволяет главному контенту занимать оставшееся пространство */
+    flex: 1; 
 }
 footer {
-    background-color: #f8f9fa; /* цвет фона футера */
+    background-color: #f8f9fa;
     padding: 20px 0;
 }
 
