@@ -12,7 +12,7 @@ from products.models import ParrentCategory ,Category , Product
 def index_view(request):
     context = {
         'objects_list': ParrentCategory.objects.all(),
-        'ttitle': 'Моя Доставка Главная страница'
+        'title': 'Моя Доставка Главная страница'
     }
     return render(request, "products/index.html",context)
 
@@ -23,7 +23,7 @@ def categories_list_view(request):
         "title": "Все основные Категории"
     }
     return render (request, 'products/categories.html',context)
-def category_products_view(request,pk):
+def products_view(request,pk):
     category_item = Category.objects.get(pk = pk)
     context = {
         "objects_list": Product.filter(category_id = pk),
