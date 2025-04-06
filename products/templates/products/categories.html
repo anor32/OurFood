@@ -1,22 +1,34 @@
 {% extends 'products/base.html' %}
-
+{%load my_tags%}
 {% block content %}
+<a href="{% url 'products:product' %}">Перейти к продуктам</a>
 <div class="container">
     {% for object in objects_list %}
     <div class="row mb-4">
         <h2 >{{ object.name }}</h2>
 
-        {% for i in '012345' %}
-        <div class="col-md-2 mx-1 mb-2">
-            <div class="card mb-4 box-shadow">
-                <a href="{% url 'products:create' %}" style="text-decoration: none; color: inherit;">
-                    <div class="card-body mx-1" style="border: 1px solid black; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                        <span style="font-size: 80px;">+</span>
-                    </div>
-                </a>
+        {%for product in products_list%}
+         {% if product.categoryID == object %}
+        <div class="col-md-2">
+            <div class="card">
+
+                <div class="card-body">
+
+                    <img src="{{ product.img|products_media }}" width="150" class="card-img-top" alt="{{ product.name }}">
+
+
+                    <p class="card-text" style="color:blue; font-size: 30px;">{{ product.price|floatformat:0 }} ₽</p>
+                    <h4 class="card-title">{{ product.name }}</h4>
+
+
+                    <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
             </div>
         </div>
-        {% endfor %}
+
+            {% endif %}
+        {%endfor%}
+
 
     </div>
     {% endfor %}

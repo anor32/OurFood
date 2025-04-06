@@ -1,11 +1,13 @@
-
+from lib2to3.fixes.fix_input import context
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, get_object_or_404
 from django.template.context_processors import request
 
 from products.forms import ParentCategoryForm
-from products.models import ParrentCategory ,Category , Product
+from products.models import ParrentCategory, Category, Product
+
+
 # Create your views here.
 
 
@@ -14,34 +16,24 @@ def index_view(request):
         'objects_list': ParrentCategory.objects.all(),
         'title': 'Моя Доставка Главная страница'
     }
-    return render(request, "products/index.html",context)
+    return render(request, "products/index.html", context)
 
 
-def categories_list_view(request,pk):
+def categories_list_view(request, pk):
+
     category_item = ParrentCategory.objects.get(pk=pk)
+    categories = Category.objects.filter(parent_category=pk)
+    products_list = Product.objects.filter(categoryID__in=categories)
+
     context = {
-        "objects_list" : Category.objects.filter(parent_category =pk),
-        "title": category_item.name
+        "objects_list": categories,
+        "title": category_item.name,
+        'products_list': products_list
     }
-    return render (request, 'products/categories.html',context)
+    return render(request, 'products/categories.html', context)
 
 
-def products_view(request,pk):
-    category_item = Category.objects.get(pk = pk)
-    context = {
-        "objects_list": Product.filter(category_id = pk),
-        "title": f"Все из категории {category_item.name}",
-        "category_pk":category_item.pk,
-    }
-    return render(request,'products/product.html',context)
-def all_list_products_view(request):
-    context = {
-        "objects_list": Category.objects.all(),
-        "title": "Все Товары Категории"
-    }
-    return render(request,'products/product.html',context)
-
-def parent_category_change_view(request,pk=None):
+def parent_category_change_view(request, pk=None):
     if pk:
         category_object = get_object_or_404(ParrentCategory, pk=pk)
     else:
@@ -54,8 +46,16 @@ def parent_category_change_view(request,pk=None):
             parent_object.owner = request.user
             parent_object.save()
             return HttpResponseRedirect(reverse('products:index'))
-    context ={
+    context = {
         'form': ParentCategoryForm(),
-        'object':category_object
-              }
+        'object': category_object
+    }
     return render(request, 'products/change.html', context)
+
+
+def product_view(request):
+    product_obj = Product.objects.all()
+    context = {"title": "hi",
+               "objects_list": product_obj
+               }
+    return render(request, 'products/includes/product_card.html', context)
