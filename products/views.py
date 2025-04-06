@@ -58,4 +58,4 @@ def product_view(request):
     context = {"title": "hi",
                "objects_list": product_obj
                }
-    return render(request, 'products/includes/product_card.html', context)
+    return render(request, 'products/product_card.html')

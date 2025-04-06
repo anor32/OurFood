@@ -1,7 +1,7 @@
 {% extends 'products/base.html' %}
 {%load my_tags%}
 {% block content %}
-<a href="{% url 'products:product' %}">Перейти к продуктам</a>
+
 <div class="container">
     {% for object in objects_list %}
     <div class="row mb-4">
@@ -13,14 +13,14 @@
             <div class="card">
 
                 <div class="card-body">
-
+                 <a href="{% url 'products:product_card'%}">
                     <img src="{{ product.img|products_media }}" width="150" class="card-img-top" alt="{{ product.name }}">
 
 
                     <p class="card-text" style="color:blue; font-size: 30px;">{{ product.price|floatformat:0 }} ₽</p>
                     <h4 class="card-title">{{ product.name }}</h4>
 
-
+</a>
                     <a href="#" class="btn btn-primary">Add to Cart</a>
                 </div>
             </div>
