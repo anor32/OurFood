@@ -7,7 +7,7 @@
         <div class="card mb-4 box-shadow" style="width:200px;">
 
             <div class="card-body">
-                <a href="{% url 'products:categories' %}">
+                <a href="{% url 'products:categories' object.pk %}">
                 <p class="card-text">{{ object.name }}</p>
 
                     <img src='{{ object.image|products_media}}'

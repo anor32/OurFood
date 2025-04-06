@@ -17,12 +17,15 @@ def index_view(request):
     return render(request, "products/index.html",context)
 
 
-def categories_list_view(request):
+def categories_list_view(request,pk):
+    category_item = ParrentCategory.objects.get(pk=pk)
     context = {
-        "objects_list" : Category.objects.all(),
-        "title": "Все основные Категории"
+        "objects_list" : Category.objects.filter(parent_category =pk),
+        "title": category_item.name
     }
     return render (request, 'products/categories.html',context)
+
+
 def products_view(request,pk):
     category_item = Category.objects.get(pk = pk)
     context = {

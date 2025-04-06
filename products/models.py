@@ -10,10 +10,16 @@ from users.models import NULLABLE
 # максимально общие
 class ParrentCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name="category_name")
-    image = models.ImageField(upload_to='media/parent_categories_images/',**NULLABLE, verbose_name='parent Category Image')
+    image = models.ImageField(upload_to='media/parent_categories_images/', **NULLABLE,
+                              verbose_name='parent Category Image')
+
     class Meta:
         verbose_name = "ParentCategory"
         verbose_name_plural = "ParentCategories"
+
+    def __str__(self):
+        return self.name
+
 
 # а тут например родитель овощи и тут дальше идет огурцы помидоры разновидности сыры масла
 class Category(models.Model):
@@ -23,6 +29,10 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Product_name')
@@ -44,13 +54,13 @@ class Product(models.Model):
         db_table = "goods"
         # get_latest_by ="Price"
 
-#честно сказать я ещё не особо решил что у меня будет за проект
+# честно сказать я ещё не особо решил что у меня будет за проект
 # наверноя я попробую делать доставку у меня большая проблема с идеями
 # единственное что мне приходит в голову это проект доставки так как я могу подсмотреть у других как лучше сделать
 # но это не точно
 # касательно остатков с базы данных я наверное просто свою базу напишу абстрактную а потом если будет надо реальный  сайт сделать
 # напишу код так чтобы просто другую базу данных подставить можно было и все
-#я надеюсь вы мне подскажете если что можно ли так вообще
+# я надеюсь вы мне подскажете если что можно ли так вообще
 # в случае если подтянуть какую нибудь серьезную базу а там будут другие столбцы и не будут подходить к моей таблице
 # значит подгоню под свою таблицу
 # и возьму только те столбцы которые мне нужны
