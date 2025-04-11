@@ -6,7 +6,7 @@ from django.template.context_processors import request
 
 from products.forms import ParentCategoryForm
 from products.models import ParrentCategory, Category, Product
-
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 # Create your views here.
 
@@ -33,25 +33,36 @@ def categories_list_view(request, pk):
     return render(request, 'products/categories.html', context)
 
 
-def parent_category_change_view(request, pk=None):
-    if pk:
-        category_object = get_object_or_404(ParrentCategory, pk=pk)
-    else:
-        category_object = None
-    if request.method == "POST":
+class ParrentCategoryUpdate(UpdateView):
+    model = ParrentCategory
+    template_name = 'products/create-update.html'
+    success_url = 'products:index'
+    form_class = ParentCategoryForm
+# def parent_category_change_view(request, pk=None):
+#     if pk:
+#         category_object = get_object_or_404(ParrentCategory, pk=pk)
+#     else:
+#         category_object = None
+#     if request.method == "POST":
+#
+#         form = ParentCategoryForm(request.POST, request.FILES, instance=category_object)
+#         if form.is_valid():
+#             parent_object = form.save()
+#             parent_object.owner = request.user
+#             parent_object.save()
+#             return HttpResponseRedirect(reverse('products:index'))
+#     context = {
+#         'form': ParentCategoryForm(),
+#         'object': category_object
+#     }
+#     return render(request, 'products/change.html', context)
 
-        form = ParentCategoryForm(request.POST, request.FILES, instance=category_object)
-        if form.is_valid():
-            parent_object = form.save()
-            parent_object.owner = request.user
-            parent_object.save()
-            return HttpResponseRedirect(reverse('products:index'))
-    context = {
-        'form': ParentCategoryForm(),
-        'object': category_object
-    }
-    return render(request, 'products/change.html', context)
 
+class ParrentCategoryCreate(CreateView):
+    model = ParrentCategory
+    template_name = 'products/create-update.html'
+    success_url = 'products:index'
+    form_class = ParentCategoryForm
 
 def product_view(request):
     product_obj = Product.objects.all()
