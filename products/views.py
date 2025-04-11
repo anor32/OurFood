@@ -3,6 +3,7 @@ from lib2to3.fixes.fix_input import context
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, get_object_or_404
 from django.template.context_processors import request
+from django.urls import reverse_lazy
 
 from products.forms import ParentCategoryForm
 from products.models import ParrentCategory, Category, Product
@@ -33,7 +34,7 @@ def categories_list_view(request, pk):
     return render(request, 'products/categories.html', context)
 
 
-class ParrentCategoryUpdate(UpdateView):
+class ParentCategoryUpdate(UpdateView):
     model = ParrentCategory
     template_name = 'products/create-update.html'
     success_url = 'products:index'
@@ -58,11 +59,18 @@ class ParrentCategoryUpdate(UpdateView):
 #     return render(request, 'products/change.html', context)
 
 
-class ParrentCategoryCreate(CreateView):
+class ParentCategoryCreate(CreateView):
     model = ParrentCategory
     template_name = 'products/create-update.html'
-    success_url = 'products:index'
+    success_url = reverse_lazy('products:index')
     form_class = ParentCategoryForm
+
+
+class ParentCategoryDelete(DeleteView):
+    model = ParrentCategory
+    success_url = reverse_lazy('products:index')
+
+
 
 def product_view(request):
     product_obj = Product.objects.all()
