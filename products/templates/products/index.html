@@ -1,12 +1,10 @@
 {% extends 'products/base.html'%}
 
 
-
 {% block content %}
 
 
 <div class="row">
-
 
 
     {% for object in objects_list %}
@@ -21,13 +19,13 @@
         <div class="card mb-4 box-shadow">
             <a href="{% url 'products:create' %}" style="text-decoration: none; color: inherit;">
                 <div class="card-body" style="border: 1px solid black; width: 100%; height: 270px;">
-                    <div class="card-body" style="border: 1px solid black; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <div class="card-body elemAdd">
                         <span style="font-size: 80px;">+</span>
                     </div>
-                </a>
-            </div>
+            </a>
         </div>
     </div>
+</div>
 
 </div>
 
