@@ -73,8 +73,7 @@
             <ul class="list-category">
                 {% for category in category_list %}
                     {% if category.parent_category.id == parent.id%}
-
-                        <li>{{ category.name }}</li>
+                     <li><a href="{% url 'products:categories' parent.pk %}#targetElement{{ category.pk }}">{{ category.name }}</a></li>
                     {%endif%}
                         {% endfor %}
             </ul>

@@ -5,7 +5,9 @@
 <div class="container">
     {% for object in objects_list %}
     <div class="row mb-4">
-        <h2 >{{ object.name }}</h2>
+    <div id="targetElement{{ object.pk }}">
+    <h2>{{ object.name }}</h2>
+</div>
 
         {%for product in products_list%}
          {% if product.categoryID == object %}

@@ -15,13 +15,10 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 
 
 def index_view(request):
-    parent_obj = ParrentCategory.objects.all()
-    category_obj = Category.objects.all()
+
     context = {
         'objects_list': ParrentCategory.objects.all(),
         'title': 'Моя Доставка Главная страница',
-        "parent_category_list": parent_obj,
-        "category_list": category_obj
     }
     return render(request, "products/index.html", context)
 
