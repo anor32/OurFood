@@ -14,7 +14,8 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
-.card-body:hover {
+
+/* .card-body:hover {
   transition: transform 0.2s, box-shadow 0.2s;
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -44,7 +45,7 @@
   background-size: cover; 
   background-position: center; 
   border-radius: 30px;
-}
+} */
 
 
 

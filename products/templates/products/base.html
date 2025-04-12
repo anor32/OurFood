@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ title }}</title>
 
-
- <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/my_style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
 </head>
 
-<body>
+<body class="backCol">
 
 <header>
     <div class="row ">
@@ -64,24 +64,36 @@
 </header>
 
 <main role="main">
-    <section class="jumbotron text-center">
-        <h2 class="jumbotron-heading">{{ title }}</h2>
-    </section>
-        <div class="container">
-    <div class="album py-5 bg-light">
 
-                {%block content %}
+    <div class="f">
+        <aside class="leftBar">
+            <h3>Категории</h3>
+            {%for parent in parent_category_list%}
+            <h3>{{parent.name}}</h3>
+            <ul class="list-category">
+                {% for category in category_list %}
+                    {% if category.parent_category.id == parent.id%}
+
+                        <li>{{ category.name }}</li>
+                    {%endif%}
+                        {% endfor %}
+            </ul>
+            {% endfor %}
+
+        </aside>
+
+
+        <div class="cont">
+            <div class="album py-5 bg-light">
+                {% block content %}
                 {% endblock %}
-
+            </div>
         </div>
-            
-        </div>
-    
-  
-
+    </div>
 </main>
 
-<footer >
+
+<footer>
     <div class="container">
         <p class="float-right">
             <a href="#"> Back to top </a>
