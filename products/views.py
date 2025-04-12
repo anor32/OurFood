@@ -6,7 +6,7 @@ from django.template.context_processors import request
 from django.urls import reverse_lazy
 from unicodedata import category
 
-from products.forms import ParentCategoryForm
+from products.forms import ParentCategoryForm, CategoryForm
 from products.models import ParrentCategory, Category, Product
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
@@ -74,6 +74,11 @@ class ParentCategoryDelete(DeleteView):
     model = ParrentCategory
     success_url = reverse_lazy('products:index')
 
+class CategoryCreate(CreateView):
+    model = Category
+    template_name = 'products/create_category.html'
+    success_url = reverse_lazy('products:index')
+    form_class = CategoryForm
 
 def product_view(request):
     product_obj = Product.objects.all()
