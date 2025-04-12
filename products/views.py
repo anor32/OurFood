@@ -4,24 +4,29 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, get_object_or_404
 from django.template.context_processors import request
 from django.urls import reverse_lazy
+from unicodedata import category
 
 from products.forms import ParentCategoryForm
 from products.models import ParrentCategory, Category, Product
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
+
 # Create your views here.
 
 
 def index_view(request):
+    parent_obj = ParrentCategory.objects.all()
+    category_obj = Category.objects.all()
     context = {
         'objects_list': ParrentCategory.objects.all(),
-        'title': 'Моя Доставка Главная страница'
+        'title': 'Моя Доставка Главная страница',
+        "parent_category_list": parent_obj,
+        "category_list": category_obj
     }
     return render(request, "products/index.html", context)
 
 
 def categories_list_view(request, pk):
-
     category_item = ParrentCategory.objects.get(pk=pk)
     categories = Category.objects.filter(parent_category=pk)
     products_list = Product.objects.filter(categoryID__in=categories)
@@ -37,8 +42,10 @@ def categories_list_view(request, pk):
 class ParentCategoryUpdate(UpdateView):
     model = ParrentCategory
     template_name = 'products/create-update.html'
-    success_url = 'products:index'
+    success_url = reverse_lazy('products:index')
     form_class = ParentCategoryForm
+
+
 # def parent_category_change_view(request, pk=None):
 #     if pk:
 #         category_object = get_object_or_404(ParrentCategory, pk=pk)
@@ -71,10 +78,11 @@ class ParentCategoryDelete(DeleteView):
     success_url = reverse_lazy('products:index')
 
 
-
 def product_view(request):
     product_obj = Product.objects.all()
+
     context = {"title": "hi",
-               "objects_list": product_obj
+               "objects_list": product_obj,
+
                }
     return render(request, 'products/product_card.html')
