@@ -1,6 +1,6 @@
 from django import forms
 
-from products.models import ParrentCategory
+from products.models import ParrentCategory, Category
 
 
 class ParentCategoryForm(forms.ModelForm):
@@ -10,3 +10,9 @@ class ParentCategoryForm(forms.ModelForm):
     class Meta:
         model = ParrentCategory
         fields = ['name', 'image']
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ('name',)
