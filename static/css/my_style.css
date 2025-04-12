@@ -1,0 +1,76 @@
+.backCol {
+    background-color: #f8f9fa
+}
+
+.f {
+    display: flex;
+}
+
+.leftBar {
+    width: 20%; /* Adjust as needed */
+   
+    padding: 20px; /* Add padding for spacing */
+
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #ffffff;
+    border-right: 2px solid #ccc
+}
+
+.cont {
+    width: 75%;
+    margin-right: 15%;
+}
+
+.card-body:hover {
+
+
+    transition: transform 0.2s, box-shadow 0.2s;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+    width: 200px;
+}
+
+.card-body img {
+    object-fit: cover;
+}
+
+.card-body {
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.164);
+
+    border-radius: 30px;
+    width: 200px;
+}
+
+.card-text {
+    font-size: 17px;
+    font-weight: 500; /* Changed for better visibility */
+}
+
+.image-container {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+}
+
+.list-category {
+    margin: 15px;
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+.list-category li {
+    padding: 10px 0; /* Add padding for list items */
+    border-bottom: 1px solid #ddd; /* Add separator between items */
+    transition: background-color 0.3s; /* Smooth background change */
+}
+
+.list-category li:hover {
+    background-color: rgb(240, 240, 240); /* Highlight on hover */
+}
