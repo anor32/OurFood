@@ -1,8 +1,10 @@
 from itertools import product
 
 from django.urls import path
+
+from products.models import Category
 from products.views import (index_view, categories_list_view,
-                            product_view, ParentCategoryCreate, ParentCategoryUpdate, ParentCategoryDelete,CategoryCreate)
+                            product_view, ParentCategoryCreate, ParentCategoryUpdate, ParentCategoryDelete,CategoryCreate,CategoryUpdate)
 from products.apps import ProductsConfig
 
 app_name = ProductsConfig.name
@@ -16,5 +18,6 @@ urlpatterns = [
     path('product/delete/<int:pk>/', ParentCategoryDelete.as_view(), name='delete_category'),
     path('product/create',ParentCategoryCreate.as_view(),name = 'create'),
     path('product/create/category',CategoryCreate.as_view(),name = 'category_create'),
+    path('product/delete/<int:pk>/category',CategoryUpdate.as_view(),name = 'category_update'),
 
 ]

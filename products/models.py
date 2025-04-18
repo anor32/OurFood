@@ -17,19 +17,20 @@ class ParrentCategory(models.Model):
         verbose_name = "ParentCategory"
         verbose_name_plural = "ParentCategories"
 
+
     def __str__(self):
         return self.name
 
 
 # а тут например родитель овощи и тут дальше идет огурцы помидоры разновидности сыры масла
 class Category(models.Model):
-    name = models.CharField(max_length=100, verbose_name="category_name")
-    parent_category = ForeignKey(ParrentCategory, on_delete=models.CASCADE, verbose_name="Parent Category", **NULLABLE)
+    name = models.CharField(max_length=100, verbose_name="Название подкатегории ")
+    parent_category = ForeignKey(ParrentCategory, on_delete=models.CASCADE, verbose_name="Выбор Основной категории", **NULLABLE)
 
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
-
+        ordering = ['name']
     def __str__(self):
         return self.name
 

@@ -6,7 +6,7 @@
     {% for object in objects_list %}
     <div class="row mb-4">
     <div id="targetElement{{ object.pk }}">
-    <h2>{{ object.name }}</h2>
+    <a href="{%url 'products:category_update%}"><h2>{{ object.name }}</h2></a>
 </div>
 
         {%for product in products_list%}

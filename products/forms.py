@@ -1,11 +1,11 @@
+
 from django import forms
+from django.forms import TextInput, Select
 
 from products.models import ParrentCategory, Category
 
 
 class ParentCategoryForm(forms.ModelForm):
-    # name = forms.CharField(widget=forms.TextInput)
-    # image = forms.ImageField(widget=forms.FileInput)
 
     class Meta:
         model = ParrentCategory
@@ -14,5 +14,16 @@ class ParentCategoryForm(forms.ModelForm):
 
 class CategoryForm(forms.ModelForm):
     class Meta:
+        fields = ('name', 'parent_category')
         model = Category
-        fields = ('name',)
+
+        widgets = {
+            "name": TextInput(attrs={
+                "class": "form-control",
+                "placeholder":"Название подкатегории"
+            }),
+            "parent_category": Select(attrs={
+                "class": "form-control",
+                "placeholder": "Выбор категории"
+            }),
+        }

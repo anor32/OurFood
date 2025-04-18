@@ -80,6 +80,12 @@ class CategoryCreate(CreateView):
     success_url = reverse_lazy('products:index')
     form_class = CategoryForm
 
+
+class CategoryUpdate(UpdateView):
+    model = Category
+    template_name = 'products/create_category.html'
+    success_url = reverse_lazy('products:index')
+    form_class = CategoryForm
 def product_view(request):
     product_obj = Product.objects.all()
 
