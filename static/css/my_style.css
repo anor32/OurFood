@@ -37,13 +37,14 @@
 
 .card-body img {
     object-fit: cover;
+    
 }
 
 .card-body {
     background-color: rgb(255, 255, 255);
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.164);
-
+    padding: 10px;
     border-radius: 30px;
     width: 200px;
 }

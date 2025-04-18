@@ -1,0 +1,41 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<div style="margin:auto; padding:25px ; width:700px; border:1px solid #00000044">
+    <form method="post" enctype="multipart/form-data" class="form-horizontal">
+        {% if object%}
+        <legend>Изменение Товара {{object.name}}</legend>
+        {% else %}
+        <legend>Cоздание нового Товара</legend>
+        {% endif %}
+
+
+        {% csrf_token %}
+        <div class="form-group ">
+            {{form.as_p}}
+            <div class="form-group ">
+                <button type="reset" class="btn btn-default" style="margin-left:10px"><a href="{% url 'products:index' %}"
+                                                                            class="text">Вернуться</a></button>
+                <button type="submit" class="btn btn-primary" style="margin-left:500px">
+                    {%if object%} Изменить {% else %}
+                    Создать {% endif %}
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </form>
+
+    {% if object %}
+    <div class="form-group" style=" text-align:center;">
+        <form action="{% url 'products:product_delete' object.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-default">Удалить</button>
+        </form>
+    </div>
+</div>
+{%endif%}
+{% endblock %}

@@ -15,7 +15,6 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 
 
 def index_view(request):
-
     context = {
         'objects_list': ParrentCategory.objects.all(),
         'title': 'Моя Доставка Главная страница',
@@ -74,18 +73,25 @@ class ParentCategoryDelete(DeleteView):
     model = ParrentCategory
     success_url = reverse_lazy('products:index')
 
+
 class CategoryCreate(CreateView):
     model = Category
-    template_name = 'products/create_category.html'
+    template_name = 'products/create_update_category.html'
     success_url = reverse_lazy('products:index')
     form_class = CategoryForm
 
 
 class CategoryUpdate(UpdateView):
     model = Category
-    template_name = 'products/create_category.html'
+    template_name = 'products/create_update_category.html'
     success_url = reverse_lazy('products:index')
     form_class = CategoryForm
+
+
+class CategoryDelete(DeleteView):
+    model = Category
+    success_url = reverse_lazy('products:index')
+
 
 def product_view(request):
     product_obj = Product.objects.all()
@@ -97,15 +103,20 @@ def product_view(request):
     return render(request, 'products/product_card.html')
 
 
-
 class ProductCreate(CreateView):
     model = Product
-    template_name = 'products/create_product.html'
+    template_name = 'products/create_update_product.html'
     success_url = reverse_lazy('products:index')
     form_class = ProductForm
+
 
 class ProductUpdate(UpdateView):
     model = Product
-    template_name = 'products/create_product.html'
+    template_name = 'products/create_update_product.html'
     success_url = reverse_lazy('products:index')
     form_class = ProductForm
+
+
+class ProductDelete(DeleteView):
+    model = Product
+    success_url = reverse_lazy('products:index')
