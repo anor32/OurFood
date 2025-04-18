@@ -11,11 +11,11 @@
 
 </head>
 
-<body class="backCol">
+<body class="backCol " >
 
-<header>
-    <div class="row ">
-        <div class="col-lg-12">
+<header  >
+    <div class="row " >
+        <div class="col-lg-12" style="position: fixed;z-index: 1000; ">
 
             <div class="bs-component">
                 <nav class="navbar navbar-default">
@@ -63,10 +63,10 @@
     </div>
 </header>
 
-<main role="main">
+<main role="main"  >
 
-    <div class="f">
-        <aside class="leftBar">
+    <div>
+        <aside class="leftBar fixed-left">
             <h3>Категории</h3>
             {%for parent in parent_category_list%}
             <h3>{{parent.name}}</h3>
@@ -82,18 +82,13 @@
         </aside>
 
 
-        <div class="cont">
+        <div class="cont" style="position:absolute; top:80px; ">
             <div class="album py-5 bg-light">
                 {% block content %}
                 {% endblock %}
             </div>
-        </div>
-    </div>
-</main>
-
-
-<footer>
-    <div class="container">
+            <footer style="statick: fixed; bottom:0%;">
+    <div class="container" >
         <p class="float-right">
             <a href="#"> Back to top </a>
         </p>
@@ -103,7 +98,14 @@
             started guide</a></p>
     </div>
 </footer>
+        </div>
 
+    </div>
+
+
+
+
+</main>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>');</script>
