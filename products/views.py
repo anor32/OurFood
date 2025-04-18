@@ -6,7 +6,7 @@ from django.template.context_processors import request
 from django.urls import reverse_lazy
 from unicodedata import category
 
-from products.forms import ParentCategoryForm, CategoryForm
+from products.forms import ParentCategoryForm, CategoryForm, ProductForm
 from products.models import ParrentCategory, Category, Product
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
@@ -94,3 +94,11 @@ def product_view(request):
 
                }
     return render(request, 'products/product_card.html')
+
+
+
+class ProductCreate(CreateView):
+    model = Product
+    template_name = 'products/create_product.html'
+    success_url = reverse_lazy('products:index')
+    form_class = ProductForm
