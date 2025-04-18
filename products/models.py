@@ -40,7 +40,7 @@ class Product(models.Model):
     categoryID = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Category")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Price')
     quantity = models.IntegerField(null=False, default=0, verbose_name="Quantity")
-    decstipriton = models.CharField(max_length=1000, verbose_name='Description', **NULLABLE)
+    description= models.CharField(max_length=1000, verbose_name='Description', **NULLABLE)
     barcode = models.IntegerField(null=False, default=0, verbose_name="Barcode")
     img = models.ImageField(upload_to='products/images/',**NULLABLE,verbose_name='Product Image',)
 
