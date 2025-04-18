@@ -15,7 +15,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <a href="{% url 'products:product_card'%}">
+                    <a href="{% url 'products:product_update' product.pk%}">
                         <img src="{{ product.img|products_media }}" width="150" class="card-img-top"
                              alt="{{ product.name }}">
 

@@ -86,6 +86,7 @@ class CategoryUpdate(UpdateView):
     template_name = 'products/create_category.html'
     success_url = reverse_lazy('products:index')
     form_class = CategoryForm
+
 def product_view(request):
     product_obj = Product.objects.all()
 
@@ -98,6 +99,12 @@ def product_view(request):
 
 
 class ProductCreate(CreateView):
+    model = Product
+    template_name = 'products/create_product.html'
+    success_url = reverse_lazy('products:index')
+    form_class = ProductForm
+
+class ProductUpdate(UpdateView):
     model = Product
     template_name = 'products/create_product.html'
     success_url = reverse_lazy('products:index')
