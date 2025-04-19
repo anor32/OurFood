@@ -20,7 +20,9 @@
 .cont {
     width: 75%;
     margin-left: 15%;
- 
+    background-color: #ffffff;
+    border-radius: 35px;
+    padding: 7px;
 }
 
 .card-body:hover {
@@ -41,27 +43,32 @@
 }
 
 .card-body {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(242, 243, 243);
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.164);
-    padding: 10px;
+    position: relative;
+   
     border-radius: 30px;
-    width: 200px;
+    width: 210px;
+    margin: 5px;
+
 }
 
 .card-text {
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 500; 
+    color: rgb(61, 61, 61);
+    position: absolute;
+    left: 20px;
+    top: -8px;
+ 
 }
 
 .image-container {
     width: 100%;
     height: 200px;
-    background-size: cover;
-    background-position: center;
+    object-fit: cover; /* Используем cover для заполнения блока */
     border-radius: 30px;
 }
-
 .list-category {
     margin: 15px;
     list-style-type: none; 
@@ -85,11 +92,16 @@
     display: flex; align-items: center;
     justify-content: center;}
 
-a.text:hover {
+a.text{
   text-decoration: none;
-  color: #000000;
+  color: #555555;
+  
+  
 }
-
+a.text:hover{
+    color: #000;
+    text-decoration: none;
+}
 
 .changer {
     position: relative; 
@@ -135,3 +147,6 @@ a.text:hover {
 .fixed-left::-webkit-scrollbar {
     display: none; /* Скрываем скроллбар */
 }
+
+
+

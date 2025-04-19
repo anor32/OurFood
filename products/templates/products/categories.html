@@ -2,11 +2,11 @@
 {%load my_tags%}
 {% block content %}
 
-<div class="container">
+<div s>
     {% for object in objects_list %}
     <div class="row mb-4">
-        <div id="targetElement{{ object.pk }}">
-            <a class="text changer" href="{%url 'products:category_update' object.pk %}"><h2>{{ object.name }}</h2></a>
+        <div id="targetElement{{ object.pk }} " style="width:100%">
+            <a class="text changer "  href="{%url 'products:category_update' object.pk %}"><h2>{{ object.name }}</h2></a>
         </div>
 
         {%for product in products_list%}
@@ -20,7 +20,7 @@
                              alt="{{ product.name }}">
 
 
-                        <p class="card-text" style="color:blue; font-size: 30px;">{{ product.price|floatformat:0 }}
+                        <p  style="color:blue; font-size: 30px;">{{ product.price|floatformat:0 }}
                             ₽</p>
                         <h4 class="card-title">{{ product.name }}</h4>
 

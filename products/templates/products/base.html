@@ -11,46 +11,35 @@
 
 </head>
 
-<body class="backCol " >
+<body class="backCol">
 
-<header  >
-    <div class="row " >
-        <div class="col-lg-12" style="position: fixed;z-index: 1000; ">
+<header >
+
+        <div class="col-lg-12" style="position: fixed;z-index: 1000; padding:0" >
 
             <div class="bs-component">
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header">
-
-                            <a class="navbar-brand" href="{%url 'products:index'%}">Наша Еда</a>
+                                  <div class="logo" style="float: left; margin-right: 20px;">
+        <a href="{%url 'products:index'%}">
+            <img  src="/static/products/logo.png" alt="Логотип" style="height: 50px; width: auto;" > <!-- Задайте нужные размеры -->
+        </a>
+    </div>
+                            <a class="navbar-brand text" href="{%url 'products:index'%}">Наша Еда</a>
                         </div>
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">Link</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">One more separated link</a></li>
-                                    </ul>
-                                </li>
+
                             </ul>
-                            <form class="navbar-form navbar-left" role="search">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search">
+                            <form class="navbar-form navbar-left"  style="width:80%;" role="search" >
+                                <div class="form-group" style="width:90%;">
+                                    <input type="text" class="form-control" style="width:100%;" placeholder="Search">
                                 </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button type="submit" class="btn btn-default" style="position:relative; left:10px">Поиск</button>
                             </form>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#">Link</a></li>
+                                <li> <button class="btn btn-default" style="border-radius:15px;"><a  class="text" href="#">войти</a></button></li>
                             </ul>
                         </div>
                     </div>
@@ -60,7 +49,7 @@
         </div>
 
     </div>
-    </div>
+
 </header>
 
 <main role="main"  >
@@ -73,7 +62,7 @@
             <ul class="list-category">
                 {% for category in category_list %}
                     {% if category.parent_category.id == parent.id%}
-                     <li><a href="{% url 'products:categories' parent.pk %}#targetElement{{ category.pk }}">{{ category.name }}</a></li>
+                     <li><a class="text" href="{% url 'products:categories' parent.pk %}#targetElement{{ category.pk }}">{{ category.name }}</a></li>
                     {%endif%}
                         {% endfor %}
             </ul>
@@ -87,7 +76,7 @@
                 {% block content %}
                 {% endblock %}
             </div>
-            <footer style="statick: fixed; bottom:0%;">
+            <footer >
     <div class="container" >
         <p class="float-right">
             <a href="#"> Back to top </a>
