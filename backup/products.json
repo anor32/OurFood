@@ -1,0 +1,333 @@
+[
+  {
+    "model": "products.parrentcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Овощи и Фрукты",
+      "image": "media/parent_categories_images/fresh-vegetables-isolated-on-white-260nw-236837695-no-bg-_9XvMF9T.png"
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Молочная Продукция",
+      "image": "media/parent_categories_images/afb1a36d89a3b09add3f70282b484c0b674affad-no-bg-preview_ca_HQlRwVp.png"
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 5,
+    "fields": {
+      "name": "Хлеб И выпечка",
+      "image": "media/parent_categories_images/breed_iRdGI3Z.png"
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 6,
+    "fields": {
+      "name": "Мясо и Птица",
+      "image": "media/parent_categories_images/meat-no-bg-preview_carve.photos.png"
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 9,
+    "fields": {
+      "name": "Бакалея",
+      "image": "media/parent_categories_images/baka-fotor-bg-remover-20250419174416.png"
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 10,
+    "fields": {
+      "name": "Сладости и снеки",
+      "image": "media/parent_categories_images/XXL_height-fotor-bg-remover-20250419174547.png"
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 11,
+    "fields": {
+      "name": "Рыба и морепродукты",
+      "image": "media/parent_categories_images/172.png"
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 12,
+    "fields": {
+      "name": "Готовые продукты",
+      "image": "media/parent_categories_images/Salad.png"
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 13,
+    "fields": {
+      "name": "Заморозка",
+      "image": ""
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 14,
+    "fields": {
+      "name": "Красота и гигиена",
+      "image": ""
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 15,
+    "fields": {
+      "name": "Зоотовары",
+      "image": ""
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 16,
+    "fields": {
+      "name": "Товары для дома",
+      "image": ""
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 17,
+    "fields": {
+      "name": "Для вас",
+      "image": ""
+    }
+  },
+  {
+    "model": "products.parrentcategory",
+    "pk": 22,
+    "fields": {
+      "name": "Скидки и Акции",
+      "image": ""
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 4,
+    "fields": {
+      "name": "Овощи",
+      "parent_category": 2
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 5,
+    "fields": {
+      "name": "Твороги",
+      "parent_category": 3
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 7,
+    "fields": {
+      "name": "Сыры",
+      "parent_category": 3
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 8,
+    "fields": {
+      "name": "Яйца",
+      "parent_category": 3
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 9,
+    "fields": {
+      "name": "Кефиры",
+      "parent_category": 3
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 10,
+    "fields": {
+      "name": "Сметана",
+      "parent_category": 3
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 11,
+    "fields": {
+      "name": "Йогурты",
+      "parent_category": 3
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 12,
+    "fields": {
+      "name": "Сливки",
+      "parent_category": 3
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 13,
+    "fields": {
+      "name": "Молоко",
+      "parent_category": 3
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 14,
+    "fields": {
+      "name": "Масло и Маргарин",
+      "parent_category": null
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 15,
+    "fields": {
+      "name": "масло и маргарин",
+      "parent_category": null
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 16,
+    "fields": {
+      "name": "йогурты",
+      "parent_category": null
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 17,
+    "fields": {
+      "name": "томаты",
+      "parent_category": 2
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 18,
+    "fields": {
+      "name": "огурцы",
+      "parent_category": 2
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 19,
+    "fields": {
+      "name": "Ананасы",
+      "parent_category": 2
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 20,
+    "fields": {
+      "name": "тест",
+      "parent_category": 3
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 13,
+    "fields": {
+      "name": "Творог 5%",
+      "categoryID": 5,
+      "price": "50.00",
+      "quantity": 10,
+      "description": "Натуральный творог с низким содержанием жира.",
+      "barcode": 340123,
+      "img": ""
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 14,
+    "fields": {
+      "name": "Творог 9%",
+      "categoryID": 5,
+      "price": "60.00",
+      "quantity": 15,
+      "description": "Кремовый творог с содержанием жира 9%.",
+      "barcode": 123456724,
+      "img": ""
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 15,
+    "fields": {
+      "name": "Сыр Голландский",
+      "categoryID": 7,
+      "price": "200.00",
+      "quantity": 20,
+      "description": "Классический сыр с насыщенным вкусом и желтой корочкой.",
+      "barcode": 789012345,
+      "img": ""
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 16,
+    "fields": {
+      "name": "Сыр Ушак",
+      "categoryID": 7,
+      "price": "180.00",
+      "quantity": 25,
+      "description": "Мягкий сыр с ореховым привкусом, идеально подходит для бутербродов.",
+      "barcode": 567890123,
+      "img": ""
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 17,
+    "fields": {
+      "name": "Сыр Российский",
+      "categoryID": 7,
+      "price": "200.00",
+      "quantity": 20,
+      "description": "Классический Российский сыр с насыщенным вкусом и незабываемым ароматом.",
+      "barcode": 789012345,
+      "img": ""
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 18,
+    "fields": {
+      "name": "Йогурт Данон",
+      "categoryID": 11,
+      "price": "25.00",
+      "quantity": 4,
+      "description": "Пищевая ценность на 100 г Белки 5.0 г Жиры 5.0 г Углеводы 2.6 г Калорийность 91.0 ккал",
+      "barcode": 0,
+      "img": "products/images/orig.webp"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 21,
+    "fields": {
+      "name": "sdad",
+      "categoryID": 19,
+      "price": "123.00",
+      "quantity": 32,
+      "description": "dsad",
+      "barcode": 0,
+      "img": ""
+    }
+  }
+]
