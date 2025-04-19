@@ -15,11 +15,12 @@ class User(AbstractUser):
     role = models.CharField(max_length=9, choices=UserRoles.choices, default=UserRoles.USER)
     email = models.EmailField(unique=True, verbose_name="Эл. почта")
     phone = models.CharField(max_length=35, verbose_name="Телефон", **NULLABLE)
-    first_name = models.CharField(max_length=150, verbose_name="имя", default="Anonymous")
+    first_name = models.CharField(max_length=150, verbose_name="имя", default="Anonymous" )
+    last_name = models.CharField(max_length=150, verbose_name="фамилия", default="Anonymous")
     is_active = models.BooleanField(default=True, verbose_name="activ")
     address = models.CharField(max_length=150, verbose_name='адрес', **NULLABLE,)
 
-    USERNAME_FIELD = 'phone'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     def __str__(self):
