@@ -14,7 +14,7 @@
 
 
     {% endfor %}
-
+    {%if user.role == "admin" %}
     <div class="col-md-2">
         <div class="card mb-4 box-shadow">
             <a href="{% url 'products:create' %}" style="text-decoration: none; color: inherit;">
@@ -25,10 +25,11 @@
             </a>
         </div>
     </div>
+
 </div>
 
 </div>
 
 <a href="{% url 'products:create' %}" class="btn btn-primary">Создать новую карточку</a>
-
+ {%endif%}
 {% endblock %}
