@@ -1,22 +1,32 @@
-{%extends 'dogs/base.html' %}
+{% extends 'products/base.html' %}
 
 {% block content %}
+<form style="width:60%; margin:auto; background-color:rgb(240, 240, 240 ); padding:15px; border-radius:15px;" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>
+            <ya-tr-span data-index="72-0" data-translated="false" data-source-lang="en" data-target-lang="ru"
+                        data-value="Legend" data-translation="Легенда" data-ch="0" data-type="trSpan"
+                        style="visibility: inherit !important;">Вход
+            </ya-tr-span>
+        </legend>
 
-<div class="row">
-    <div class="col-3"> </div>
-      <div class="col-6">
-        <div class="card">
-          <div class="card-header">введите даные для  входа</div>
-          <div class="card-body">
-            <form method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <button type="submit" class="btn btn-success">Вход</button>
-            </form>
-          </div>
-          <div class="card-footer"></div>
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <div class="form-group" >
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default" style="margin-left:10px">
+                    <a href="{%url 'products:index' %}" class="text">Вернуться</a>
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <ya-tr-span data-index="82-1" data-translated="false" data-source-lang="en" data-target-lang="ru"
+                                data-value="Submit" data-translation="Отправить" data-ch="0" data-type="trSpan"
+                                style="visibility: inherit !important;">Войти
+                    </ya-tr-span>
+                </button>
+            </div>
         </div>
-      </div>
-    
-</div>
+    </fieldset>
+</form>
+
 {% endblock %}

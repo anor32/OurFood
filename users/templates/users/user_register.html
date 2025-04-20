@@ -1,7 +1,8 @@
 {% extends 'products/base.html' %}
 
 {% block content %}
-<form style="width:60%; margin:auto; background-color:rgb(240, 240, 240 ); padding:15px; border-radius:15px;" method="post" enctype="multipart/form-data">
+<form style="width:60%; margin:auto; background-color:rgb(240, 240, 240 ); padding:15px; border-radius:15px;"
+      method="post" enctype="multipart/form-data">
     <fieldset>
         <legend>
             <ya-tr-span data-index="72-0" data-translated="false" data-source-lang="en" data-target-lang="ru"
@@ -13,18 +14,15 @@
         {% csrf_token %}
         {{form.as_p}}
 
-        <div class="form-group" >
+        <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-                <button type="reset" class="btn btn-default">
-                    <ya-tr-span data-index="82-0" data-translated="false" data-source-lang="en" data-target-lang="ru"
-                                data-value="Cancel" data-translation="Отмена" data-ch="0" data-type="trSpan"
-                                style="visibility: inherit !important;">Cancel
-                    </ya-tr-span>
+                <button type="reset" class="btn btn-default" style="margin-left:10px">
+                    <a href="{%url 'products:index' %}" class="text">Вернуться</a>
                 </button>
                 <button type="submit" class="btn btn-primary">
                     <ya-tr-span data-index="82-1" data-translated="false" data-source-lang="en" data-target-lang="ru"
                                 data-value="Submit" data-translation="Отправить" data-ch="0" data-type="trSpan"
-                                style="visibility: inherit !important;">Submit
+                                style="visibility: inherit !important;">Зарегистрироваться
                     </ya-tr-span>
                 </button>
             </div>
