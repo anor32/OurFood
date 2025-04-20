@@ -1,64 +1,56 @@
 {% extends 'products/base.html' %}
-{%load my_tags%}
+{% load my_tags %}
 {% block content %}
 
-<div s>
+<div class="container">
     {% for object in objects_list %}
-    <div class="row mb-4">
-        <div id="targetElement{{ object.pk }} " style="width:100%">
-            <a class="text changer "  href="{%url 'products:category_update' object.pk %}"><h2>{{ object.name }}</h2></a>
-        </div>
-
-        {%for product in products_list%}
-        {% if product.categoryID == object %}
-        <div class="col-md-2">
-            <div class="card">
-
-                <div class="card-body">
-                    <a href="{% url 'products:product_update' product.pk%}">
-                        <img src="{{ product.img|products_media }}" width="150" class="card-img-top"
-                             alt="{{ product.name }}">
-
-
-                        <p  style="color:blue; font-size: 30px;">{{ product.price|floatformat:0 }}
-                            ₽</p>
-                        <h4 class="card-title">{{ product.name }}</h4>
-
-                    </a>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
-                </div>
+     <div class="col-12">
+            <div id="targetElement{{ object.pk }}" style="width:100%">
+          {% if user.role == "admin" %}      <a class="text changer" href="{% url 'products:category_update' object.pk %}"> {%endif%}
+                    <h2 style="width:100%">{{ object.name }}</h2>
+                </a>
             </div>
         </div>
+    <div class="row mb-4">
+
+
+        {% for product in products_list %}
+            {% if product.categoryID == object %}
+
+                        <div class="card-body" style="margin:10px;">
+                            <a href="{% url 'products:product_update' product.pk %}">
+                                <img src="{{ product.img|products_media }}" width="150" class="card-img-top" alt="{{ product.name }}">
+                                <p style="color:blue; font-size: 30px;">{{ product.price|floatformat:0 }} ₽</p>
+                                <h4 class="card-title">{{ product.name }}</h4>
+                            </a>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+
+
+            {% endif %}
+        {% endfor %}
+
+        {% if user.role == "admin" %}
+
+            <div class="card">
+                <div class="card-body" style="height:250px">
+                    <a href="{% url 'products:product_create' %}" class="btn btn-primary"
+                       style="width:100%; height:100%; padding-top:70%; border-radius:30px;">Добавить новый товар</a>
+                </div>
+            </div>
 
         {% endif %}
-        {%endfor%}
-        <div class="col-md-2">
-            <div class="card">
-
-                <div class="card-body" style="height:250px">
-                    <a href="{% url 'products:product_card'%}">
-
-
-
-
-                            <a href="{% url 'products:product_create'%}" class="btn btn-primary" style="width:100%; height:100%; padding-top:70%; border-radius:30px;">Добавить новый товар</a>
-
-                    </a>
-
-                </div>
-            </div>
-        </div>
-
     </div>
     {% endfor %}
-
 </div>
-<div class="f">
 
+{% if user.role == "admin" %}
+<div class="text-center mt-4">
     <h2>Добавить новую категорию</h2>
-    <a href="{%url 'products:category_create'%}" class="text">
-        <button class="btn-primary elemAdd" style="margin-top:15px"> +</button>
+    <a href="{% url 'products:category_create' %}" class="text">
+        <button class="btn btn-primary elemAdd" style="margin-top:15px;"> +</button>
     </a>
 </div>
+{% endif %}
 
 {% endblock %}

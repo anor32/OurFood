@@ -32,24 +32,24 @@
     {% csrf_token %}
 
 
-        <div class="form-group">
-            <button type="reset" class="btn btn-default" style="margin-left:20%">
-                <a href="{% url 'products:index' %}" class="text">Вернуться</a></button>
-            <button type="submit" class="btn btn-primary" >
-                {%if object%} Изменить {% else %}
-                Создать {% endif %}
-            </button>
-        </div>
+    <div class="form-group">
+        <button type="reset" class="btn btn-default" style="margin-left:20%">
+            <a href="{% url 'products:index' %}" class="text">Вернуться</a></button>
+        <button type="submit" class="btn btn-primary">
+            {%if object%} Изменить {% else %}
+            Создать {% endif %}
+        </button>
+    </div>
 
 </form>
 {%if object%}
 <div style="margin-left:25%; margin-top:-25px;">
 
-    <form action="{% url 'products:category_delete' object.pk %}" method="post">
+    <form action="{% url 'products:category_delete' object.pk %}" method="post" enctype="multipart/form-data" >
         {% csrf_token %}
         <button type="submit" class="btn btn-default">Удалить</button>
     </form>
 </div>
-    {%endif%}
+{%endif%}
 
 {% endblock %}

@@ -23,7 +23,7 @@ urlpatterns = [
     #category crud
     path('products/create/category',CategoryCreate.as_view(),name = 'category_create'),
     path('products/update/<int:pk>/category',CategoryUpdate.as_view(),name = 'category_update'),
-    path('products/update/<int:pk>/category',CategoryDelete.as_view(),name = 'category_delete'),
+    path('products/delete/<int:pk>/category',CategoryDelete.as_view(),name = 'category_delete'),
 
     #product crud
     path("products/create/product" ,ProductCreate.as_view(),name= 'product_create'),
