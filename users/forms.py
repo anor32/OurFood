@@ -34,8 +34,14 @@ class UserLoginForm(StyleFromMixin,AuthenticationForm):
 class UserForm(StyleFromMixin,forms.ModelForm):
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'phone',)
+        fields = ('email', 'first_name', 'last_name', 'phone')
 
+widgets = {
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control'})
+}
 
 
 class UserUpdateForm(StyleFromMixin, forms.ModelForm):

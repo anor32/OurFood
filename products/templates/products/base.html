@@ -52,7 +52,7 @@
 
 </header>
 
-<main role="main"  >
+<main role="main" style="position:relative;" >
 
     <div>
         <aside class="leftBar fixed-left">
@@ -71,14 +71,20 @@
         </aside>
 
 
-        <div class="cont" style="position:absolute; top:80px; ">
+        <div class="cont" style="position:relative; top:70px; ">
             <div class="album py-5 bg-light">
                 {% block content %}
                 {% endblock %}
             </div>
-            <footer >
+
+        </div>
+
+    </div>
+
+
+       <footer style="position:relative; bottom:-300px; left:255px;">
     <div class="container" >
-        <p class="float-right">
+        <p class="float-right" >
             <a href="#"> Back to top </a>
         </p>
         <p>Albim examle is &copy; Bootstap</p>
@@ -86,15 +92,10 @@
             getting
             started guide</a></p>
     </div>
-</footer>
-        </div>
-
-    </div>
-
-
-
+        </footer>
 
 </main>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>');</script>
