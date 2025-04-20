@@ -13,48 +13,74 @@
 
 <body class="backCol">
 
-<header >
+<header>
 
-        <div class="col-lg-12" style="position: fixed;z-index: 1000; padding:0" >
+    <div class="col-lg-12" style="position: fixed;z-index: 1000; padding:0">
 
-            <div class="bs-component">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                                  <div class="logo" style="float: left; margin-right: 20px;">
-        <a href="{%url 'products:index'%}">
-            <img  src="/static/products/logo.png" alt="Логотип" style="height: 50px; width: auto;" > <!-- Задайте нужные размеры -->
-        </a>
-    </div>
-                            <a class="navbar-brand text" href="{%url 'products:index'%}">Наша Еда</a>
+        <div class="bs-component">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <div class="logo" style="float: left; margin-right: 20px;">
+                            <a href="{%url 'products:index'%}">
+                                <img src="/static/products/logo.png" alt="Логотип" style="height: 50px; width: auto;">
+                            </a>
                         </div>
-
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                            </ul>
-                            <form class="navbar-form navbar-left"  style="width:70%;" role="search" >
-                                <div class="form-group" style="width:90%;">
-                                    <input type="text" class="form-control" style="width:100%;" placeholder="Search">
-                                </div>
-                                <button type="submit" class="btn btn-default" style="position:relative; left:10px">Поиск</button>
-                            </form>
-                            <ul class="nav navbar-nav navbar-right" style="margin-top:7px;">
-                                <li style="margin-right:10px;"> <button class="btn btn-default" style="border-radius:15px;"><a  class="text" href="{%url 'users:user_login' %}">войти</a></button></li>
-                                <li style="margin-right:10px;"> <button class="btn btn-default" style="border-radius:15px;"><a  class="text" href="{%url 'users:user_register' %}">Регистрация</a></button></li>
-
-                            </ul>
-                        </div>
+                        <a class="navbar-brand text" href="{%url 'products:index'%}">Наша Еда</a>
                     </div>
-                </nav>
-            </div>
 
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        </ul>
+                        <form class="navbar-form navbar-left" style="width:70%;" role="search">
+                            <div class="form-group" style="width:90%;">
+                                <input type="text" class="form-control" style="width:100%;" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default" style="position:relative; left:10px">Поиск
+                            </button>
+                        </form>
+
+                        <ul class="nav navbar-nav navbar-right f" style="margin-top:7px; ">
+                            {%if not user.is_authenticated %}
+
+                            <li style="margin-right:10px;">
+                                <button class="btn btn-default" style="border-radius:15px;"><a class="text"
+                                                                                               href="{%url 'users:user_login' %}">войти</a>
+                                </button>
+                            </li>
+                            <li style="margin-right:10px;">
+                                <button class="btn btn-default" style="border-radius:15px;"><a class="text"
+                                                                                               href="{%url 'users:user_register' %}">Регистрация</a>
+                                </button>
+                            </li>
+                            {% else %}
+                            {{ user.email }}
+                            <form method="post" action="{% url 'users:user_logout' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <li style="margin-right:10px;">
+                                    <button type="submit" class="btn btn-default" style="border-radius:15px;">Выход
+                                    </button>
+                                </li>
+                            </form>
+                            <li style="margin-right:10px;">
+                                <button class="btn btn-default" style="border-radius:15px;"><a class="text"
+                                                                                               href="{%url 'users:user_profile' %}">Профиль</a>
+                                </button>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
+
+    </div>
 
     </div>
 
 </header>
 
-<main role="main" style="position:relative;" >
+<main role="main" style="position:relative;">
 
     <div>
         <aside class="leftBar fixed-left">
@@ -63,18 +89,19 @@
             <h3>{{parent.name}}</h3>
             <ul class="list-category">
                 {% for category in category_list %}
-                    {% if category.parent_category.id == parent.id%}
-                     <li><a class="text" href="{% url 'products:categories' parent.pk %}#targetElement{{ category.pk }}">{{ category.name }}</a></li>
-                    {%endif%}
-                        {% endfor %}
+                {% if category.parent_category.id == parent.id%}
+                <li><a class="text" href="{% url 'products:categories' parent.pk %}#targetElement{{ category.pk }}">
+                    {{ category.name }}</a></li>
+                {%endif%}
+                {% endfor %}
             </ul>
             {% endfor %}
 
         </aside>
 
 
-        <div class="cont" style="position:relative; top:70px; ">
-            <div class="album py-5 bg-light">
+        <div class="cont">
+            <div class="album py-5 bg-light" style="margin:80px;height:50%;">
                 {% block content %}
                 {% endblock %}
             </div>
@@ -82,19 +109,21 @@
         </div>
 
     </div>
+     {% block user %}
+                {% endblock %}
 
-
-       <footer style="position:relative; bottom:-300px; left:255px;">
-    <div class="container" >
-        <p class="float-right" >
-            <a href="#"> Back to top </a>
-        </p>
-        <p>Albim examle is &copy; Bootstap</p>
-        <p> new to Bootstrap? <a href="'../../..">Visit the homepage </a> or read our <a href="../../getting-started">
-            getting
-            started guide</a></p>
-    </div>
-        </footer>
+    <footer style="position:relative; bottom:-300px; left:255px;">
+        <div class="container">
+            <p class="float-right">
+                <a href="#"> Back to top </a>
+            </p>
+            <p>Albim examle is &copy; Bootstap</p>
+            <p> new to Bootstrap? <a href="'../../..">Visit the homepage </a> or read our <a
+                    href="../../getting-started">
+                getting
+                started guide</a></p>
+        </div>
+    </footer>
 
 </main>
 
