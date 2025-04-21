@@ -5,7 +5,8 @@ from django.urls import path
 from products.models import Category, Product
 from products.views import (index_view, categories_list_view,
                             product_view, ParentCategoryCreate, ParentCategoryUpdate, ParentCategoryDelete,
-                            CategoryCreate, CategoryUpdate, ProductCreate, ProductUpdate, CategoryDelete,ProductDelete)
+                            CategoryCreate, CategoryUpdate, ProductCreate, ProductUpdate, CategoryDelete, ProductDelete,
+                            ProductChoice)
 from products.apps import ProductsConfig
 
 app_name = ProductsConfig.name
@@ -28,6 +29,8 @@ urlpatterns = [
     #product crud
     path("products/create/product" ,ProductCreate.as_view(),name= 'product_create'),
     path("products/update/<int:pk>/product",ProductUpdate.as_view(),name= 'product_update'),
-    path('product/<int:pk>/delete/product', ProductDelete.as_view(), name='product_delete')
+    path('product/<int:pk>/delete/product', ProductDelete.as_view(), name='product_delete'),
 
+    #product choice
+    path('product/<int:pk>/choice/product', ProductChoice.as_view(), name='product_choice')
 ]

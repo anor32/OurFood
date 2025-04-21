@@ -6,22 +6,17 @@
     display: flex;
 }
 
-.leftBar {
-    width: 20%; /* Adjust as needed */
-    height: 10%;
-    padding: 20px; /* Add padding for spacing */
 
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    background-color: #ffffff;
-    border-right: 2px solid #ccc;
-}
 
 .cont {
-    width: 75%;
-    margin-left: 15%;
+    width: 60%;
+    
     background-color: #ffffff;
     border-radius: 35px;
     padding: 7px;
+    position: relative;
+    left: 24%;
+    top: 70px;
 }
 
 .card-body:hover {
@@ -130,7 +125,7 @@ a.text:hover{
 
 .fixed-left {
     position: fixed; 
-    top: 600; 
+    top: 40px;
     left: 20; 
     width: 250px; 
     height: 100%; 
@@ -146,7 +141,41 @@ a.text:hover{
 .fixed-left::-webkit-scrollbar {
     display: none; /* Скрываем скроллбар */
 }
+.leftBar {
+    width: 20%; /* Adjust as needed */
+    height: 100%;
+    padding: 20px; /* Add padding for spacing */
 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #ffffff;
+    border-right: 2px solid #ccc;
+}
+
+.fixed-right {
+    position: fixed; 
+    top: 40px; 
+    right: 0; 
+    width: 12%; 
+    height: 100%; 
+    padding-top: 50px;
+    overflow-y: auto; 
+    background-color: white; 
+    border-left: 1px solid #ddd; /* Изменено на border-left */
+}
+
+.fixed-right::-webkit-scrollbar {
+    display: none; /* Скрываем скроллбар */
+}
+
+.rightBar {
+    /* Adjust as needed */
+    height: 100%;
+    padding: 20px; /* Add padding for spacing */
+
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Изменён на -2px для тени с правой стороны */
+    background-color: #ffffff;
+    border-left: 2px solid #ccc; /* Изменено на border-left */
+}
 
 
 .user-form{

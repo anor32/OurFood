@@ -1,14 +1,15 @@
 from lib2to3.fixes.fix_input import context
 
+from PIL.ImageShow import Viewer
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, reverse, get_object_or_404
+from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.template.context_processors import request
 from django.urls import reverse_lazy
 from unicodedata import category
 
 from products.forms import ParentCategoryForm, CategoryForm, ProductForm
 from products.models import ParrentCategory, Category, Product
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView ,View
 
 
 # Create your views here.
@@ -120,3 +121,31 @@ class ProductUpdate(UpdateView):
 class ProductDelete(DeleteView):
     model = Product
     success_url = reverse_lazy('products:index')
+
+
+class ProductChoice(View):
+    model = Product
+
+    def post(self, request,pk):
+        print("Post method called")
+        print("Request method:", request.method)
+        print("Kwargs:", self.kwargs)
+
+        pk = self.kwargs['pk']  # Access pk from kwargs
+        product = get_object_or_404(Product, pk=pk)
+
+        if "cart" not in request.session:
+            cart = []
+        else:
+            cart = request.session['cart']
+
+        cart.append({
+            'id': product.id,
+            'name': product.name,
+            'price': int(product.price),
+            'quantity': '1'
+            })
+        request.session['cart'] = cart
+        category_pk = request.POST.get('category_pk')
+        print(category_pk)
+        return redirect(reverse('products:categories' ,kwargs={'pk': category_pk}))

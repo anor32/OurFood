@@ -23,7 +23,11 @@
                                 <p style="color:blue; font-size: 30px;">{{ product.price|floatformat:0 }} ₽</p>
                                 <h4 class="card-title">{{ product.name }}</h4>
                             </a>
-                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <form action="{% url 'products:product_choice' product.pk %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
+                                <button type="submit">Add to Cart</button>
+                            </form>
                         </div>
 
 
