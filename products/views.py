@@ -149,3 +149,10 @@ class ProductChoice(View):
         category_pk = request.POST.get('category_pk')
         print(category_pk)
         return redirect(reverse('products:categories' ,kwargs={'pk': category_pk}))
+
+
+class CartClear(View):
+    def post(self,request):
+        if "cart"  in request.session:
+            request.session['cart'] = []
+        return redirect(reverse('products:index' ))

@@ -89,12 +89,17 @@
         <ul>
             {% for product in cart_products %}
 
-                <li>{{ product}} {{product.price}}</li>
+            <li>{{ product.name}} {{product.price}} {{product.quantity}}</li>
             {% endfor %}
         </ul>
     {% else %}
         <p>Your cart is empty.</p>
     {% endif %}
+            <form action="{% url 'products:cart_clear'  %}" method="POST">
+                                {% csrf_token %}
+                              <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
+                                <button class="btn btn-primary" type="submit">Очистить корзину </button>
+</form>
     </aside>
         <aside class="leftBar fixed-left">
             <h3>Категории</h3>
