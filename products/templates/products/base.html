@@ -83,6 +83,19 @@
 <main role="main" style="position:relative;">
 
     <div>
+        <aside class="rightBar fixed-right">
+        <h3> корзина</h3>
+              {% if cart_products %}
+        <ul>
+            {% for product in cart_products %}
+
+                <li>{{ product}} {{product.price}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+    </aside>
         <aside class="leftBar fixed-left">
             <h3>Категории</h3>
             {%for parent in parent_category_list%}
@@ -109,10 +122,9 @@
         </div>
 
     </div>
-     {% block user %}
-                {% endblock %}
 
-    <footer style="position:relative; bottom:-300px; left:255px;">
+
+    <footer style="position:relative; bottom:-300px; left:455px; width: 50%;">
         <div class="container">
             <p class="float-right">
                 <a href="#"> Back to top </a>
