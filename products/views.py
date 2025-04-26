@@ -9,7 +9,7 @@ from unicodedata import category
 
 from products.forms import ParentCategoryForm, CategoryForm, ProductForm
 from products.models import ParrentCategory, Category, Product
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView ,View
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, View
 
 
 # Create your views here.
@@ -126,7 +126,7 @@ class ProductDelete(DeleteView):
 class ProductChoice(View):
     model = Product
 
-    def post(self, request,pk):
+    def post(self, request, pk):
         print("Post method called")
         print("Request method:", request.method)
         print("Kwargs:", self.kwargs)
@@ -134,17 +134,27 @@ class ProductChoice(View):
         pk = self.kwargs['pk']  # Access pk from kwargs
         product = get_object_or_404(Product, pk=pk)
 
+        product = {
+            'id': product.id,
+            'name': product.name,
+            'price': int(product.price),
+            'quantity': 1,
+            'img': str(product.img)
+        }
         if "cart" not in request.session:
             cart = []
         else:
             cart = request.session['cart']
 
-        cart.append({
-            'id': product.id,
-            'name': product.name,
-            'price': int(product.price),
-            'quantity': '1'
-            })
+        for item in cart:
+            if product['id'] == item['id']:
+                item['quantity'] += 1
+                item['price'] += item['price']
+                break
+        else:
+            cart.append(product)
+
+        print(cart)
         request.session['cart'] = cart
         category_pk = request.POST.get('category_pk')
         print(category_pk)
@@ -152,7 +162,7 @@ class ProductChoice(View):
 
 
 class CartClear(View):
-    def post(self,request):
-        if "cart"  in request.session:
+    def post(self, request):
+        if "cart" in request.session:
             request.session['cart'] = []
-        return redirect(reverse('products:index' ))
+        return redirect(reverse('products:index'))
