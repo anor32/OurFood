@@ -20,6 +20,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=150, verbose_name="фамилия", default="Anonymous",**NULLABLE)
     is_active = models.BooleanField(default=True, verbose_name="activ")
     address = models.CharField(max_length=150, verbose_name='адрес', **NULLABLE,)
+    date_birth = models.DateField(verbose_name="Дата Рождения", **NULLABLE)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
