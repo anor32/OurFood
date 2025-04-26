@@ -1,4 +1,5 @@
 {% load static %}
+{% load my_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,23 +85,34 @@
 
     <div>
         <aside class="rightBar fixed-right">
-        <h3> корзина</h3>
-              {% if cart_products %}
-        <ul>
-            {% for product in cart_products %}
+            <h3> корзина</h3>
+            {% if cart_products %}
+            <ul style="list-style:none; padding:0; ;">
+                {% for product in cart_products %}
 
-            <li>{{ product.name}} {{product.price}} {{product.quantity}}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Your cart is empty.</p>
-    {% endif %}
+                <li class="f" style="margin-top:20px">
+                    <img src="{{product.img|products_media}}" width="90px">
+                    <div style="width:150px"><p style="margin:0">{{ product.name}}
+                    </p>
+                        <p style="color:blue; font-size:20px">{{product.price}} ₽</p>
+                        <div class="f"
+                             style="background-color:rgb(230, 230, 230); font-size:30px; border-radius:50px; display: flex; align-items: center; justify-content: center;">
+                            <div style="font-size:25px;"> -</div>
+                            <div style="margin: 0 25px;">{{product.quantity}}</div>
+                            <div style="font-size:25px;"> +</div>
+                        </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Your cart is empty.</p>
+            {% endif %}
             <form action="{% url 'products:cart_clear'  %}" method="POST">
-                                {% csrf_token %}
-                              <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
-                                <button class="btn btn-primary" type="submit">Очистить корзину </button>
-</form>
-    </aside>
+                {% csrf_token %}
+                <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
+                <button class="btn btn-primary" type="submit">Очистить корзину</button>
+            </form>
+        </aside>
         <aside class="leftBar fixed-left">
             <h3>Категории</h3>
             {%for parent in parent_category_list%}
