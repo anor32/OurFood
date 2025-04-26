@@ -155,7 +155,7 @@ a.text:hover{
     position: fixed; 
     top: 40px; 
     right: 0; 
-    width: 12%; 
+    width: 15%; 
     height: 100%; 
     padding-top: 50px;
     overflow-y: auto; 
@@ -170,7 +170,7 @@ a.text:hover{
 .rightBar {
     /* Adjust as needed */
     height: 100%;
-    padding: 20px; /* Add padding for spacing */
+    padding-left: 10px; /* Add padding for spacing */
 
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Изменён на -2px для тени с правой стороны */
     background-color: #ffffff;
@@ -180,4 +180,20 @@ a.text:hover{
 
 .user-form{
     width:60%; margin:auto; background-color:rgb(255, 255, 255 ); padding:15px; border-radius:15px;
+}
+
+.profile-decorate{
+
+    border-radius:30px;
+    padding:0 15%;
+  
+    
+}
+
+.my-text{
+    
+    font-size: 15px;
+    color: #abc1ca;
+    width:100%;
+   
 }

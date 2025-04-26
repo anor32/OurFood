@@ -1,28 +1,62 @@
 {% extends 'products/base.html' %}
 {%load my_tags %}
 {%block content%}
+{% load static %}
+<h3 class="col-md-" style="margin:0 40%">Мой профиль </h3>
+<hr style="border-color:#75caeb">
 
-<div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-        <div class="card">
-            <div class="card-header" style="padding:15px;">Мой профиль</div>
-            <div class="p-3">
-                <p >Почта: {{user.email}}</p>
-                <p> css {{user.email}}</p>
-                <p >Имя: {{user.first_name|default:"Не указано"}}</p>
-                <p >Фамилия: {{user.last_name|default:"Не указано"}}</p>
-                <p >Дата Рождения: {{user.date_birth|default:"Не указано"}}</p>
-                <p >Телефон: {{user.phone|default:"Не указано"}}</p>
-                <p >Телеграм: {{user.telegram|default:"Не указано"}}</p>
-                <div class="mt-3">
-                    <a class="btn btn-outline-warning me-2" href="{% url 'users:user_update' %}">Обновить</a>
-                    <a class="btn btn-outline-warning me-2" href="{% url 'users:user_change_password' %}">Изменить</a>
-                    <a class="btn btn-outline-danger" href="{% url 'users:user_generate_new_password' %}">Генерация пароля</a>
-                </div>
-            </div>
-        </div>
+<div class="f">
+    <img src="/static/products/profile_icon.png" alt="Логотип" style="height:40px; width: auto;">
+    <div style="margin-left: 10px;">
+        <div class="my-text">Имя фамилия</div>
+        <p style="font-size: 18px; margin: 0;">
+            {{user.first_name|default:"Не указано"}} {{user.last_name|default:"Не указано"}}
+        </p>
     </div>
+</div>
+
+<div class="f">
+    <img src="/static/products/profile_phone.png" alt="Логотип" style="height:40px; width: auto;">
+    <div style="margin-left: 10px;">
+        <div class="my-text">Телефон</div>
+        <p style="font-size:18px">{{user.phone|default:"Не указан"}}</p>
+    </div>
+</div>
+
+
+<div class="f">
+    <img src="/static/products/profile_adress.png" alt="Логотип" style="height:40px; width: auto;margin-right:10px">
+    <div>
+        <div class="my-text">Адрес</div>
+        <p style="font-size:18px">{{user.address|default:"Не указан"}}</p>
+    </div>
+</div>
+<div class="f">
+    <img src="/static/products/profile_calendar.png" alt="Логотип" style="height:40px; width: auto;margin-right:10px">
+    <div>
+        <div class="my-text">Дата рождения</div>
+        <p style="font-size:18px">{{user.date_birth|default:"Не указана"}}</p>
+    </div>
+</div>
+<div class="f">
+     <img src="/static/products/profile_mail.png" alt="Логотип" style="height:40px; width: auto; margin-right:11px">
+    <div>
+    <div class="my-text">Почта</div>
+    <p style="font-size:18px">{{user.email|default:"Не указана"}}</p></div>
+</div>
+
+<!--    <p class="profile-decorate my-text"><div> Дата Рождения:</div> {{user.date_birth|default:"Не указано"}}</p>-->
+<!--    <p class="profile-decorate my-text">Телефон: {{user.phone|default:"Не указано"}}</p>-->
+<!--    <p class="profile-decorate my-text">адрес: {{user.address|default:"Не указано"}}</p>-->
+
+
+<div class="mt-1">
+    <a class=" btn btn-outline-warning me-2" href="{% url 'users:user_update' %}">Обновить</a>
+    <a class="btn btn-outline-warning me-2" href="{% url 'products:index' %}">На главную</a>
+    <a class="btn btn-outline-warning me-2" href="{% url 'products:index' %}">Мои заказы</a>
+
+
+    <hr style="border-color:#75caeb">
 </div>
 {% endblock %}
 

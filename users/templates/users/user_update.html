@@ -1,22 +1,70 @@
-{%extends 'dogs/base.html' %}
+{%extends 'products/base.html' %}
 
 {% block content %}
-<div class="row">
-  <div class="col-3"></div>
-  <div class="col-6">
-      <div class="card">
-        <div class="card-header">
-          Изменить Профиль
-        </div>
-        <div class="card-body">
-          <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-             {{ form.as_p }}
-            <button type="submit" class="btn btn-success">Сохранить</button>
-          </form>
-        </div>
-      </div>
-  </div>
+
+{% load static %}
+<h3 class="col-md-" style="margin:0 40%">Мой профиль </h3>
+<hr style="border-color:#75caeb">
+
+<div class="f">
+    <img src="/static/products/profile_icon.png" alt="Логотип" style="height:40px; width: auto;">
+    <div style="margin-left: 10px;">
+        <div class="my-text">Имя фамилия</div>
+        <p style="font-size: 18px; margin: 0;">
+            {%csrf_token%}
+            {{form.first_name}}
+            {{form.last_name}}
+
+        </p>
+    </div>
 </div>
 
+<div class="f">
+    <img src="/static/products/profile_phone.png" alt="Логотип" style="height:40px; width: auto;">
+    <div style="margin-left: 10px;">
+        <div class="my-text">Телефон</div>
+        {{form.phone}}
+    </div>
+</div>
+
+
+<div class="f">
+    <img src="/static/products/profile_adress.png" alt="Логотип" style="height:40px; width: auto;margin-right:10px">
+    <div>
+        <div class="my-text">Адрес</div>
+        {{form.address}}
+    </div>
+</div>
+<div class="f">
+    <img src="/static/products/profile_calendar.png" alt="Логотип" style="height:40px; width: auto;margin-right:10px">
+    <div>
+        <div class="my-text">Дата рождения</div>
+        {{form.date_birth}}
+    </div>
+</div>
+<div class="f">
+    <img src="/static/products/profile_mail.png" alt="Логотип" style="height:40px; width: auto; margin-right:11px">
+    <div>
+        <div class="my-text">Почта</div>
+        {{form.email}}
+    </div>
+</div>
+
+<!--    <p class="profile-decorate my-text"><div> Дата Рождения:</div> {{user.date_birth|default:"Не указано"}}</p>-->
+<!--    <p class="profile-decorate my-text">Телефон: {{user.phone|default:"Не указано"}}</p>-->
+<!--    <p class="profile-decorate my-text">адрес: {{user.address|default:"Не указано"}}</p>-->
+
+
+<div class="mt-1">
+    <a class=" btn btn-outline-warning me-2" href="{% url 'users:user_update' %}">Обновить</a>
+    <a class="btn btn-outline-warning me-2" href="{% url 'users:user_profile' %}">К профилю</a>
+    <a class="btn btn-outline-warning me-2" href="{% url 'products:index' %}">Мои заказы</a>
+
+
+    <hr style="border-color:#75caeb">
+</div>
 {% endblock %}
+
+
+
+
