@@ -18,12 +18,12 @@
             {% if product.categoryID == object %}
 
                         <div class="card-body" style="margin:10px;">
-                            <a href="{% url 'products:product_update' product.pk %}">
+                          {% if user.role == "admin" %}   <a href="{% url 'products:product_update' product.pk %}">{% endif %}
                                 <img src="{{ product.img|products_media }}" width="150" class="card-img-top" alt="{{ product.name }}">
                                 <p style="color:blue; font-size: 30px;">{{ product.price|floatformat:0 }} ₽</p>
                                 <h4 class="card-title">{{ product.name }}</h4>
                             </a>
-                            <form action="{% url 'products:product_choice' product.pk %}" method="POST">
+                           <form action="{% url 'products:product_choice' product.pk %}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
                                 <button type="submit">Add to Cart</button>

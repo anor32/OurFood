@@ -33,7 +33,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         </ul>
-                        <form class="navbar-form navbar-left" style="width:70%;" role="search">
+                        <form class="navbar-form navbar-left" style="width:60%;" role="search">
                             <div class="form-group" style="width:90%;">
                                 <input type="text" class="form-control" style="width:100%;" placeholder="Search">
                             </div>
@@ -55,7 +55,17 @@
                                 </button>
                             </li>
                             {% else %}
-                            {{ user.email }}
+                            <div style="font-size:18px;"> {%if not user.first_name %}
+                                {{ user.email }}
+                                {%else%}
+                                {{user.first_name}}
+                                {%endif%}
+                            </div>
+                            <div style="font-size:18px;margin-left:10px;">
+                                {%if user.address %}
+                                {{user.address}}
+                                {%endif%}
+                            </div>
                             <form method="post" action="{% url 'users:user_logout' %}" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <li style="margin-right:10px;">
@@ -85,33 +95,45 @@
 
     <div>
         <aside class="rightBar fixed-right">
-            <h3> корзина</h3>
-            {% if cart_products %}
-            <ul style="list-style:none; padding:0; ;">
-                {% for product in cart_products %}
 
-                <li class="f" style="margin-top:20px">
-                    <img src="{{product.img|products_media}}" width="90px">
-                    <div style="width:150px"><p style="margin:0">{{ product.name}}
-                    </p>
-                        <p style="color:blue; font-size:20px">{{product.price}} ₽</p>
-                        <div class="f"
-                             style="background-color:rgb(230, 230, 230); font-size:30px; border-radius:50px; display: flex; align-items: center; justify-content: center;">
-                            <div style="font-size:25px;"> -</div>
-                            <div style="margin: 0 25px;">{{product.quantity}}</div>
-                            <div style="font-size:25px;"> +</div>
-                        </div>
-                </li>
-                {% endfor %}
+            <div><h3> корзина</h3></div>
+            {% if cart_products %}
+            <div style="">
+                <ul style="list-style:none; padding:0; ;">
+                    {% for product in cart_products %}
+
+                    <li class="f" style="margin-top:20px">
+                        <img src="{{product.img|products_media}}" width="90px">
+                        <div style="width:150px"><p style="margin:0">{{ product.name}}
+                        </p>
+                            <p style="color:blue; font-size:20px">{{product.price}} ₽</p>
+                            <div class="f"
+                                 style="background-color:rgb(230, 230, 230); font-size:30px; border-radius:50px; display: flex; align-items: center; justify-content: center;">
+                                <div style="font-size:25px;"> -</div>
+                                <div style="margin: 0 25px;">{{product.quantity}}</div>
+                                <div style="font-size:25px;"> +</div>
+                            </div>
+                    </li>
+                    {% endfor %}
+            </div>
             </ul>
             {% else %}
             <p>Your cart is empty.</p>
             {% endif %}
-            <form action="{% url 'products:cart_clear'  %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
-                <button class="btn btn-primary" type="submit">Очистить корзину</button>
-            </form>
+
+            <div style="position:absolute;bottom:10%;">
+                <hr>
+                <div class="f" style="gap:2px;">
+                    <form action="{% url 'products:cart_clear'  %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
+                        <button class="btn btn-default" type="submit">Очистить корзину</button>
+                    </form>
+                    <div>
+                        <button class="btn btn-primary">Перейти к Оплате</button>
+                    </div>
+                </div>
+            </div>
         </aside>
         <aside class="leftBar fixed-left">
             <h3>Категории</h3>

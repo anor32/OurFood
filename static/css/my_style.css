@@ -15,7 +15,7 @@
     border-radius: 35px;
     padding: 7px;
     position: relative;
-    left: 24%;
+    left: 21.5%;
     top: 70px;
 }
 
@@ -155,7 +155,7 @@ a.text:hover{
     position: fixed; 
     top: 40px; 
     right: 0; 
-    width: 15%; 
+    width: 17%; 
     height: 100%; 
     padding-top: 50px;
     overflow-y: auto; 
