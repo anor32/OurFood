@@ -197,3 +197,4 @@ a.text:hover{
     width:100%;
    
 }
+[class*="copyrights-pane"]{display: none}

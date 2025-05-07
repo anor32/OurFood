@@ -3,9 +3,69 @@
 {% block content %}
 
 {% load static %}
+{%load yandex_maps%}
+
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=a83c6e59-01e9-494f-940c-8ab2f02a5e1a&lang=ru_RU"></script>
+<div id="map" style="width: 600px; height: 400px;"></div>
+<script>
+    marks = []
+    function init() {
+        let map = new ymaps.Map('map', {
+            center: ['55.755814', '37.617673'],
+            zoom: 14
+        })
+        map.events.add('click',function(event){
+            let cords = event._sourceEvent.originalEvent.coords
+            ymaps.geocode(cords, { results: 1 }).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0);
+                var  address = firstGeoObject.getAddressLine();
+                console.log(address)
+
+                var myPlacemark = new ymaps.Placemark(cords, null,{
+
+                        iconLayout: 'default#image',
+                        iconImageHref: "/static/products/marker.png",
+                        iconImageSize: [28, 28],
+                        iconImageOffset: [-14, -34],
+
+                    });
+
+
+                console.log(marks)
+                marks.push(myPlacemark)
+                if (marks.length >1 ){
+
+                map.geoObjects.remove(marks[0]);
+                map.geoObjects.add(myPlacemark);
+                marks= []
+                marks.push(myPlacemark)
+                } else if (marks.length ==1 ){
+                    {
+
+                        map.geoObjects.add(myPlacemark);
+                    }}
+                   document.getElementById('id_address').value = address;
+                });
+
+    })
+    map.controls.remove('geolocationControl')
+    map.controls.remove('searchControl')
+    map.controls.remove('trafficControl')
+    map.controls.remove('typeSelector')
+    map.controls.remove('fullscreenControl')
+    map.controls.remove('zoomControl')
+    map.controls.remove('rulerControl')
+    map.controls.remove('rulerControl')
+    }
+    ymaps.ready(init);
+
+
+</script>
+
 <h3 class="col-md-" style="margin:0 40%">Мой профиль </h3>
 <hr style="border-color:#75caeb">
-
+{{address}}
 <div class="f">
     <img src="/static/products/profile_icon.png" alt="Логотип" style="height:40px; width: auto;">
     <div style="margin-left: 10px;">
@@ -32,22 +92,26 @@
     <img src="/static/products/profile_adress.png" alt="Логотип" style="height:40px; width: auto;margin-right:10px">
     <div>
         <div class="my-text">Адрес</div>
+
         {{form.address}}
+
+    </div>
+    <div class="f">
+        <img src="/static/products/profile_calendar.png" alt="Логотип"
+             style="height:40px; width: auto;margin-right:10px">
+        <div>
+            <div class="my-text">Дата рождения</div>
+            {{form.date_birth}}
+        </div>
+    </div>
+    <div class="f">
+        <img src="/static/products/profile_mail.png" alt="Логотип" style="height:40px; width: auto; margin-right:11px">
+        <div>
+            <div class="my-text">Почта</div>
+            {{form.email}}
+        </div>
     </div>
 </div>
-<div class="f">
-    <img src="/static/products/profile_calendar.png" alt="Логотип" style="height:40px; width: auto;margin-right:10px">
-    <div>
-        <div class="my-text">Дата рождения</div>
-        {{form.date_birth}}
-    </div>
-</div>
-<div class="f">
-    <img src="/static/products/profile_mail.png" alt="Логотип" style="height:40px; width: auto; margin-right:11px">
-    <div>
-        <div class="my-text">Почта</div>
-        {{form.email}}
-    </div>
 </div>
 
 <!--    <p class="profile-decorate my-text"><div> Дата Рождения:</div> {{user.date_birth|default:"Не указано"}}</p>-->
