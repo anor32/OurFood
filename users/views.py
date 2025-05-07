@@ -1,21 +1,18 @@
 import random
 import string
-from collections import UserList
+
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, reverse, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth import authenticate, login, logout, user_logged_out, update_session_auth_hash
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
+
 from django.contrib.auth.views import LoginView, PasswordChangeView, LogoutView
 from django.views.generic import CreateView, UpdateView, ListView
 from django.urls import reverse_lazy
 
 from users.models import User
-from users.forms import UserRegisterForm, UserLoginForm, StyleFromMixin, UserUpdateForm, UserPasswordChangeForm,  UserForm
-from users.servises import send_new_password, send_register_email
+from users.forms import UserRegisterForm, UserLoginForm, UserUpdateForm, UserPasswordChangeForm,  UserForm
+from users.servises import send_new_password
 
 
 class UserRegisterView(CreateView):

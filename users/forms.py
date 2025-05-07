@@ -47,7 +47,14 @@ widgets = {
 class UserUpdateForm(StyleFromMixin, forms.ModelForm):
     class Meta:
         model = User
-        fields = ("__all__")
+        fields = ('email', 'first_name', 'last_name', 'phone','date_birth','address')
+    widgets = {
+        'email': forms.TextInput(attrs={'class': 'form-control'}),
+        'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+        'address': forms.TextInput(attrs={'class': 'form-control', 'id': 'address'}),  # Add id here
+        'phone': forms.TextInput(attrs={'class': 'form-control'}),
+        'date_birth': forms.TextInput(attrs={'class': 'form-control'})
+    }
 
 
 class UserPasswordChangeForm(StyleFromMixin,PasswordChangeForm):
