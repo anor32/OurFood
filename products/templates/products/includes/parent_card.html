@@ -6,24 +6,18 @@
 
 
 
-            <div class="card-body">
-                <a class="text" href="{% url 'products:categories' object.pk %}">
-                <p class="card-text">{{ object.name }}</p>
-
-                    <img src='{{ object.image|products_media}}'
-                         class="image-container">
-                </a>
-
-
-                {%if user.role == "admin" %}
-                <div style="display: flex; gap: 10px; margin: 10px; ">
-                <a href="{% url 'products:change' object.pk %}" class="btn btn-primary">Изменить</a>
-                <form action="{% url 'products:delete_parent_category' object.pk %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-default">Удалить</button>
-                </form>
-
-            </div>
-                {% endif %}
-            </div>
-
+<div class="card-body" >
+    <a class="text" href="{% url 'products:categories' object.pk %}">
+        <p class="card-text">{{ object.name }}</p>
+        <img src='{{ object.image|products_media}}' class="image-container">
+    </a>
+    {% if user.role == "admin" %}
+    <div style="display: flex; gap: 10px; margin: 10px;">
+        <a href="{% url 'products:change' object.pk %}" class="btn btn-primary">Изменить</a>
+        <form action="{% url 'products:delete_parent_category' object.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-default">Удалить</button>
+        </form>
+    </div>
+    {% endif %}
+</div>
