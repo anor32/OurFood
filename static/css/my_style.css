@@ -7,6 +7,11 @@
 }
 
 
+.card {
+    width: 100px; /* Adjust this width based on how many cards you want visible */
+    flex-shrink: 0;
+}
+
 
 .cont {
     width: 60%;
@@ -198,3 +203,30 @@ a.text:hover{
    
 }
 [class*="copyrights-pane"]{display: none}
+
+.left-arrow{
+    width: 50px;
+    height: 50px;
+  
+
+    position: absolute;
+    
+}
+.right-arrow{
+    width: 50px;
+    height: 50px;
+    
+    position: absolute;
+ 
+    right:  0px;
+    
+}
+
+
+.slider {
+    width: 800px; /* Adjust this width to fit 3 cards */
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    flex-shrink: 0;
+}
