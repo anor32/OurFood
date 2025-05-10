@@ -17,20 +17,20 @@ for (let i = 0; i < sliders.length; i++){
     right_arrow.addEventListener("click", function() {
 
         if (i < 10 - 1) {
-           current_count++;
+           current_count--;
            console.log(sliderCards)
         sliderCards.forEach(card => {
 
-        card.style.transform = 'translateX('+current_count*100+'px)'; // Change the property for all cards
+        card.style.transform = 'translateX('+current_count*920+'px)'; // Change the property for all cards
     });
         }
     });
 
     left_arrow.addEventListener("click", function() {
-           current_count--;
+           current_count++;
 
             sliderCards.forEach(card => {
-        card.style.transform = 'translateX('+current_count*100+'px)'; // Change the property for all cards
+        card.style.transform = 'translateX('+current_count*920+'px)'; // Change the property for all cards
     });
 
     });
