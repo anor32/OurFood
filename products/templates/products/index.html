@@ -2,15 +2,15 @@
 
 
 {% block content %}
-
-
+{%load static%}
+{% load my_tags %}
 <div class="row">
 
 
     {% for object in objects_list %}
 
 
-        {% include 'products/includes/parent_card.html' with object=object %}
+    {% include 'products/includes/parent_card.html' with object=object %}
 
 
     {% endfor %}
@@ -28,7 +28,63 @@
 
 </div>
 </div>
+    <a href="{% url 'products:create' %}" class="btn btn-primary">Создать новую карточку</a>
+    {%endif%}
+    </div>
+  {% for category in category_list %}
+    {% if category.has_slider %}
+        <div class="">
+            <div>{{ category.name }}</div>
+            <div class="category-slider f" style="margin-top:100px;">
+                   <div class="left-arrow">
+                    <svg viewBox="0 0 24 24" opacity="0.2" fill="none" xmlns="http://www.w3.org/2000/svg"
+                         transform="matrix(-1, 0, 0, 1, 0, 0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
 
-<a href="{% url 'products:create' %}" class="btn btn-primary">Создать новую карточку</a>
- {%endif%}
+                    </div>
+                <div class="f slider">
+                    {% for product in products_list %}
+                        <div class="slider-card f">
+                            {% if product.categoryID_id == category.id %}
+                                <div class="card-body " style="margin:10px;">
+                                    {% if user.role == "admin" %}
+                                        <a href="{% url 'products:product_update' product.pk %}">{% endif %}
+                                        <img src="{{ product.img|products_media }}" width="150" class="card-img-top" alt="{{ product.name }}">
+                                        <p style="color:blue; font-size: 30px;">{{ product.price|floatformat:0 }} ₽</p>
+                                        <h4 class="card-title">{{ product.name }}</h4>
+                                    </a>
+                                    <form action="{% url 'products:product_choice' product.pk %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
+                                        <button type="submit">Add to Cart</button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="right-arrow" id="{{category.id}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+
+
+
+
+
+
 {% endblock %}
