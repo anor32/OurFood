@@ -14,7 +14,7 @@ class ParentCategoryForm(forms.ModelForm):
 
 class CategoryForm(forms.ModelForm):
     class Meta:
-        fields = ('name', 'parent_category')
+        fields = ('name', 'parent_category',"has_slider")
         model = Category
 
         widgets = {
@@ -26,6 +26,7 @@ class CategoryForm(forms.ModelForm):
                 "class": "form-control",
                 "placeholder": "Выбор категории"
             }),
+
         }
 
 

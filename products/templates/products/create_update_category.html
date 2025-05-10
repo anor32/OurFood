@@ -13,23 +13,22 @@
 
         <label class="col-lg-2 control-label">{{form.name.label}}</label>
         <div class="col-lg-10">
-
-
             {{form.name}}
-
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label">{{form.parent_category.label}}</label>
         <div class="col-lg-10">
             {{form.parent_category}}
-
-
         </div>
     </div>
-
-
+     <div class="form-group">
+        <label class="col-lg-2 control-label">{{form.has_slider.label}}</label>
+        <div class="col-lg-10">
+            {{form.has_slider}}
+    </div>
     {% csrf_token %}
+         </div>
 
 
     <div class="form-group">
@@ -45,7 +44,7 @@
 {%if object%}
 <div style="margin-left:25%; margin-top:-25px;">
 
-    <form action="{% url 'products:category_delete' object.pk %}" method="post" enctype="multipart/form-data" >
+    <form action="{% url 'products:category_delete' object.pk %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <button type="submit" class="btn btn-default">Удалить</button>
     </form>
