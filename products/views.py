@@ -1,3 +1,4 @@
+from itertools import product
 from lib2to3.fixes.fix_input import context
 
 from PIL.ImageShow import Viewer
@@ -18,6 +19,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 def index_view(request):
     context = {
         'objects_list': ParrentCategory.objects.all(),
+        'products_list': Product.objects.all(),
         'title': 'Моя Доставка Главная страница',
     }
     return render(request, "products/index.html", context)
