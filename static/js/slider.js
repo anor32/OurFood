@@ -1,42 +1,38 @@
-let numbers = ["num1.jpg", "num2.jpg", "num3.jpg"];
-let sliderCard = document.querySelector(".slider-card");
+; // Select the parent container of all cards
 let left_arrow = document.querySelector(".left-arrow");
 let right_arrow = document.querySelector(".right-arrow");
 let i = 0;
+let category_sliders =document.querySelectorAll('.category-slider')
 
-right_arrow.addEventListener("click", function() {
-  console.log('click');
+let sliders = document.querySelectorAll('.slider')
+//let sliderCards = document.querySelectorAll(".slider-card")
 
-  if (i < numbers.length - 1) { // Проверка, чтобы не выйти за пределы массива
-    i++;
-    sliderCard.style.transform = `translate(${-100 * i}px)`; // Используйте шаблонные строки
-    updateArrows();
-  }
-});
-
-left_arrow.addEventListener("click", function() {
-  i--
-
-  sliderCard.style.transform = `translate(${100 * i}px)`;
-
-  updateArrows();
-
-})
+for (let i = 0; i < sliders.length; i++){
+    let sliderCards= sliders[i].querySelectorAll(".slider-card")
+    let right_arrow = category_sliders[i].querySelector(".right-arrow")
+    let left_arrow = category_sliders[i].querySelector(".left-arrow")
 
 
-function updateArrows() {
-  if (i <=0) {
-    left_arrowSvg.style.opacity = "0.2"
-  }
-  else if (i === 2) {
-    right_arowSvg.style.opacity = "0.2"
-  }
-  else if (i > 0 && i < 2) {
-    left_arrowSvg.style.opacity = "1"
-    right_arrowSvg.style.opacity = "1"
+    let current_count=0
+    right_arrow.addEventListener("click", function() {
 
-  }
+        if (i < 10 - 1) {
+           current_count++;
+           console.log(sliderCards)
+        sliderCards.forEach(card => {
 
+        card.style.transform = 'translateX('+current_count*100+'px)'; // Change the property for all cards
+    });
+        }
+    });
 
+    left_arrow.addEventListener("click", function() {
+           current_count--;
+
+            sliderCards.forEach(card => {
+        card.style.transform = 'translateX('+current_count*100+'px)'; // Change the property for all cards
+    });
+
+    });
 
 }
