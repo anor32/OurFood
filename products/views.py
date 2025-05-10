@@ -7,7 +7,7 @@ from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.template.context_processors import request
 from django.urls import reverse_lazy
 from unicodedata import category
-
+from django.db.models import Q
 from products.forms import ParentCategoryForm, CategoryForm, ProductForm
 from products.models import ParrentCategory, Category, Product
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, View
@@ -45,25 +45,7 @@ class ParentCategoryUpdate(UpdateView):
     form_class = ParentCategoryForm
 
 
-# def parent_category_change_view(request, pk=None):
-#     if pk:
-#         category_object = get_object_or_404(ParrentCategory, pk=pk)
-#     else:
-#         category_object = None
-#     if request.method == "POST":
 #
-#         form = ParentCategoryForm(request.POST, request.FILES, instance=category_object)
-#         if form.is_valid():
-#             parent_object = form.save()
-#             parent_object.owner = request.user
-#             parent_object.save()
-#             return HttpResponseRedirect(reverse('products:index'))
-#     context = {
-#         'form': ParentCategoryForm(),
-#         'object': category_object
-#     }
-#     return render(request, 'products/change.html', context)
-
 
 class ParentCategoryCreate(CreateView):
     model = ParrentCategory
@@ -168,3 +150,21 @@ class CartClear(View):
         if "cart" in request.session:
             request.session['cart'] = []
         return redirect(reverse('products:index'))
+
+
+class SearchProduct(ListView):
+    model = Product
+    template_name = 'products/products_results.html'
+    extra_context = {
+        'title': 'Результаты поискового запроса'
+    }
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Product.objects.filter(
+             Q(name__icontains=query)
+        )
+        print(object_list)
+        return object_list
+
+

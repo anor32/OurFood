@@ -6,7 +6,7 @@ from products.models import Category, Product
 from products.views import (index_view, categories_list_view,
                             product_view, ParentCategoryCreate, ParentCategoryUpdate, ParentCategoryDelete,
                             CategoryCreate, CategoryUpdate, ProductCreate, ProductUpdate, CategoryDelete, ProductDelete,
-                            ProductChoice, CartClear)
+                            ProductChoice, CartClear, SearchProduct)
 from products.apps import ProductsConfig
 
 app_name = ProductsConfig.name
@@ -33,5 +33,9 @@ urlpatterns = [
 
     #cart choice
     path('product/<int:pk>/choice/product', ProductChoice.as_view(), name='product_choice'),
-    path('product/clear/,',CartClear.as_view(),name='cart_clear')
+    path('product/clear/,',CartClear.as_view(),name='cart_clear'),
+
+    #search
+    path('products/search/results',SearchProduct.as_view(),name='search')
+
 ]
