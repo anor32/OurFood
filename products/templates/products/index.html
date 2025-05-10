@@ -33,9 +33,11 @@
     </div>
   {% for category in category_list %}
     {% if category.has_slider %}
-        <div class="">
-            <div>{{ category.name }}</div>
-            <div class="category-slider f" style="margin-top:100px;">
+        <div><div class="f" style="justify-content: space-between;padding: 0 100px">
+            <h2>{{ category.name }}</h2>
+            <a  href="{%url 'products:categories'  category.parent_category.pk %}#targetElement{{ category.pk }}" class="text my-button" >Все <span style="font-size:25px;">></span></a>
+        </div>
+            <div class="category-slider f" style="margin-top:;">
                    <div class="left-arrow">
                     <svg viewBox="0 0 24 24" opacity="0.2" fill="none" xmlns="http://www.w3.org/2000/svg"
                          transform="matrix(-1, 0, 0, 1, 0, 0)">
@@ -52,6 +54,7 @@
                     {% for product in products_list %}
                         <div class="slider-card f">
                             {% if product.categoryID_id == category.id %}
+
                                 <div class="card-body " style="margin:10px;">
                                     {% if user.role == "admin" %}
                                         <a href="{% url 'products:product_update' product.pk %}">{% endif %}
