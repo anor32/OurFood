@@ -48,7 +48,7 @@
                  style="height:40px; width: auto;margin-right:10px">
             <div style="margin-left: 10px;width: 100%;">
                 <div class="my-text">Дата рождения</div>
-                {{form.date_birth}}
+                <input type="date" name="date_birth" class="form-control" value="{{user.date_birth }}">
             </div>
         </div>
         <div class="f">
@@ -61,7 +61,7 @@
         </div>
 
         </div>
-    </div>
+
     <!--    <p class="profile-decorate my-text"><div> Дата Рождения:</div> {{user.date_birth|default:"Не указано"}}</p>-->
     <!--    <p class="profile-decorate my-text">Телефон: {{user.phone|default:"Не указано"}}</p>-->
     <!--    <p class="profile-decorate my-text">адрес: {{user.address|default:"Не указано"}}</p>-->
@@ -69,7 +69,7 @@
 
     <div class="mt-1">
         <div style="margin:0 150px ;">
-        <button type="submit" class="btn btn-primary">Обновить</button>
+        <button  type="submit" class="btn btn-primary">Обновить</button>
 
         <a class="btn btn-outline-warning me-2" href="{% url 'users:user_profile' %}">К профилю</a>
         <a class="btn btn-outline-warning me-2" href="{% url 'products:index' %}">Мои заказы</a>

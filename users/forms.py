@@ -2,7 +2,8 @@ from cProfile import label
 
 from  django import forms
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm, AuthenticationForm
-
+from django.forms import SelectDateWidget
+from django.contrib.admin.widgets import AdminDateWidget
 from users.models import User
 from users.validators import validate_password
 from  django.core.exceptions import ValidationError
@@ -43,17 +44,20 @@ widgets = {
             'phone': forms.TextInput(attrs={'class': 'form-control'})
 }
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
-class UserUpdateForm(StyleFromMixin, forms.ModelForm):
+class UserUpdateForm(StyleFromMixin, forms.ModelForm ,forms.Form):
+
     class Meta:
         model = User
         fields = ('email', 'first_name', 'last_name', 'phone','date_birth','address')
     widgets = {
         'email': forms.TextInput(attrs={'class': 'form-control'}),
         'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-        'address': forms.TextInput(attrs={'class': 'form-control', 'id': 'address'}),  # Add id here
+        'address': forms.TextInput(attrs={'class': 'form-control', 'id': 'address'}),
         'phone': forms.TextInput(attrs={'class': 'form-control'}),
-        'date_birth': forms.TextInput(attrs={'class': 'form-control'})
+        'date_birth': forms.DateInput(attrs={'type':'date'})
     }
 
 
@@ -69,3 +73,5 @@ class UserPasswordChangeForm(StyleFromMixin,PasswordChangeForm):
            )
        password_validation.validate_password(password2,self.user)
        return password2
+
+

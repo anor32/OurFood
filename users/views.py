@@ -59,6 +59,19 @@ class UserUpdateView(UpdateView):
         'title': 'Обновить профиль',
     }
 
+    def post(self, request, *args, **kwargs):
+        print("Form submitted")  # Add this line
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        if form.is_valid():
+            print('valid')
+
+            return super().form_valid(form)
+        else:
+            print(form.errors)  # This will show any validation errors
+            return self.form_invalid(form)
+
     def get_object(self, queryset=None):
         return self.request.user
 
