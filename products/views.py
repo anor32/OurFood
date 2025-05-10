@@ -138,11 +138,10 @@ class ProductChoice(View):
         else:
             cart.append(product)
 
-        print(cart)
+
         request.session['cart'] = cart
-        category_pk = request.POST.get('category_pk')
-        print(category_pk)
-        return redirect(reverse('products:categories' ,kwargs={'pk': category_pk}))
+
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 class CartClear(View):
@@ -164,7 +163,7 @@ class SearchProduct(ListView):
         object_list = Product.objects.filter(
              Q(name__icontains=query)
         )
-        print(object_list)
+
         return object_list
 
 
