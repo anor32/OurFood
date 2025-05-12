@@ -7,7 +7,7 @@
     <div class="col-6">
         <div class="card">
 
-            <div class="card-body">
+            <div class="card-body" style="width:500px;">
                 <div class="card-header">
                     {% if object %}
                     <h3>{{object.name}}</h3>
@@ -30,8 +30,8 @@
                 {% endif %}
 
                <div style="margin:15px">{{form.image}}</div>
-
-
+                <div>{{ form.priority.label }}</div>
+               <div> {{ form.priority }}</div>
                 <button type="submit" class="btn btn-outline-success">
                     {% if object %}
                     Cохранить

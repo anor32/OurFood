@@ -12,11 +12,12 @@ class ParrentCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name="category_name")
     image = models.ImageField(upload_to='media/parent_categories_images/', **NULLABLE,
                               verbose_name='parent Category Image')
+    priority = models.IntegerField(default=0,verbose_name='priority')
 
     class Meta:
         verbose_name = "ParentCategory"
         verbose_name_plural = "ParentCategories"
-
+        ordering = ['-priority','id']
 
     def __str__(self):
         return self.name
@@ -27,12 +28,12 @@ class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название подкатегории ")
     parent_category = ForeignKey(ParrentCategory, on_delete=models.CASCADE, verbose_name="Выбор Основной категории", **NULLABLE)
     has_slider = models.BooleanField(default=False,verbose_name='Создать слайдер с категорией')
-
+    priority = models.IntegerField(default=0,verbose_name='priority')
 
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
-        ordering = ['name']
+        ordering = ['-priority','name']
     def __str__(self):
         return self.name
 
@@ -45,16 +46,16 @@ class Product(models.Model):
     description= models.CharField(max_length=1000, verbose_name='Description', **NULLABLE)
     barcode = models.IntegerField(null=False, default=0, verbose_name="Barcode")
     img = models.ImageField(upload_to='products/images/',**NULLABLE,verbose_name='Product Image',)
-
+    priority = models.IntegerField(default=0,verbose_name='priority')
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
-        # app_label = "Products"
-        # ordering = [-1]
+
+        ordering = ['-priority','id']
         db_table = "goods"
-        # get_latest_by ="Price"
+
 
 

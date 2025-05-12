@@ -1,32 +1,33 @@
-
 from django import forms
-from django.forms import TextInput, Select
+from django.forms import TextInput, Select, NumberInput
 
 from products.models import ParrentCategory, Category, Product
 
 
 class ParentCategoryForm(forms.ModelForm):
-
     class Meta:
         model = ParrentCategory
-        fields = ['name', 'image']
+        fields = ['name', 'image', 'priority']
 
 
 class CategoryForm(forms.ModelForm):
     class Meta:
-        fields = ('name', 'parent_category',"has_slider")
+        fields = ('name', 'parent_category', "has_slider", 'priority')
         model = Category
 
         widgets = {
             "name": TextInput(attrs={
                 "class": "form-control",
-                "placeholder":"Название подкатегории"
+                "placeholder": "Название подкатегории"
             }),
             "parent_category": Select(attrs={
                 "class": "form-control",
                 "placeholder": "Выбор категории"
             }),
-
+            "priority": NumberInput(attrs={
+                "class": "form-control",
+                "placeholder": "Выбор Приоритета вывода"
+            }),
         }
 
 
@@ -34,7 +35,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         fields = "__all__"
         model = Product
-        exclude =('barcode',)
+        exclude = ('barcode',)
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'categoryID': forms.Select(attrs={'class': 'form-control'}),
@@ -43,4 +44,6 @@ class ProductForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
 
             'img': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            "priority": NumberInput(attrs={"class": "form-control","placeholder": "Выбор Приоритета вывода"
+            }),
         }
