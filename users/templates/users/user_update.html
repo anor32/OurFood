@@ -80,7 +80,7 @@
 
 </form>
 <script>
-    marks = []
+  marks = []
     function init() {
         let map = new ymaps.Map('map', {
             center: ['55.755814', '37.617673'],
@@ -88,10 +88,11 @@
         })
         map.events.add('click',function(event){
             let cords = event._sourceEvent.originalEvent.coords
+            map.setCenter(cords,17,{duration:500,checkZoomRange:true})
             ymaps.geocode(cords, { results: 1 }).then(function (res) {
                 var firstGeoObject = res.geoObjects.get(0);
                 var  address = firstGeoObject.getAddressLine();
-                console.log(address)
+
 
                 var myPlacemark = new ymaps.Placemark(cords, null,{
 
@@ -103,12 +104,13 @@
                     });
 
 
-                console.log(marks)
                 marks.push(myPlacemark)
                 if (marks.length >1 ){
 
                 map.geoObjects.remove(marks[0]);
                 map.geoObjects.add(myPlacemark);
+
+                console.log(map)
                 marks= []
                 marks.push(myPlacemark)
                 } else if (marks.length ==1 ){
@@ -130,6 +132,7 @@
     map.controls.remove('rulerControl')
     }
     ymaps.ready(init);
+
 
 
 </script>
