@@ -2,6 +2,8 @@ from itertools import product
 from lib2to3.fixes.fix_input import context
 
 from PIL.ImageShow import Viewer
+from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.template.context_processors import request
@@ -11,6 +13,8 @@ from django.db.models import Q
 from products.forms import ParentCategoryForm, CategoryForm, ProductForm
 from products.models import ParrentCategory, Category, Product
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, View
+
+from users.mixins import StaffRequiredMixin
 
 
 # Create your views here.
@@ -38,42 +42,43 @@ def categories_list_view(request, pk):
     return render(request, 'products/categories.html', context)
 
 
-class ParentCategoryUpdate(UpdateView):
+class ParentCategoryUpdate(StaffRequiredMixin, UpdateView):
+    model = ParrentCategory
+    template_name = 'products/create-update.html'
+    success_url = reverse_lazy('products:index')
+    permission_required = ''
+    form_class = ParentCategoryForm
+
+
+#http://127.0.0.1:8000/products/create/product
+
+class ParentCategoryCreate(StaffRequiredMixin,CreateView):
     model = ParrentCategory
     template_name = 'products/create-update.html'
     success_url = reverse_lazy('products:index')
     form_class = ParentCategoryForm
 
 
-#
-
-class ParentCategoryCreate(CreateView):
-    model = ParrentCategory
-    template_name = 'products/create-update.html'
-    success_url = reverse_lazy('products:index')
-    form_class = ParentCategoryForm
-
-
-class ParentCategoryDelete(DeleteView):
+class ParentCategoryDelete(StaffRequiredMixin,DeleteView):
     model = ParrentCategory
     success_url = reverse_lazy('products:index')
 
 
-class CategoryCreate(CreateView):
+class CategoryCreate(StaffRequiredMixin,CreateView):
     model = Category
     template_name = 'products/create_update_category.html'
     success_url = reverse_lazy('products:index')
     form_class = CategoryForm
 
 
-class CategoryUpdate(UpdateView):
+class CategoryUpdate(StaffRequiredMixin,UpdateView):
     model = Category
     template_name = 'products/create_update_category.html'
     success_url = reverse_lazy('products:index')
     form_class = CategoryForm
 
 
-class CategoryDelete(DeleteView):
+class CategoryDelete(StaffRequiredMixin,DeleteView):
     model = Category
     success_url = reverse_lazy('products:index')
 
@@ -88,21 +93,21 @@ def product_view(request):
     return render(request, 'products/product_card.html')
 
 
-class ProductCreate(CreateView):
+class ProductCreate(StaffRequiredMixin,CreateView):
     model = Product
     template_name = 'products/create_update_product.html'
     success_url = reverse_lazy('products:index')
     form_class = ProductForm
 
 
-class ProductUpdate(UpdateView):
+class ProductUpdate(StaffRequiredMixin,UpdateView):
     model = Product
     template_name = 'products/create_update_product.html'
     success_url = reverse_lazy('products:index')
     form_class = ProductForm
 
 
-class ProductDelete(DeleteView):
+class ProductDelete(StaffRequiredMixin,DeleteView):
     model = Product
     success_url = reverse_lazy('products:index')
 

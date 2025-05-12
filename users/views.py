@@ -76,7 +76,7 @@ class UserUpdateView(UpdateView):
         return self.request.user
 
 
-class UserLogoutView(LogoutView):
+class UserLogoutView(LoginRequiredMixin,LogoutView):
     template_name = 'users/user_logout.html'
     extra_context = {
         'title': 'Выход из аккаунта',
