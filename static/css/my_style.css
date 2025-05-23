@@ -93,14 +93,12 @@
     justify-content: center;}
 
 a.text{
-  text-decoration: none;
-  color: #555555;
-  
+  color: black;
+
   
 }
 a.text:hover{
-    color: #000;
-    text-decoration: none;
+   text-decoration: none;
 }
 
 .changer {
