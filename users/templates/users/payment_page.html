@@ -18,8 +18,12 @@
 
 
         <div></div>
-       <button class="btn btn-primary"> <a class="text" href="{% url 'users:success_payment' %}" style="color:white;" >Оплатить</a> </button>
-            </form>
+    </form>
+                    <form action="{% url 'orders:cart_order' %}" method="post">
+                        {% csrf_token %}
+                   <button type="submit" class="btn btn-primary"> Оплатить </button>
+                    </form>
+
 
         </div>
  <div style="margin-top:300px"><h4> эта страница являеться временой заглушкой так как мне пока что недоступна связь с банками</h4></div>
