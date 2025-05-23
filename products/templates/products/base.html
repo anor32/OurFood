@@ -87,8 +87,8 @@
                                 </li>
                             </form>
                             <li style="margin-right:10px;">
-                                <button class="btn btn-default" style="border-radius:15px;"><a class="text"
-                                                                                               href="{%url 'users:user_profile' %}">Профиль</a>
+                                <button class="btn btn-default" style="border-radius:15px;">
+                                    <a class="text" href="{%url 'users:user_profile' %}">Профиль</a>
                                 </button>
                             </li>
                             {% endif %}
@@ -143,7 +143,7 @@
                         <button class="btn btn-default" type="submit">Очистить корзину</button>
                     </form>
                     <div>
-                        <button class="btn btn-primary">Перейти к Оплате</button>
+                       <button class="btn btn-primary" ><a class="text" style="color:white;" href="{% url 'users:payment_page' %}"> Перейти к Оплате</a></button>
                     </div>
                 </div>
             </div>
@@ -197,7 +197,7 @@
 <script src="{% static 'js/slider.js' %}"> </script>
 <script src="https://bootstraptema.ru/snippets/style/2015/bootswatch/jquery-1.10.2.min.js"></script>
 <script src="https://bootstraptema.ru/snippets/style/2015/bootswatch/bootstrap.min.js"></script>
-<script src="https://bootstraptema.ru/snippets/style/2015/bootswatch/custom.js"></script>
+
 </body>
 </html>
 

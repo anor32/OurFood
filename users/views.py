@@ -4,10 +4,11 @@ import string
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, redirect
 
 from django.contrib.auth.views import LoginView, PasswordChangeView, LogoutView
-from django.views.generic import CreateView, UpdateView, ListView
+from django.views.generic import CreateView, UpdateView, ListView, View, TemplateView
 from django.urls import reverse_lazy
 
 from users.models import User
@@ -111,3 +112,11 @@ def user_generate_new_passport_view(request):
 
     send_new_password(request.user.email, new_password)
     return redirect(reverse('dogs:index'))
+
+
+class PaymentView(TemplateView):
+    template_name = 'users/payment_page.html'
+
+class SuccessPayment(TemplateView):
+    template_name = 'users/success_payment.html'
+

@@ -116,9 +116,7 @@ class ProductChoice(View):
     model = Product
 
     def post(self, request, pk):
-        print("Post method called")
-        print("Request method:", request.method)
-        print("Kwargs:", self.kwargs)
+
 
         pk = self.kwargs['pk']  # Access pk from kwargs
         product = get_object_or_404(Product, pk=pk)
