@@ -1,0 +1,30 @@
+{% extends 'products/base.html' %}
+{%load my_tags %}
+{% block content%}
+<div>
+    <div class="payment-head">
+        <h3> Оплата Заказа</h3>
+    </div>
+    <form action="">
+        <div class="form-group">
+            <label for="inputEm" class="col-lg-2 control-label">
+               Электронная Почта
+            </label></div>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="inputEm" placeholder="Электронная почта">
+        </div>
+
+
+
+
+        <div></div>
+       <button class="btn btn-primary"> <a class="text" href="{% url 'users:success_payment' %}" style="color:white;" >Оплатить</a> </button>
+            </form>
+
+        </div>
+ <div style="margin-top:300px"><h4> эта страница являеться временой заглушкой так как мне пока что недоступна связь с банками</h4></div>
+</div>
+
+
+{% endblock %}
+
