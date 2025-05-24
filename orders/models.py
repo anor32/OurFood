@@ -12,7 +12,7 @@ from users.models import User
 # Create your models here.
 
 class OrderProduct(models.Model):
-    productId = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
 
@@ -26,13 +26,14 @@ class Order(models.Model):
     products = models.ManyToManyField(OrderProduct, related_name="ordered_products")
     datetime = models.DateTimeField(verbose_name="дата заказа", default=timezone.now)
     status = models.CharField(verbose_name="статус заказа", default="Assembling", choices=statuses, max_length=50)
+    totalSum = models.IntegerField(verbose_name="сумма заказа",default=0)
     class Meta:
         verbose_name = "Order"
         verbose_name_plural = "Orders"
         ordering = ['id']
 
     def __str__(self):
-        return self.name
+        return f"{self.status}"
 
 
 
