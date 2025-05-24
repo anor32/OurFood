@@ -1,0 +1,40 @@
+{% extends 'products/base.html' %}
+{%load my_tags %}
+
+{% block content%}
+<div>
+<h3>Все заказы </h3>
+
+
+  <div class="f" style="gap:40px">
+      <div> №:</div>
+      <div>Статус Заказа:</div>
+      <div>Почта Заказчиа: </div>
+      <div>Имя Заказчика: </div>
+      <div>Адрес заказа</div>
+      <div>Время Заказа: </div>
+      <div>Cума заказа: </div>
+
+
+  </div>
+    {%for object in object_list%}
+ <hr>
+    <div class="f" style="margin-left:5px; gap:55px">
+        <p>{{object.id}}</p>
+        <p> {{object}}</p>
+        <p>{{object.order_user.email}}</p>
+        <p>{{object.order_user.username}}</p>
+        <p style="width:80px">{{object.order_user.address}}</p>
+        <p>{{object.datetime}}</p>
+        <p>{{object.totalSum}}</p>
+
+        <div style="position:absolute;right:100px;">
+            <form action="{% url 'orders:order_delete' object.pk %}" method="post">
+                {% csrf_token %}
+        <p><button type="submit" class="btn btn-danger">Удалить</button></p></form></div>
+    </div>
+
+    {%endfor%}
+
+</div>
+{% endblock %}

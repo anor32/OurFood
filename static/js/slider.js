@@ -21,7 +21,7 @@ for (let i = 0; i < sliders.length; i++){
            console.log(sliderCards)
         sliderCards.forEach(card => {
 
-        card.style.transform = 'translateX('+current_count*920+'px)'; // Change the property for all cards
+        card.style.transform = 'translateX('+current_count*850+'px)'; // Change the property for all cards
     });
         }
     });
