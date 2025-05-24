@@ -116,15 +116,15 @@
                     {% for product in cart_products %}
 
                     <li class="f" style="margin-top:20px">
-                        <img src="{{product.img|products_media}}" width="90px">
+                        <img src="{{product.img|products_media}}" height="80px" width="80px">
                         <div style="width:150px"><p style="margin:0">{{ product.name}}
                         </p>
                             <p style="color:blue; font-size:20px">{{product.price}} ₽</p>
                             <div class="f"
                                  style="background-color:rgb(230, 230, 230); font-size:30px; border-radius:50px; display: flex; align-items: center; justify-content: center;">
-                                <div style="font-size:25px;"> -</div>
-                                <div style="margin: 0 25px;">{{product.quantity}}</div>
-                                <div style="font-size:25px;"> +</div>
+                                <div style="font-size:25px;" id="minus">-</div>
+                                <div style="margin: 0 25px;" id="counter">{{product.quantity}}</div>
+                                <div style="font-size:25px;" id="plus">+</div>
                             </div>
                     </li>
                     {% endfor %}
@@ -197,7 +197,7 @@
 <script src="{% static 'js/slider.js' %}"> </script>
 <script src="https://bootstraptema.ru/snippets/style/2015/bootswatch/jquery-1.10.2.min.js"></script>
 <script src="https://bootstraptema.ru/snippets/style/2015/bootswatch/bootstrap.min.js"></script>
-
+<script src="{% static 'js/counter.js' %}"></script>
 </body>
 </html>
 

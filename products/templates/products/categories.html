@@ -3,6 +3,8 @@
 {% block content %}
 
 <div class="container">
+
+
     {% for object in objects_list %}
      <div class="col-12">
             <div id="targetElement{{ object.pk }}" style="width:100%">
@@ -21,7 +23,13 @@
 
             {% endif %}
         {% endfor %}
+{% for object in objects_list%}
+<div class="f">
+    {%for product  in object.products.all%}
 
+         {% include 'products/includes/product_card.html' with object=product %}
+    {% endfor %}</div>
+    {% endfor %}
         {% if user.role == "admin" %}
 
             <div class="card">

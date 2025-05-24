@@ -29,6 +29,7 @@ class Category(models.Model):
     parent_category = ForeignKey(ParrentCategory, on_delete=models.CASCADE, verbose_name="Выбор Основной категории", **NULLABLE)
     has_slider = models.BooleanField(default=False,verbose_name='Создать слайдер с категорией')
     priority = models.IntegerField(default=0,verbose_name='priority')
+    products = models.ManyToManyField('products.Product' ,related_name="products_lists",verbose_name="add product",**NULLABLE)
 
     class Meta:
         verbose_name = "Category"
@@ -40,6 +41,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Product_name')
+
     categoryID = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Category")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Price')
     quantity = models.IntegerField(null=False, default=0, verbose_name="Quantity")
@@ -47,6 +49,7 @@ class Product(models.Model):
     barcode = models.IntegerField(null=False, default=0, verbose_name="Barcode")
     img = models.ImageField(upload_to='products/images/',**NULLABLE,verbose_name='Product Image',)
     priority = models.IntegerField(default=0,verbose_name='priority')
+    discount = models.IntegerField(default=0,verbose_name="Скидка")
     def __str__(self):
         return self.name
 

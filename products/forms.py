@@ -12,7 +12,7 @@ class ParentCategoryForm(forms.ModelForm):
 
 class CategoryForm(forms.ModelForm):
     class Meta:
-        fields = ('name', 'parent_category', "has_slider", 'priority')
+        fields = ('name', 'parent_category', "has_slider", 'priority','products')
         model = Category
 
         widgets = {
