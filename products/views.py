@@ -116,32 +116,28 @@ class ProductChoice(View):
     model = Product
 
     def post(self, request, pk):
-
-
-        pk = self.kwargs['pk']  # Access pk from kwargs
+        pk = self.kwargs['pk']
         product = get_object_or_404(Product, pk=pk)
-
-        product = {
+        createdProduct = {
             'id': product.id,
             'name': product.name,
             'price': int(product.price),
             'quantity': 1,
             'img': str(product.img)
         }
+        price = createdProduct['price']
         if "cart" not in request.session:
             cart = []
         else:
             cart = request.session['cart']
 
         for item in cart:
-            if product['id'] == item['id']:
+            if createdProduct['id'] == item['id']:
                 item['quantity'] += 1
-                item['price'] += item['price']
+                item['price'] = price *  item['quantity']
                 break
         else:
-            cart.append(product)
-
-
+            cart.append(createdProduct)
         request.session['cart'] = cart
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
