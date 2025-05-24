@@ -224,7 +224,7 @@ a.text:hover{
 
 .slider {
     
-    width: 920px; /* Adjust this width to fit 3 cards */
+    width: 850px; /* Adjust this width to fit 3 cards */
     overflow: hidden;
     margin: 0 auto;
     position: relative;
