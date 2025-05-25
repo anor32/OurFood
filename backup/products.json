@@ -4,7 +4,8 @@
     "pk": 2,
     "fields": {
       "name": "Овощи и Фрукты",
-      "image": "media/parent_categories_images/fresh-vegetables-isolated-on-white-260nw-236837695-no-bg-_9XvMF9T.png"
+      "image": "media/parent_categories_images/fresh-vegetables-isolated-on-white-260nw-236837695-no-bg-_9XvMF9T.png",
+      "priority": 0
     }
   },
   {
@@ -12,7 +13,8 @@
     "pk": 3,
     "fields": {
       "name": "Молочная Продукция",
-      "image": "media/parent_categories_images/afb1a36d89a3b09add3f70282b484c0b674affad-no-bg-preview_ca_HQlRwVp.png"
+      "image": "media/parent_categories_images/afb1a36d89a3b09add3f70282b484c0b674affad-no-bg-preview_ca_HQlRwVp.png",
+      "priority": 0
     }
   },
   {
@@ -20,7 +22,8 @@
     "pk": 5,
     "fields": {
       "name": "Хлеб И выпечка",
-      "image": "media/parent_categories_images/breed_iRdGI3Z.png"
+      "image": "media/parent_categories_images/breed_iRdGI3Z.png",
+      "priority": 0
     }
   },
   {
@@ -28,7 +31,8 @@
     "pk": 6,
     "fields": {
       "name": "Мясо и Птица",
-      "image": "media/parent_categories_images/meat-no-bg-preview_carve.photos.png"
+      "image": "media/parent_categories_images/meat-no-bg-preview_carve.photos.png",
+      "priority": 0
     }
   },
   {
@@ -36,7 +40,8 @@
     "pk": 9,
     "fields": {
       "name": "Бакалея",
-      "image": "media/parent_categories_images/baka-fotor-bg-remover-20250419174416.png"
+      "image": "media/parent_categories_images/baka-fotor-bg-remover-20250419174416.png",
+      "priority": 0
     }
   },
   {
@@ -44,7 +49,8 @@
     "pk": 10,
     "fields": {
       "name": "Сладости и снеки",
-      "image": "media/parent_categories_images/XXL_height-fotor-bg-remover-20250419174547.png"
+      "image": "media/parent_categories_images/XXL_height-fotor-bg-remover-20250419174547.png",
+      "priority": 0
     }
   },
   {
@@ -52,7 +58,8 @@
     "pk": 11,
     "fields": {
       "name": "Рыба и морепродукты",
-      "image": "media/parent_categories_images/172.png"
+      "image": "media/parent_categories_images/172.png",
+      "priority": 0
     }
   },
   {
@@ -60,7 +67,8 @@
     "pk": 12,
     "fields": {
       "name": "Готовые продукты",
-      "image": "media/parent_categories_images/Salad.png"
+      "image": "media/parent_categories_images/Salad.png",
+      "priority": 0
     }
   },
   {
@@ -68,7 +76,8 @@
     "pk": 13,
     "fields": {
       "name": "Заморозка",
-      "image": ""
+      "image": "media/parent_categories_images/pelmeni.png",
+      "priority": 0
     }
   },
   {
@@ -76,7 +85,8 @@
     "pk": 14,
     "fields": {
       "name": "Красота и гигиена",
-      "image": ""
+      "image": "media/parent_categories_images/yhod.png",
+      "priority": 0
     }
   },
   {
@@ -84,7 +94,8 @@
     "pk": 15,
     "fields": {
       "name": "Зоотовары",
-      "image": ""
+      "image": "media/parent_categories_images/сats_food.png",
+      "priority": 0
     }
   },
   {
@@ -92,7 +103,8 @@
     "pk": 16,
     "fields": {
       "name": "Товары для дома",
-      "image": ""
+      "image": "media/parent_categories_images/chimistry.png",
+      "priority": 0
     }
   },
   {
@@ -100,23 +112,27 @@
     "pk": 17,
     "fields": {
       "name": "Для вас",
-      "image": ""
+      "image": "",
+      "priority": 2
     }
   },
   {
     "model": "products.parrentcategory",
-    "pk": 22,
+    "pk": 26,
     "fields": {
-      "name": "Скидки и Акции",
-      "image": ""
+      "name": "Cкидки и Акции",
+      "image": "",
+      "priority": 1
     }
   },
   {
     "model": "products.category",
     "pk": 4,
     "fields": {
-      "name": "Овощи",
-      "parent_category": 2
+      "name": "Овощи и зелень",
+      "parent_category": 2,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
@@ -124,7 +140,9 @@
     "pk": 5,
     "fields": {
       "name": "Твороги",
-      "parent_category": 3
+      "parent_category": 3,
+      "has_slider": true,
+      "priority": 0
     }
   },
   {
@@ -132,7 +150,9 @@
     "pk": 7,
     "fields": {
       "name": "Сыры",
-      "parent_category": 3
+      "parent_category": 3,
+      "has_slider": true,
+      "priority": 0
     }
   },
   {
@@ -140,7 +160,9 @@
     "pk": 8,
     "fields": {
       "name": "Яйца",
-      "parent_category": 3
+      "parent_category": 3,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
@@ -148,7 +170,9 @@
     "pk": 9,
     "fields": {
       "name": "Кефиры",
-      "parent_category": 3
+      "parent_category": 3,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
@@ -156,7 +180,9 @@
     "pk": 10,
     "fields": {
       "name": "Сметана",
-      "parent_category": 3
+      "parent_category": 3,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
@@ -164,7 +190,9 @@
     "pk": 11,
     "fields": {
       "name": "Йогурты",
-      "parent_category": 3
+      "parent_category": 3,
+      "has_slider": true,
+      "priority": 0
     }
   },
   {
@@ -172,7 +200,9 @@
     "pk": 12,
     "fields": {
       "name": "Сливки",
-      "parent_category": 3
+      "parent_category": 3,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
@@ -180,7 +210,9 @@
     "pk": 13,
     "fields": {
       "name": "Молоко",
-      "parent_category": 3
+      "parent_category": 3,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
@@ -188,7 +220,9 @@
     "pk": 14,
     "fields": {
       "name": "Масло и Маргарин",
-      "parent_category": null
+      "parent_category": null,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
@@ -196,7 +230,9 @@
     "pk": 15,
     "fields": {
       "name": "масло и маргарин",
-      "parent_category": null
+      "parent_category": null,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
@@ -204,39 +240,49 @@
     "pk": 16,
     "fields": {
       "name": "йогурты",
-      "parent_category": null
-    }
-  },
-  {
-    "model": "products.category",
-    "pk": 17,
-    "fields": {
-      "name": "томаты",
-      "parent_category": 2
+      "parent_category": null,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
     "model": "products.category",
     "pk": 18,
     "fields": {
-      "name": "огурцы",
-      "parent_category": 2
+      "name": "фрукты и ягоды",
+      "parent_category": 2,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
     "model": "products.category",
-    "pk": 19,
+    "pk": 21,
     "fields": {
-      "name": "Ананасы",
-      "parent_category": 2
+      "name": "очень длиное невероятно название категории",
+      "parent_category": null,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
     "model": "products.category",
-    "pk": 20,
+    "pk": 23,
     "fields": {
-      "name": "тест",
-      "parent_category": 3
+      "name": "Хлеб",
+      "parent_category": 5,
+      "has_slider": false,
+      "priority": 0
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 24,
+    "fields": {
+      "name": "Макаронные изделия",
+      "parent_category": 9,
+      "has_slider": false,
+      "priority": 0
     }
   },
   {
@@ -249,7 +295,9 @@
       "quantity": 10,
       "description": "Натуральный творог с низким содержанием жира.",
       "barcode": 340123,
-      "img": ""
+      "img": "",
+      "priority": 0,
+      "discount": 0
     }
   },
   {
@@ -262,7 +310,9 @@
       "quantity": 15,
       "description": "Кремовый творог с содержанием жира 9%.",
       "barcode": 123456724,
-      "img": ""
+      "img": "",
+      "priority": 0,
+      "discount": 0
     }
   },
   {
@@ -275,7 +325,9 @@
       "quantity": 20,
       "description": "Классический сыр с насыщенным вкусом и желтой корочкой.",
       "barcode": 789012345,
-      "img": ""
+      "img": "",
+      "priority": 0,
+      "discount": 0
     }
   },
   {
@@ -288,7 +340,9 @@
       "quantity": 25,
       "description": "Мягкий сыр с ореховым привкусом, идеально подходит для бутербродов.",
       "barcode": 567890123,
-      "img": ""
+      "img": "",
+      "priority": 0,
+      "discount": 0
     }
   },
   {
@@ -301,7 +355,9 @@
       "quantity": 20,
       "description": "Классический Российский сыр с насыщенным вкусом и незабываемым ароматом.",
       "barcode": 789012345,
-      "img": ""
+      "img": "",
+      "priority": 0,
+      "discount": 0
     }
   },
   {
@@ -314,20 +370,114 @@
       "quantity": 4,
       "description": "Пищевая ценность на 100 г Белки 5.0 г Жиры 5.0 г Углеводы 2.6 г Калорийность 91.0 ккал",
       "barcode": 0,
-      "img": "products/images/orig.webp"
+      "img": "products/images/danon.png",
+      "priority": -1,
+      "discount": 0
     }
   },
   {
     "model": "products.product",
-    "pk": 21,
+    "pk": 22,
     "fields": {
-      "name": "sdad",
-      "categoryID": 19,
-      "price": "123.00",
-      "quantity": 32,
-      "description": "dsad",
+      "name": "sad",
+      "categoryID": 21,
+      "price": "233.00",
+      "quantity": 1,
+      "description": "321312",
       "barcode": 0,
-      "img": ""
+      "img": "",
+      "priority": 0,
+      "discount": 0
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 23,
+    "fields": {
+      "name": "Макфа",
+      "categoryID": 24,
+      "price": "120.00",
+      "quantity": 1,
+      "description": "очень вкусные макароны люблю",
+      "barcode": 0,
+      "img": "",
+      "priority": 0,
+      "discount": 0
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 24,
+    "fields": {
+      "name": "Йогурт Teos",
+      "categoryID": 11,
+      "price": "54.00",
+      "quantity": 32,
+      "description": "Савушкин продукт греческий 2% натуральный 140 г",
+      "barcode": 0,
+      "img": "",
+      "priority": 0,
+      "discount": 0
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 25,
+    "fields": {
+      "name": "Йогурт  Epica 5%",
+      "categoryID": 11,
+      "price": "70.00",
+      "quantity": 0,
+      "description": "Манго-Семена чиа",
+      "barcode": 0,
+      "img": "",
+      "priority": 0,
+      "discount": 0
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 26,
+    "fields": {
+      "name": "Йогурт Даниссимо",
+      "categoryID": 11,
+      "price": "39.00",
+      "quantity": 0,
+      "description": "Фантазия с хрустящими шариками с ягодным вкусом 6.9% 105 г105 г",
+      "barcode": 0,
+      "img": "",
+      "priority": 0,
+      "discount": 0
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 27,
+    "fields": {
+      "name": "Йогурт греческий Зелёная Линия",
+      "categoryID": 11,
+      "price": "30.00",
+      "quantity": 0,
+      "description": "двухслойный малина 3% 190 г190 г",
+      "barcode": 0,
+      "img": "",
+      "priority": 0,
+      "discount": 0
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 28,
+    "fields": {
+      "name": "Йогурт АктиБио",
+      "categoryID": 11,
+      "price": "56.00",
+      "quantity": 0,
+      "description": "с вишней 2.9% 130 г130 г",
+      "barcode": 0,
+      "img": "",
+      "priority": 0,
+      "discount": 0
     }
   }
 ]
