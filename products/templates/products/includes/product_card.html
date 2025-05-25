@@ -1,6 +1,6 @@
 {% load my_tags %}
           <div class="card-body" style="margin:10px;width:150px;" >
-                          {% if user.role == "admin" %}   <a href="{% url 'products:product_update' object.pk %}"> {% endif %}
+                          {% if user.role == "admin" %}   <a  class="text" href="{% url 'products:product_update' object.pk %}"> {% endif %}
                                 <img src="{{ object.img|products_media }}" width="120"  alt="{{ object.name }}">
                                 <p style="color:blue; font-size: 30px;">{{ object.price|floatformat:0 }} ₽</p>
                                 <h4 class="card-title">{{ object.name }}</h4>

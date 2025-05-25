@@ -24,7 +24,7 @@
             {% endif %}
         {% endfor %}
 {% for object in objects_list%}
-<div class="f">
+<div class="f" style="flex-wrap:wrap;">
     {%for product  in object.products.all%}
 
          {% include 'products/includes/product_card.html' with object=product %}
