@@ -99,12 +99,44 @@ class ProductCreate(StaffRequiredMixin,CreateView):
     success_url = reverse_lazy('products:index')
     form_class = ProductForm
 
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        category = Category.objects.get(pk=28)
+        if form.is_valid():
+            product = form.save()
+            if form.cleaned_data['discount'] > 0:
+                print('here 0')
+                category.products.add(product)
+            else:
+                print('here 0')
+                category.products.remove(product)
+            return super().form_valid(form)
+        return super().form_invalid(form)
 
 class ProductUpdate(StaffRequiredMixin,UpdateView):
     model = Product
     template_name = 'products/create_update_product.html'
     success_url = reverse_lazy('products:index')
     form_class = ProductForm
+
+
+    def post(self, request, *args, **kwargs):
+        product = self.get_object()
+        form = self.get_form()
+        form.save(commit=False)
+        category = Category.objects.get(pk=28)
+        if form.is_valid():
+            if form.cleaned_data['discount'] > 0:
+                product.price = int(product.price) - product.discount / 100 * int(product.price)
+                
+                category.products.add(product)
+                form.save()
+            else:
+                category.products.remove(product)
+                form.save()
+
+        return super().post(request, *args, **kwargs)
+
 
 
 class ProductDelete(StaffRequiredMixin,DeleteView):
