@@ -1,10 +1,10 @@
 from django.shortcuts import get_object_or_404
 
-from products.models import ParrentCategory, Category, Product
+from products.models import ParentCategory, Category, Product
 
 
 def category_context(request):
-    parent_obj = ParrentCategory.objects.all()
+    parent_obj = ParentCategory.objects.all()
     category_obj = Category.objects.all()
     return {
         'parent_category_list': parent_obj,

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from products.models import Product, Category, ParrentCategory
+from products.models import Product, Category, ParentCategory
 
 
 # Register your models here.
@@ -18,7 +18,7 @@ class categoryAdmin(admin.ModelAdmin):
     list_display = ('pk','name','parent_category')
 
 
-@admin.register(ParrentCategory)
+@admin.register(ParentCategory)
 class parentCategoryAdmin(admin.ModelAdmin):
     list_display = ('pk','name')
     ordering = ('pk',)

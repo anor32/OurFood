@@ -8,7 +8,7 @@ from users.models import NULLABLE
 
 # здесь имеется ввиду типа вся готовая еда молочная продукция ,овощи
 # максимально общие
-class ParrentCategory(models.Model):
+class ParentCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name="category_name")
     image = models.ImageField(upload_to='media/parent_categories_images/', **NULLABLE,
                               verbose_name='parent Category Image')
@@ -26,7 +26,7 @@ class ParrentCategory(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название подкатегории ")
-    parent_category = ForeignKey(ParrentCategory, on_delete=models.CASCADE, verbose_name="Выбор Основной категории", **NULLABLE)
+    parent_category = ForeignKey(ParentCategory, on_delete=models.CASCADE, verbose_name="Выбор Основной категории", **NULLABLE)
     has_slider = models.BooleanField(default=False,verbose_name='Создать слайдер с категорией')
     priority = models.IntegerField(default=0,verbose_name='priority')
     products = models.ManyToManyField('products.Product' ,related_name="products_lists",verbose_name="add product",**NULLABLE)

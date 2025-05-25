@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from unicodedata import category
 from django.db.models import Q
 from products.forms import ParentCategoryForm, CategoryForm, ProductForm
-from products.models import ParrentCategory, Category, Product
+from products.models import ParentCategory, Category, Product
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, View
 
 from users.mixins import StaffRequiredMixin
@@ -22,7 +22,7 @@ from users.mixins import StaffRequiredMixin
 
 def index_view(request):
     context = {
-        'objects_list': ParrentCategory.objects.all(),
+        'objects_list': ParentCategory.objects.all(),
         'products_list': Product.objects.all(),
         'title': 'Моя Доставка Главная страница',
     }
@@ -30,7 +30,7 @@ def index_view(request):
 
 
 def categories_list_view(request, pk):
-    category_item = ParrentCategory.objects.get(pk=pk)
+    category_item = ParentCategory.objects.get(pk=pk)
     categories = Category.objects.filter(parent_category=pk)
     products_list = Product.objects.filter(categoryID__in=categories)
 
@@ -43,7 +43,7 @@ def categories_list_view(request, pk):
 
 
 class ParentCategoryUpdate(StaffRequiredMixin, UpdateView):
-    model = ParrentCategory
+    model = ParentCategory
     template_name = 'products/create-update.html'
     success_url = reverse_lazy('products:index')
     permission_required = ''
@@ -53,14 +53,14 @@ class ParentCategoryUpdate(StaffRequiredMixin, UpdateView):
 #http://127.0.0.1:8000/products/create/product
 
 class ParentCategoryCreate(StaffRequiredMixin,CreateView):
-    model = ParrentCategory
+    model = ParentCategory
     template_name = 'products/create-update.html'
     success_url = reverse_lazy('products:index')
     form_class = ParentCategoryForm
 
 
 class ParentCategoryDelete(StaffRequiredMixin,DeleteView):
-    model = ParrentCategory
+    model = ParentCategory
     success_url = reverse_lazy('products:index')
 
 
@@ -99,19 +99,21 @@ class ProductCreate(StaffRequiredMixin,CreateView):
     success_url = reverse_lazy('products:index')
     form_class = ProductForm
 
+
     def post(self, request, *args, **kwargs):
         form = self.get_form()
         category = Category.objects.get(pk=28)
+        product = self.get_object()
         if form.is_valid():
-            product = form.save()
+
             if form.cleaned_data['discount'] > 0:
-                print('here 0')
+                print('here')
                 category.products.add(product)
+
             else:
-                print('here 0')
                 category.products.remove(product)
-            return super().form_valid(form)
-        return super().form_invalid(form)
+
+        return super().post(request, *args, **kwargs)
 
 class ProductUpdate(StaffRequiredMixin,UpdateView):
     model = Product
@@ -121,19 +123,18 @@ class ProductUpdate(StaffRequiredMixin,UpdateView):
 
 
     def post(self, request, *args, **kwargs):
-        product = self.get_object()
         form = self.get_form()
-        form.save(commit=False)
         category = Category.objects.get(pk=28)
+        product = self.get_object()
         if form.is_valid():
+
             if form.cleaned_data['discount'] > 0:
-                product.price = int(product.price) - product.discount / 100 * int(product.price)
-                
+                print('here')
                 category.products.add(product)
-                form.save()
+
             else:
-                category.products.remove(product)
-                form.save()
+                 category.products.remove(product)
+
 
         return super().post(request, *args, **kwargs)
 
