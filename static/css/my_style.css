@@ -143,14 +143,14 @@ a.text:hover{
 }
 
 .fixed-left::-webkit-scrollbar {
-    display: none; /* Скрываем скроллбар */
+    display: none;
 }
 .leftBar {
-    width: 20%; /* Adjust as needed */
+    width: 20%;
     height: 100%;
-    padding: 20px; /* Add padding for spacing */
+    padding: 20px;
 
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     border-right: 2px solid #ccc;
 }
@@ -164,11 +164,11 @@ a.text:hover{
     padding-top: 50px;
     overflow-y: auto; 
     background-color: white; 
-    border-left: 1px solid #ddd; /* Изменено на border-left */
+    border-left: 1px solid #ddd;
 }
 
 .fixed-right::-webkit-scrollbar {
-    display: none; /* Скрываем скроллбар */
+    display: none;
 }
 
 .rightBar {
@@ -181,6 +181,14 @@ a.text:hover{
     border-left: 2px solid #ccc; /* Изменено на border-left */
 }
 
+.CartBar{
+    height:77%;
+    overflow:scroll ;
+
+}
+.CartBar::-webkit-scrollbar {
+    display: none;
+}
 
 .user-form{
     width:60%; margin:auto; background-color:rgb(255, 255, 255 ); padding:15px; border-radius:15px;
@@ -249,3 +257,4 @@ a.text:hover{
 .slider-card{
     transition:1s ease;
 }
+
