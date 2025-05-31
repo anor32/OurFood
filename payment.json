@@ -1,0 +1,38 @@
+[
+    {
+        "csrfmiddlewaretoken": [
+            "xbF0UMh7jC6euFvpuO95rEL3MiF54Rxtc92c89fwz9gT4C3M2EWR7AVBzW5NtSF8"
+        ],
+        "card-name": [
+            "name"
+        ],
+        "card-number": [
+            "333 333 333"
+        ],
+        "card-expiration": [
+            "33 44"
+        ],
+        "card-ccv": [
+            "123"
+        ],
+        "user": "admin@web.top"
+    },
+    {
+        "csrfmiddlewaretoken": [
+            "MovgssH1JqK5BADHv32FSK7qwy1l0P4ermSsGPFqZXUKbxb43TPryGhYjcr3pQcT"
+        ],
+        "card-name": [
+            "name"
+        ],
+        "card-number": [
+            "333 333 333"
+        ],
+        "card-expiration": [
+            "33 44"
+        ],
+        "card-ccv": [
+            "123"
+        ],
+        "user": "admin@web.top"
+    }
+]

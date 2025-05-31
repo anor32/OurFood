@@ -14,6 +14,9 @@ from django.urls import reverse_lazy
 from users.models import User
 from users.forms import UserRegisterForm, UserLoginForm, UserUpdateForm, UserPasswordChangeForm,  UserForm
 from users.servises import send_new_password
+import json
+
+from utils.suply_functions import to_json
 
 
 class UserRegisterView(CreateView):
@@ -114,9 +117,24 @@ def user_generate_new_passport_view(request):
     return redirect(reverse('dogs:index'))
 
 
-class PaymentView(TemplateView):
+class PaymentView(View):
     template_name = 'users/payment_page.html'
 
+    def post(self, request, *args, **kwargs):
+       card_name = request.POST.get('card-name')
+       card_number = request.POST.get('card-number')
+       card_expiration = request.POST.get('card-expiration')
+       card_ccv = request.POST.get('card-ccv')
+       json = dict(request.POST)
+
+       json['user'] = str(self.request.user)
+       to_json('payment', json)
+
+       return render(request, 'users/success_payment.html')
+
+
+    def get(self,request):
+        return render(request,'users/payment_page.html')
 class SuccessPayment(TemplateView):
     template_name = 'users/success_payment.html'
 
