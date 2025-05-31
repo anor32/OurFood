@@ -13,8 +13,12 @@ def category_context(request):
 
 
 def cart_context(request):
+        cart = request.session['cart']
         if "cart" in request.session:
-            return {"cart_products": request.session['cart']}
+            return {"cart_products": cart,
+                    "total_sum_products":sum(cart[index]['price'] for index in range(len(cart)))
+
+                    }
 
         return {}
 
