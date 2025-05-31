@@ -9,6 +9,7 @@
 
     <link href="{% static 'css/my_style.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/paymentForm.css' %}" rel="stylesheet">
 
 </head>
 
@@ -106,48 +107,7 @@
 
 <main role="main" style="position:relative;">
 
-    <div>
-        <aside class="rightBar fixed-right">
-
-            <div><h3> корзина</h3></div>
-            {% if cart_products %}
-            <div style="">
-                <ul style="list-style:none; padding:0; ;">
-                    {% for product in cart_products %}
-
-                    <li class="f" style="margin-top:20px">
-                        <img src="{{product.img|products_media}}" height="80px" width="80px">
-                        <div style="width:150px"><p style="margin:0">{{ product.name}}
-                        </p>
-                            <p style="color:blue; font-size:20px">{{product.price}} ₽</p>
-                            <div class="f"
-                                 style="background-color:rgb(230, 230, 230); font-size:30px; border-radius:50px; display: flex; align-items: center; justify-content: center;">
-                                <div style="font-size:25px;" id="minus">-</div>
-                                <div style="margin: 0 25px;" id="counter">{{product.quantity}}</div>
-                                <div style="font-size:25px;" id="plus">+</div>
-                            </div>
-                    </li>
-                    {% endfor %}
-            </div>
-            </ul>
-            {% else %}
-            <p>Your cart is empty.</p>
-            {% endif %}
-
-            <div style="position:absolute;bottom:10%;">
-                <hr>
-                <div class="f" style="gap:2px;">
-                    <form action="{% url 'products:cart_clear'  %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
-                        <button class="btn btn-default" type="submit">Очистить корзину</button>
-                    </form>
-                    <div>
-                       <button class="btn btn-primary" ><a class="text" style="color:white;" href="{% url 'users:payment_page' %}"> Перейти к Оплате</a></button>
-                    </div>
-                </div>
-            </div>
-        </aside>
+    {% include 'products/includes/cart.html' %}
         <aside class="leftBar fixed-left">
             <h3>Категории</h3>
             {%for parent in parent_category_list%}
@@ -166,7 +126,7 @@
 
 
         <div class="cont" style="margin-top:30px;">
-            <div class="album py-5 bg-light" style="margin:80px;height:50%;">
+            <div class="album py-5 bg-light" style="margin:20px;height:50%;">
                 {% block content %}
                 {% endblock %}
             </div>
