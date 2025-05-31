@@ -17,9 +17,15 @@
                             <p style="color:blue; font-size:20px">{{product.price}} ₽</p>
                             <div class="f"
                                  style="background-color:rgb(230, 230, 230); font-size:30px; border-radius:50px; display: flex; align-items: center; justify-content: center;">
-                                <div style="font-size:25px;" id="minus">-</div>
+                                <form method="post" action="{% url 'products:product_remove' product.id%}">
+                                    {% csrf_token %}
+                                <button type="submit" style="font-size:25px;" id="minus">-</button></form>
+
+
                                 <div style="margin: 0 25px;" id="counter">{{product.quantity}}</div>
-                                <div style="font-size:25px;" id="plus">+</div>
+                                <form action="{% url 'products:product_choice' product.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" style="font-size:25px;" id="plus">+</button></form>
                             </div>
                     </li>
                     {% endfor %}

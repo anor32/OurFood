@@ -175,7 +175,30 @@ class ProductChoice(View):
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
+class ProductRemove(View):
+    model = Product
 
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+
+        cart = request.session['cart']
+        for cart_product in cart:
+            price = cart_product['price']
+            if cart_product['id'] == product.id:
+                if cart_product['quantity'] == 1:
+                    cart.remove(cart_product)
+                else:
+                    cart_product['quantity'] -=1
+                    cart_product['price'] = price -(price/2)
+
+                print(cart)
+        request.session['cart'] = cart
+
+
+        if product.id in cart:
+            print(product)
+
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 class CartClear(View):
     def post(self, request):
         if "cart" in request.session:
