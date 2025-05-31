@@ -187,9 +187,10 @@ class ProductRemove(View):
             if cart_product['id'] == product.id:
                 if cart_product['quantity'] == 1:
                     cart.remove(cart_product)
+
                 else:
                     cart_product['quantity'] -=1
-                    cart_product['price'] = price -(price/2)
+                    cart_product['price'] =  price - round(cart_product['price']/(cart_product['quantity']+1))
 
                 print(cart)
         request.session['cart'] = cart
