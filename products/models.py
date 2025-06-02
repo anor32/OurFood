@@ -50,6 +50,7 @@ class Product(models.Model):
     img = models.ImageField(upload_to='products/images/',**NULLABLE,verbose_name='Product Image',)
     priority = models.IntegerField(default=0,verbose_name='priority')
     discount = models.IntegerField(default=0,verbose_name="Скидка")
+    original_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='original price',default=0)
     def __str__(self):
         return self.name
 

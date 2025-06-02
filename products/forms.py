@@ -49,14 +49,16 @@ class ProductForm(forms.ModelForm):
         }
 
     def clean(self):
-
+        print(self.cleaned_data)
 
         cleaned_price = self.cleaned_data['price']
+        cleaned_orig_price = self.cleaned_data['original_price']
+
         cleaned_discount = self.cleaned_data['discount']
 
         if cleaned_discount:
 
-            self.cleaned_data['price'] = int(cleaned_price - cleaned_price*cleaned_discount/100)
+            self.cleaned_data['price'] = int(cleaned_orig_price - (cleaned_orig_price*cleaned_discount/100))
 
 
         return self.cleaned_data

@@ -156,7 +156,8 @@ class ProductChoice(View):
             'name': product.name,
             'price': int(product.price),
             'quantity': 1,
-            'img': str(product.img)
+            'img': str(product.img),
+            'original_price':int(product.original_price)
         }
         price = createdProduct['price']
         if "cart" not in request.session:

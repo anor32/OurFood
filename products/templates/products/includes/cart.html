@@ -14,7 +14,7 @@
                         <img src="{{product.img|products_media}}" height="80px" width="80px">
                         <div style="width:150px"><p style="margin:0">{{ product.name}}
                         </p>
-                            <p style="color:blue; font-size:20px">{{product.price}} ₽</p>
+                            <p style="color:blue; font-size:20px">{{product.original_price}} ₽</p>
                             <div class="f"
                                  style="background-color:rgb(230, 230, 230); font-size:30px; border-radius:50px; display: flex; align-items: center; justify-content: center;">
                                 <form method="post" action="{% url 'products:product_remove' product.id%}">

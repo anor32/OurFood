@@ -2,8 +2,14 @@
           <div class="card-body" style="margin:10px;width:150px;" >
                           {% if user.role == "admin" %}   <a  class="text" href="{% url 'products:product_update' object.pk %}"> {% endif %}
                                 <img src="{{ object.img|products_media }}" width="120"  alt="{{ object.name }}">
-                                <p style="color:blue; font-size: 30px;">{{ object.price|floatformat:0 }} ₽</p>
+
+                            {%if object.discount == 0 %}
+                            <p style="color:blue; font-size: 30px;">{{ object.original_price|floatformat:0 }} ₽</p>
+                            {%else%}
+                            <p style="color:blue; font-size: 30px;">{{ object.price|floatformat:0 }} ₽</p><s>{{object.original_price}}</s>
+                            {% endif %}
                                 <h4 class="card-title">{{ object.name }}</h4>
+
                             </a>
 
                            <form action="{% url 'products:product_choice' object.pk %}" method="POST">
