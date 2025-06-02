@@ -52,14 +52,22 @@
 
                             </div>
                         <div class="f slider">
-                            {% for product in products_list %}
+                            {%for product in category.products.all %}
+                            <div class="slider-card f">
+                                {% include 'products/includes/product_card.html' with object=product %}
+                            </div>
+                            {%endfor%}
+
+                            {% for product in products_list  %}
                                 <div class="slider-card f">
+
                                     {% if product.categoryID_id == category.id %}
 
                                             {% include 'products/includes/product_card.html' with object=product %}
                                     {% endif %}
                                 </div>
                             {% endfor %}
+
                         </div>
                         <div class="right-arrow" id="{{category.id}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
