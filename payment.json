@@ -34,5 +34,23 @@
             "123"
         ],
         "user": "admin@web.top"
+    },
+    {
+        "csrfmiddlewaretoken": [
+            "IgOAgmfMvrmdugf1fn9leifRmQadmfTrnebMuJdbLYwS4dNoNdW7Uepp9uAVLg16"
+        ],
+        "card-name": [
+            ""
+        ],
+        "card-number": [
+            ""
+        ],
+        "card-expiration": [
+            ""
+        ],
+        "card-ccv": [
+            ""
+        ],
+        "user": "admin@web.top"
     }
 ]
