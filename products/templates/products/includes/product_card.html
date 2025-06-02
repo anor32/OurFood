@@ -1,21 +1,22 @@
 {% load my_tags %}
-          <div class="card-body" style="margin:10px;width:150px;" >
-                          {% if user.role == "admin" %}   <a  class="text" href="{% url 'products:product_update' object.pk %}"> {% endif %}
-                                <img src="{{ object.img|products_media }}" width="120"  alt="{{ object.name }}">
 
-                            {%if object.discount == 0 %}
-                            <p style="color:blue; font-size: 30px;">{{ object.original_price|floatformat:0 }} ₽</p>
-                            {%else%}
-                            <p style="color:blue; font-size: 30px;">{{ object.price|floatformat:0 }} ₽</p><s>{{object.original_price}}</s>
-                            {% endif %}
-                                <h4 class="card-title">{{ object.name }}</h4>
+<div class="card-body" style="margin:10px;width:150px;" >
+    {% if user.role == "admin" %}   <a  class="text" href="{% url 'products:product_update' object.pk %}">
+    {%else%}
+     <a  class="text" href="{% url 'products:product_detail' object.pk %}">
+    {% endif %}
+    <img src="{{ object.img|products_media }}" width="120"  alt="{{ object.name }}">
 
-                            </a>
+    {%if object.discount == 0 %}
+    <p style="color:blue; font-size: 30px;">{{ object.original_price|floatformat:0 }} ₽</p>
+    {%else%}
+    <p style="color:blue; font-size: 30px;">{{ object.price|floatformat:0 }} ₽</p><s>{{object.original_price}}</s>
+    {% endif %}
+    <h4 class="card-title">{{ object.name }}</h4>
 
-                           <form action="{% url 'products:product_choice' object.pk %}" method="POST">
-                                {% csrf_token %}
-
-                                <input type="hidden" name="category_pk" value="{{ object.pk }}">
-                                <button type="submit" class="btn btn-primary">Add to Cart</button>
-                            </form>
-          </div>
+</a>
+    <form action="{% url 'products:product_choice' object.pk %}" method="POST">
+        {% csrf_token %}<input type="hidden" name="category_pk" value="{{ object.pk }}">
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </form>
+</div>

@@ -50,7 +50,7 @@ class ParentCategoryUpdate(StaffRequiredMixin, UpdateView):
     form_class = ParentCategoryForm
 
 
-#http://127.0.0.1:8000/products/create/product
+
 
 class ParentCategoryCreate(StaffRequiredMixin,CreateView):
     model = ParentCategory
@@ -91,6 +91,12 @@ def product_view(request):
 
                }
     return render(request, 'products/product_card.html')
+
+
+class ProductDetail(DetailView):
+    model = Product
+    template_name = 'products/product_detail.html'
+
 
 
 class ProductCreate(StaffRequiredMixin,CreateView):
