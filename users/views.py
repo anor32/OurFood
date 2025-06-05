@@ -121,10 +121,10 @@ class PaymentView(LoginRequiredMixin,View):
     template_name = 'users/payment_page.html'
 
     def post(self, request, *args, **kwargs):
-       card_name = request.POST.get('card-name')
-       card_number = request.POST.get('card-number')
-       card_expiration = request.POST.get('card-expiration')
-       card_ccv = request.POST.get('card-ccv')
+       # card_name = request.POST.get('card-name')
+       # card_number = request.POST.get('card-number')
+       # card_expiration = request.POST.get('card-expiration')
+       # card_ccv = request.POST.get('card-ccv')
        json = dict(request.POST)
 
        json['user'] = str(self.request.user)
