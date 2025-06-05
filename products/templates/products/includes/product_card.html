@@ -17,6 +17,6 @@
 </a>
     <form action="{% url 'products:product_choice' object.pk %}" method="POST">
         {% csrf_token %}<input type="hidden" name="category_pk" value="{{ object.pk }}">
-        <button type="submit" class="btn btn-primary">Add to Cart</button>
+        <button type="submit" class="btn btn-primary">В корзину</button>
     </form>
 </div>

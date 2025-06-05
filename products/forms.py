@@ -44,8 +44,9 @@ class ProductForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
             'discount':  forms.NumberInput(attrs={'class': 'form-control'}),
             'img': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            "priority": NumberInput(attrs={"class": "form-control","placeholder": "Выбор Приоритета вывода"
-            }),
+            "priority": NumberInput(attrs={"class": "form-control","placeholder": "Выбор Приоритета вывода" }),
+            "composition": forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+
         }
 
     def clean(self):

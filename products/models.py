@@ -26,7 +26,7 @@ class ParentCategory(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название подкатегории ")
-    parent_category = ForeignKey(ParentCategory, on_delete=models.CASCADE, verbose_name="Выбор Основной категории", **NULLABLE)
+    parent_category = ForeignKey(ParentCategory, on_delete=models.CASCADE, verbose_name="Выбор Основной категории")
     has_slider = models.BooleanField(default=False,verbose_name='Создать слайдер с категорией')
     priority = models.IntegerField(default=0,verbose_name='priority')
     products = models.ManyToManyField('products.Product' ,related_name="products_lists",verbose_name="add product",**NULLABLE)
@@ -51,6 +51,7 @@ class Product(models.Model):
     priority = models.IntegerField(default=0,verbose_name='priority')
     discount = models.IntegerField(default=0,verbose_name="Скидка")
     original_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='original price',default=0)
+    composition = models.CharField(max_length=1000, verbose_name='composition', **NULLABLE)
     def __str__(self):
         return self.name
 
