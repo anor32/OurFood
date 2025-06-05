@@ -117,7 +117,7 @@ def user_generate_new_passport_view(request):
     return redirect(reverse('dogs:index'))
 
 
-class PaymentView(View):
+class PaymentView(LoginRequiredMixin,View):
     template_name = 'users/payment_page.html'
 
     def post(self, request, *args, **kwargs):
