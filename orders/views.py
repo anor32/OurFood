@@ -1,7 +1,7 @@
 from itertools import product
 
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView
@@ -25,7 +25,7 @@ class OrderCreate(CreateView):
         if request.session['cart']:
             cart = request.session['cart']
         else:
-            return redirect(reverse('products:index'))
+            return HttpResponseForbidden("Доступ запрещён: корзина пуста")
         total_sum = 0
         OrderProducts = []
         for i in range(len(cart)):
