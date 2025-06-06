@@ -5,12 +5,13 @@ import string
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 
 from django.contrib.auth.views import LoginView, PasswordChangeView, LogoutView
 from django.views.generic import CreateView, UpdateView, ListView, View, TemplateView
 from django.urls import reverse_lazy
 
+from products.models import Product
 from users.models import User
 from users.forms import UserRegisterForm, UserLoginForm, UserUpdateForm, UserPasswordChangeForm,  UserForm
 from users.servises import send_new_password
@@ -121,16 +122,19 @@ class PaymentView(LoginRequiredMixin,View):
     template_name = 'users/payment_page.html'
 
     def post(self, request, *args, **kwargs):
-       # card_name = request.POST.get('card-name')
-       # card_number = request.POST.get('card-number')
-       # card_expiration = request.POST.get('card-expiration')
-       # card_ccv = request.POST.get('card-ccv')
-       json = dict(request.POST)
+        cart = request.session['cart']
+        for cart_product in cart:
+            pk = cart_product['id']
+            product = get_object_or_404(Product, pk=pk)
+            product.quantity -= cart_product['quantity']
+            product.save()
+        request.session['cart'] = []
+        json = dict(request.POST)
+        print('оплата прошла успешно')
+        json['user'] = str(self.request.user)
+        to_json('payment', json)
 
-       json['user'] = str(self.request.user)
-       to_json('payment', json)
-
-       return render(request, 'users/success_payment.html')
+        return render(request, 'users/success_payment.html')
 
 
     def get(self,request):

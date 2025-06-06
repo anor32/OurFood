@@ -174,8 +174,6 @@ class ProductChoice(View):
 
         for item in cart:
             if createdProduct['id'] == item['id']:
-                product.quantity -= 1
-                product.save()
                 item['quantity'] += 1
                 item['price'] = price *  item['quantity']
                 break
@@ -199,12 +197,11 @@ class ProductRemove(View):
                     cart.remove(cart_product)
 
                 else:
-                    product.quantity += 1
-                    product.save()
+
                     cart_product['quantity'] -=1
                     cart_product['price'] =  price - round(cart_product['price']/(cart_product['quantity']+1))
 
-                print(cart)
+
         request.session['cart'] = cart
 
 
