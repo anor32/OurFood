@@ -116,10 +116,10 @@ html, body
 {
     -o-object-fit: contain;
     object-fit: contain;
-    width: 100%;
+    width: 80px;
     min-width: 100%;
     max-width: 100%;
-    max-height: 80px;
+    max-height: 160px;
 }
 
 .card-wrapper

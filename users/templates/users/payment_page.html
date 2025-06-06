@@ -38,28 +38,37 @@
                                 <div class="col-12 panel-header basket-header">
                                     <div class="row">
                                         <div class="col-6 basket-title">
-                                            <span class="description">review your</span><br><span class="emphasized">Cart Summary</span>
+                                            <span class="description">review your</span><br><span class="emphasized">{{total_sum_products}}</span>
                                         </div>
                                         <div class="col-6 order-number align-right">
                                             <span class="description">order #</span><br><span class="emphasized">order_number</span>
                                         </div>
                                     </div>
                                     <div class="row column-titles padding-top-10">
-                                        <div class="col-2 align-center"><span>Photo</span></div>
-                                        <div class="col-5 align-center"><span>Name</span></div>
-                                        <div class="col-2 align-center"><span>Quantity</span></div>
-                                        <div class="col-3 align-right"><span>Price</span></div>
+
+                                        <div class="col-2 align-center"><span>{{object.img}}</span></div>
+                                        <div class="col-5 align-center"><span>{{object.name}}</span></div>
+                                        <div class="col-2 align-center"><span>{{object.quantity}}</span></div>
+                                        <div class="col-3 align-right"><span>{{object.price}}</span></div>
+
                                     </div>
                                 </div>
                                 <div class="col-12 panel-body basket-body">
-                                    products
+
+                                    {%for object in cart_products%}
+
                                     <div class="row product">
-                                        <div class="col-2 product-image"><img src="{{thumbnail}}"></div>
-                                        <div class="col-5">{{name}}<br><span class="additional">additional</span></div>
-                                        <div class="col-2 align-right"><span class="sub">unit</span> quantity</div>
-                                        <div class="col-3 align-right"><span class="sub">currency</span> Price</div>
+
+
+
+                                        <div class="col-2 product-image"><img width="50"  alt="{{ object.name }}" src="{{ object.img|products_media }}"></div>
+                                        <div class="col-5">{{object.name}}<br><span class="additional">additional</span></div>
+                                        <div class="col-2 align-right"><span class="sub">unit</span>{{object.quantity}}</div>
+                                        <div class="col-3 align-right"><span class="sub">currency</span> {{object.price}}</div>
+
                                     </div>
-                                    products
+                                    {%endfor%}
+
                                 </div>
                                 <div class="col-12 panel-footer basket-footer">
                                     <hr>
