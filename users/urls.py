@@ -4,7 +4,7 @@ from users.apps import UsersConfig
 from users.forms import UserUpdateForm
 from users.views import (user_generate_new_passport_view, UserRegisterView, UserLoginView,
                          UserProfileView, UserLogoutView, UserUpdateView, UserChangePasswordView, UserListView,
-                         PaymentView, SuccessPayment)
+                          )
 app_name = UsersConfig.name
 
 urlpatterns = [
@@ -17,7 +17,7 @@ urlpatterns = [
     path('profile/genpassword/',user_generate_new_passport_view,name='user_generate_new_password'),
 
 
-    path('payment/',PaymentView.as_view(), name='payment_page'),
-    path('payment/success/',SuccessPayment.as_view(), name='success_payment'),
+
+
 
 ]
