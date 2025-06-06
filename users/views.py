@@ -118,27 +118,5 @@ def user_generate_new_passport_view(request):
     return redirect(reverse('dogs:index'))
 
 
-class PaymentView(LoginRequiredMixin,View):
-    template_name = 'users/payment_page.html'
 
-    def post(self, request, *args, **kwargs):
-        cart = request.session['cart']
-        for cart_product in cart:
-            pk = cart_product['id']
-            product = get_object_or_404(Product, pk=pk)
-            product.quantity -= cart_product['quantity']
-            product.save()
-        request.session['cart'] = []
-        json = dict(request.POST)
-        print('оплата прошла успешно')
-        json['user'] = str(self.request.user)
-        to_json('payment', json)
-
-        return render(request, 'users/success_payment.html')
-
-
-    def get(self,request):
-        return render(request,'users/payment_page.html')
-class SuccessPayment(TemplateView):
-    template_name = 'users/success_payment.html'
 
