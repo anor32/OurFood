@@ -169,13 +169,23 @@ class ProductChoice(View):
         price = createdProduct['price']
         if "cart" not in request.session:
             cart = []
+
         else:
             cart = request.session['cart']
 
+        # if cart == [] :
+        #     print('here')
+        #     cart.append(createdProduct)
+
         for item in cart:
-            if createdProduct['id'] == item['id']:
+            print(item['quantity'],product.quantity)
+            if createdProduct['id'] == item['id'] and item['quantity'] <= product.quantity-1 :
                 item['quantity'] += 1
                 item['price'] = price *  item['quantity']
+                break
+
+        for prod in cart:
+            if prod['id'] == createdProduct['id']:
                 break
         else:
             cart.append(createdProduct)
