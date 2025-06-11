@@ -4,7 +4,7 @@ from itertools import product
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, ListView, DeleteView
+from django.views.generic import CreateView, ListView, DeleteView, TemplateView
 
 from orders.models import Order, OrderProduct
 from products.models import Product
@@ -19,7 +19,7 @@ class OrderCreate(CreateView):
     template_name = 'payment_page.html'
 
     fields = ('products', 'order_user',)
-    success_url = reverse_lazy('users:success_payment')
+    success_url = reverse_lazy('orders:success_payment')
 
     def post(self, request, *args, **kwargs):
         if request.session['cart']:
@@ -50,7 +50,7 @@ class OrderCreate(CreateView):
         print('оплата прошла успешно')
         json['user'] = str(self.request.user)
         to_json('payment', json)
-        return redirect(reverse('users:success_payment'))
+        return redirect(reverse('orders:success_payment'))
 
 
 class OrderList(ListView):
@@ -64,3 +64,6 @@ class OrderList(ListView):
 class OrderDelete(DeleteView):
     model = Order
     success_url = reverse_lazy('orders:order_panel')
+
+class OrderSuccess(TemplateView):
+    template_name = 'success_payment.html'
