@@ -105,21 +105,16 @@ class ProductCreate(StaffRequiredMixin,CreateView):
     success_url = reverse_lazy('products:index')
     form_class = ProductForm
 
-
-    def post(self, request, *args, **kwargs):
-        form = self.get_form()
+    def form_valid(self, form):
+        response = super().form_valid(form)
         category = Category.objects.get(pk=28)
-        product = self.get_object()
-        if form.is_valid():
+        if form.cleaned_data['discount'] > 0:
+            category.products.add(self.object)
+        else:
+            category.products.remove(self.object)
+        return response
 
-            if form.cleaned_data['discount'] > 0:
-                print('here')
-                category.products.add(product)
-
-            else:
-                category.products.remove(product)
-
-        return super().post(request, *args, **kwargs)
+       
 
 class ProductUpdate(StaffRequiredMixin,UpdateView):
     model = Product
