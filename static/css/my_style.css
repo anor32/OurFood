@@ -177,7 +177,7 @@ a.text:hover{
 .fixed-right {
     position: fixed;
     top: 80px;
-    right: 0;
+    right: 4px;
     width: 17%;
     height: 100%;
     padding-top: 0px;

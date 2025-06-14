@@ -60,17 +60,17 @@
 
         <div>
             <hr>
-            <h5 class ="cartTextFont" > <span style="font-weight:700">Итого: </span> {{total_sum_products}}</h5>
-            <div class="f" style="gap:2px;">
+            <h5 class ="cartTextFont" > <span style="font-weight:600 ">Итого: </span> {{total_sum_products}}</h5>
+            <div class="f" style="gap:30px;">
 
                 <form action="{% url 'products:cart_clear'  %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
-                    <button class="btn btn-default" type="submit">Очистить корзину</button>
+                    <button class="btn btn-default"  type="submit">Очистить </button>
                 </form>
                 <div>
                     <button class="btn btn-primary"><a class="text" style="color:white;"
-                                                       href="{% url 'orders:cart_order' %}"> Перейти к Оплате</a>
+                                                       href="{% url 'orders:cart_order' %}"> Перейти К оплате</a>
                     </button>
                 </div>
             </div>
