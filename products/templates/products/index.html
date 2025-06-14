@@ -34,9 +34,10 @@
     <div style="margin-top:100px;">
           {% for category in category_list %}
             {% if category.has_slider %}
-                <div><div class="f" style="justify-content: space-between;padding: 0 100px">
+                <div><div class="f" style="justify-content: space-between;padding: 0 60px">
                     <h2>{{ category.name }}</h2>
-                    <a  href="{%url 'products:categories'  category.parent_category.pk %}#targetElement{{ category.pk }}" class="text my-button" >Все <span style="font-size:25px;">></span></a>
+                    <a  href="{%url 'products:categories'  category.parent_category.pk %}#targetElement{{ category.pk }}"
+                        class="text my-button btn btn-default" style="margin-top: 20px;border-radius:30px;" >  Cмотреть все </a>
                 </div>
                     <div class="category-slider f" style="margin-top:;">
                            <div class="left-arrow">

@@ -118,7 +118,7 @@
 
                         map.geoObjects.add(myPlacemark);
                     }}
-                   document.getElementById('id_address').value = address;
+                   document.getElementById('id_address').value = address.slice(address.indexOf(',')+2);
                 });
 
     })

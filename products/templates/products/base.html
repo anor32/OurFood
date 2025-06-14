@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ title }}</title>
-
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@500;600&family=Playfair+Display:wght@700&display=swap"
+         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
     <link href="{% static 'css/my_style.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'css/paymentForm.css' %}" rel="stylesheet">
@@ -20,7 +22,7 @@
   <div class="col-lg-12" style="position: fixed;z-index: 1000; padding:0;width:100%;">
 
         <div class="bs-component" >
-            <nav class="navbar navbar-default " style=" padding:10px 0;">
+            <nav class="navbar navbar-default " style=" padding-top:10px;">
                 <div class="container-fluid" >
                     <div class="navbar-header" style="">
                         <div class="logo" style="float: left; margin-right: 20px;" >
@@ -75,9 +77,10 @@
                                 {{user.first_name}}
                                 {%endif%}
                             </div>
-                            <div style="font-size:18px;margin-left:10px;">
+                            <div class="adress_srz" style="font-size:18px;margin-left:10px;">
                                 {%if user.address %}
-                                {{user.address}}
+
+                              {{user.address}}
                                 {%endif%}
                             </div>
                             <form method="post" action="{% url 'users:user_logout' %}" enctype="multipart/form-data">
@@ -125,7 +128,7 @@
         </aside>
 
 
-        <div class="cont" >
+        <div class="cont" style="margin-top:10px">
             <div class="album py-5 bg-light" style="margin:20px;height:50%;">
                 {% block content %}
                 {% endblock %}
@@ -157,7 +160,8 @@
 <script src="{% static 'js/slider.js' %}"> </script>
 <script src="https://bootstraptema.ru/snippets/style/2015/bootswatch/jquery-1.10.2.min.js"></script>
 <script src="https://bootstraptema.ru/snippets/style/2015/bootswatch/bootstrap.min.js"></script>
-<script src="{% static 'js/counter.js' %}"></script>
+
+
 </body>
 </html>
 

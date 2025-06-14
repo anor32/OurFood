@@ -376,5 +376,23 @@
             "444"
         ],
         "user": "admin@web.top"
+    },
+    {
+        "csrfmiddlewaretoken": [
+            "9dA4Qhc9O4wQRkVk5GvdnrBIIQIa2b2Xhf99LNCbjsx1lretDlAuTp9L24vjDUIt"
+        ],
+        "card-name": [
+            "andrei"
+        ],
+        "card-number": [
+            "434 34 343 433"
+        ],
+        "card-expiration": [
+            "33 44"
+        ],
+        "card-ccv": [
+            "123"
+        ],
+        "user": "admin@web.top"
     }
 ]

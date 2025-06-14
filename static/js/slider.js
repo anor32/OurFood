@@ -1,38 +1,40 @@
-; // Select the parent container of all cards
 let left_arrow = document.querySelector(".left-arrow");
 let right_arrow = document.querySelector(".right-arrow");
-let i = 0;
+
+max_slide = 1
 let category_sliders =document.querySelectorAll('.category-slider')
 
 let sliders = document.querySelectorAll('.slider')
-//let sliderCards = document.querySelectorAll(".slider-card")
 
 for (let i = 0; i < sliders.length; i++){
     let sliderCards= sliders[i].querySelectorAll(".slider-card")
     let right_arrow = category_sliders[i].querySelector(".right-arrow")
     let left_arrow = category_sliders[i].querySelector(".left-arrow")
+    let current_count = 1;
 
 
-    let current_count=0
     right_arrow.addEventListener("click", function() {
 
-        if (i < 10 - 1) {
+        if (current_count != -max_slide) {
            current_count--;
-           console.log(sliderCards)
+           console.log(current_count)
+
         sliderCards.forEach(card => {
 
-        card.style.transform = 'translateX('+current_count*850+'px)'; // Change the property for all cards
+        card.style.transform = 'translateX('+current_count*880+'px)';
     });
         }
     });
 
     left_arrow.addEventListener("click", function() {
+        console.log(current_count)
+        if (current_count <0 ) {
            current_count++;
 
             sliderCards.forEach(card => {
-        card.style.transform = 'translateX('+current_count*850+'px)'; // Change the property for all cards
+        card.style.transform = 'translateX('+current_count*880+'px)';
     });
-
+        }
     });
 
 }

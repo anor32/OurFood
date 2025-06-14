@@ -2,13 +2,9 @@
 
 {% load my_tags %}
 
-
-
-
-
 <div class="card-body" >
     <a class="text" href="{% url 'products:categories' object.pk %}">
-        <p class="card-text">{{ object.name }}</p>
+        <p class="card-text ">{{ object.name }}</p>
         <img src='{{ object.image|products_media}}' class="image-container">
     </a>
     {% if user.role == "admin" %}
