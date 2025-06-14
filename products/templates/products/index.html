@@ -38,7 +38,7 @@
                     <h2>{{ category.name }}</h2>
                     <a  href="{%url 'products:categories'  category.parent_category.pk %}#targetElement{{ category.pk }}"
                         class="text my-button btn btn-default" style="margin-top: 20px;border-radius:30px;" >  Cмотреть все </a>
-                </div>
+                    </div>
                     <div class="category-slider f" style="margin-top:;">
                            <div class="left-arrow">
                             <svg viewBox="0 0 24 24" opacity="0.2" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -52,9 +52,9 @@
                             </svg>
 
                             </div>
-                        <div class="f slider">
+                        <div class="f slider" >
                             {%for product in category.products.all %}
-                            <div class="slider-card f">
+                            <div class="slider-card f" >
                                 {% include 'products/includes/product_card.html' with object=product %}
                             </div>
                             {%endfor%}
