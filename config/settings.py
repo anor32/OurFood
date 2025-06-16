@@ -81,27 +81,27 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 load_dotenv()
-DRIVER = os.getenv('MS_SQL_DRIVER')
-SERVER = os.getenv('MS_SQL_SERVER')
-DATABASE = os.getenv('MS_SQL_DATABASE')
-USER = os.getenv('MS_SQL_USER')
-PASSWORD = os.getenv('MS_SQL_KEY')
-PAD_DATABASE = os.getenv('MS_PAD_DATA_BASE')
-
+DATABASE =os.getenv('POSTGRESQL_DATABASE')
+USER = os.getenv('POSTGRESQL_USER')
+PASSWORD = os.getenv('POSTGRESQL_PASSWORD')
+PORT = os.getenv('POSTGRESQL_PORT')
+doker_host = os.getenv('POSTGRESQL_HOST_DOCKER')
+PAD_DATABASE = os.getenv('POSTGRESQL_PAD_DATABASE')
+HOST = os.getenv('POSTGRESQL_HOST') #postgree
 DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
         'NAME': DATABASE,
-        'PASSWORD': PASSWORD,
-        'HOST': SERVER,
-        'PORT': "",
-        "OPTIONS":{
-            'driver': DRIVER
-        }
+        'USER': USER,
+        'PASSWORD':PASSWORD,
+        #'HOST':doker_host,
+        'HOST':HOST,
+        'PORT':PORT,
+
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
