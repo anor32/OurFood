@@ -60,11 +60,13 @@
 
         <div>
             <hr>
+
             <h5 class ="cartTextFont" > <span style="font-weight:600 ">Итого: </span> {{total_sum_products}}</h5>
             <div class="f" style="gap:30px;">
-
+                {%if cart_products%}
                 <form action="{% url 'products:cart_clear'  %}" method="POST">
                     {% csrf_token %}
+
                     <input type="hidden" name="category_pk" value="{{ object.parent_category.pk }}">
                     <button class="btn btn-default"  type="submit">Очистить </button>
                 </form>
@@ -73,6 +75,7 @@
                                                        href="{% url 'orders:cart_order' %}"> Перейти К оплате</a>
                     </button>
                 </div>
+                {%endif%}
             </div>
         </div>
     </aside>
