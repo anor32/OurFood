@@ -29,7 +29,7 @@ class Category(models.Model):
     parent_category = ForeignKey(ParentCategory, on_delete=models.CASCADE, verbose_name="Выбор Основной категории")
     has_slider = models.BooleanField(default=False,verbose_name='Создать слайдер с категорией')
     priority = models.IntegerField(default=0,verbose_name='priority')
-    products = models.ManyToManyField('products.Product' ,related_name="products_lists",verbose_name="add product",**NULLABLE)
+    products = models.ManyToManyField('products.Product' ,related_name="products_lists",verbose_name="add product")
 
     class Meta:
         verbose_name = "Category"
