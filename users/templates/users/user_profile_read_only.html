@@ -55,9 +55,11 @@
     <a class=" btn btn-outline-warning me-2" href="{% url 'users:user_update' %}">Обновить</a>
     <a class="btn btn-outline-warning me-2" href="{% url 'products:index' %}">На главную</a>
     <a class="btn btn-outline-warning me-2" href="{% url 'products:index' %}">Мои заказы</a>
+     <a class="btn btn-outline-warning me-2" href="{% url 'users:user_change_password' %}">Cменить пароль</a>
     {% if user.role == "admin" %}
 
     <a class="btn btn-outline-warning me-2" href="{% url 'orders:order_panel' %}">Все заказы</a>
+
     {% endif %}
 
 
