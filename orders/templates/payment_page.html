@@ -70,9 +70,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div><ul>{%if errors %}
+                                         {%for e in errors%}
+                                        <li style="font-size:15px"> {{e}}</li>
+                                        {%endfor%}
+                                        {%endif%}</ul></div>
                                 <div class="col-12 panel-body creditcard-body">
                                     <form method="post" action="{% url 'orders:cart_order' %}">
                                           {% csrf_token %}
+
                                         <fieldset>
                                             <label for="card-name">Name Card</label><br>
                                             <i class="fa fa-user-o" aria-hidden="true"></i><input type='text' id='card-name' name='card-name' placeholder='John Doe' title='Name on the Card'>

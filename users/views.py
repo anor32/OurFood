@@ -17,7 +17,6 @@ from users.forms import UserRegisterForm, UserLoginForm, UserUpdateForm, UserPas
 from users.servises import send_new_password
 import json
 
-from utils.suply_functions import to_json
 
 
 class UserRegisterView(CreateView):
@@ -74,7 +73,7 @@ class UserUpdateView(UpdateView):
 
             return super().form_valid(form)
         else:
-            print(form.errors)  # This will show any validation errors
+            print(form.errors)
             return self.form_invalid(form)
 
     def get_object(self, queryset=None):

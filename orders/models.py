@@ -1,12 +1,10 @@
-from django.db.models import Model
-from django.template.defaultfilters import default
+
 from django.utils import timezone
-from tkinter.constants import CASCADE
 
 from django.db import models
 
 from products.models import Product
-from users.models import NULLABLE
+
 
 from users.models import User
 # Create your models here.
