@@ -3,111 +3,149 @@
 {% block content%}
 
 
-            <div class="row" style="font-size:10px;" >
+<div class="row" style="font-size:10px;">
 
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div id="template" class="row panel-wrapper">
+                <div class="col-12 panel-header basket-header" style="width:100%;">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <div id="template" class="row panel-wrapper">
-                                <div class="col-12 panel-header basket-header">
-                                    <div class="row">
-                                        <div class="col-6 basket-title">
-                                            <span class="description">review your</span><br><span class="emphasized">{{total_sum_products}}</span>
-                                        </div>
-                                        <div class="col-6 order-number align-right">
-                                            <span class="description">order #</span><br><span class="emphasized">order_number</span>
-                                        </div>
-                                    </div>
-                                    <div class="row column-titles padding-top-10">
+                        <div class="col-6 basket-title">
 
-                                        <div class="col-2 align-center"><span>{{object.img}}</span></div>
-                                        <div class="col-5 align-center"><span>{{object.name}}</span></div>
-                                        <div class="col-2 align-center"><span>{{object.quantity}}</span></div>
-                                        <div class="col-3 align-right"><span>{{object.price}}</span></div>
-
-                                    </div>
-                                </div>
-                                <div class="col-12 panel-body basket-body">
-
-                                    {%for object in cart_products%}
-
-                                    <div class="row product">
-
-
-
-                                        <div class="col-2 product-image"><img width="50"  alt="{{ object.name }}" src="{{ object.img|products_media }}"></div>
-                                        <div class="col-5">{{object.name}}<br><span class="additional">additional</span></div>
-                                        <div class="col-2 align-right"><span class="sub">unit</span>{{object.quantity}}</div>
-                                        <div class="col-3 align-right"><span class="sub">currency</span> {{object.price}}</div>
-
-                                    </div>
-                                    {%endfor%}
-
-                                </div>
-                                <div class="col-12 panel-footer basket-footer">
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-8 align-right description"><div class="dive">Subtotal</div></div>
-                                        <div class="col-4 align-right"><span class="emphasized">currency subtotal</span></div>
-                                        <div class="col-8 align-right description"><div class="dive">Taxes</div></div>
-                                        <div class="col-4 align-right"><span class="emphasized">currency taxes</span></div>
-                                        <div class="col-8 align-right description"><div class="dive">Shipping</div></div>
-                                        <div class="col-4 align-right"><span class="emphasized">currency shipping_cost</span></div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-8 align-right description"><div class="dive">Total</div></div>
-                                        <div class="col-4 align-right"><span class="very emphasized">currency total</span></div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <div class="row panel-wrapper">
-                                <div class="col-12 panel-header creditcard-header">
-                                    <div class="row">
-                                        <div class="col-12 creditcard-title">
-                                            <span class="description">please say your</span><br><span class="emphasized">Credit Card Information</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div><ul>{%if errors %}
-                                         {%for e in errors%}
-                                        <li style="font-size:15px"> {{e}}</li>
-                                        {%endfor%}
-                                        {%endif%}</ul></div>
-                                <div class="col-12 panel-body creditcard-body">
-                                    <form method="post" action="{% url 'orders:cart_order' %}">
-                                          {% csrf_token %}
-
-                                        <fieldset>
-                                            <label for="card-name">Name Card</label><br>
-                                            <i class="fa fa-user-o" aria-hidden="true"></i><input type='text' id='card-name' name='card-name' placeholder='John Doe' title='Name on the Card'>
-                                        </fieldset>
-                                        <fieldset>
-                                            <label for="card-number">Card Number</label><br>
-                                            <i class="fa fa-credit-card" aria-hidden="true"></i><input type='text' id='card-number' name='card-number' placeholder='1234 5678 9123 4567' title='Card Number'>
-                                        </fieldset>
-                                        <fieldset>
-                                            <label for="card-expiration">Expiration Date</label><br>
-                                            <i class="fa fa-calendar" aria-hidden="true"></i><input type='text' id='card-expiration' name='card-expiration' placeholder='YY/MM' title='Expiration' class="card-expiration">
-                                        </fieldset>
-                                        <fieldset>
-                                            <label for="card-ccv">CVC/CCV</label>&nbsp;<i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="The CVV Number on your credit card or debit card is a 3 digit number on VISA, MasterCard and Discover branded credit and debit cards. On your American Express branded credit or debit card it is a 4 digit numeric code."></i><br>
-                                            <i class="fa fa-lock" aria-hidden="true"></i><input type='text' id='card-ccv' name='card-ccv' placeholder='123' title='CVC/CCV'>
-                                        </fieldset>
-                                         <div class="row">
-                                        <div class="col-12 align-right"><button class="cancel">Cancel</button>&nbsp;<button type="submit" class="confirm">Confirm & Pay</button></div>
-                                    </div>
-                                    </form>
-                                </div>
-
-
-                            </div>
+                        <div class="col-6 order-number align-right">
+                            <span class="description">Ваш заказ</span><br><span
+                                class="emphasized">Список Товаров Заказа</span>
                         </div>
                     </div>
+                    <div class="row column-titles padding-top-10">
+
+                        <div class="col-2 align-center"><span>{{object.img}}</span></div>
+                        <div class="col-5 align-center"><span>{{object.name}}</span></div>
+                        <div class="col-2 align-center"><span>{{object.quantity}}</span></div>
+                        <div class="col-3 align-right"><span>{{object.price}}</span></div>
+
+                    </div>
+                </div>
+                <div class="col-12 panel-body basket-body">
+
+                    {%for object in cart_products%}
+
+                    <div class="row product">
+
+
+                        <div class="col-2 product-image"><img width="50" alt="{{ object.name }}"
+                                                              src="{{ object.img|products_media }}"></div>
+                        <div class="col-5">{{object.name}}<br></div>
+                        <div class="col-2 align-right"><span class="sub">Количество</span>{{object.quantity}}</div>
+                        <div class="col-3 align-right"><span class="sub">Стоимость</span> {{object.price}}</div>
+
+                    </div>
+                    {%endfor%}
+
+                </div>
+                <div class="col-12 panel-footer basket-footer">
+                    <hr>
+                    <div class="row">
+                        <div class="col-8 align-right description" style="padding: 0 20px;">
+                            <div class="dive">Доставка займет около</div>
+                        </div>
+                        <div class="col-4 align-right" style="padding: 0 20px;">
+                            <span class="emphasized">15 минут</span>
+                        </div>
+
+                        <div class="col-8 align-right description" style="padding: 0 20px;">
+                            <div class="dive">Стоимость доставки</div>
+                        </div>
+                        <div class="col-4 align-right" style="padding-left: 20px;">
+                            <span class="emphasized">30</span>
+                        </div>
+
+                        <div class="col-8 align-right description" style="padding: 0 20px;">
+                            <div class="dive">Адрес для доставки</div>
+                        </div>
+                        <div class="col-4 align-right" style="padding-left: 20px;">
+                            <span class="emphasized">{{ user.address }}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-8 align-right description">
+                            <div class="dive">К оплате</div>
+                        </div>
+                        <div class="col-4 align-right"><span class="very emphasized">{{  total_sum_products|add:"30" }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="row panel-wrapper">
+                <div class="col-12 panel-header creditcard-header">
+                    <div class="row">
+                        <div class="col-12 creditcard-title">
+                            <span class="description"> Введите ваши</span><br><span
+                                class="emphasized">Данные Для оплаты</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <ul>{%if errors %}
+                        {%for e in errors%}
+                        <li style="font-size:15px"> {{e}}</li>
+                        {%endfor%}
+                        {%endif%}
+                    </ul>
+                </div>
+                <div class="col-12 panel-body creditcard-body">
+                    <form method="post" action="{% url 'orders:cart_order' %}">
+                        {% csrf_token %}
+
+                        <fieldset>
+                            <label for="card-name">Имя Владельца </label><br>
+                            <i class="fa fa-user-o" aria-hidden="true"></i><input type='text' id='card-name'
+                                                                                  name='card-name'
+                                                                                  placeholder='John Doe'
+                                                                                  title='Name on the Card'>
+                        </fieldset>
+                        <fieldset>
+                            <label for="card-number">Номер карты</label><br>
+                            <i class="fa fa-credit-card" aria-hidden="true"></i><input type='text' id='card-number'
+                                                                                       name='card-number'
+                                                                                       placeholder='1234 5678 9123 4567'
+                                                                                       title='Card Number'>
+                        </fieldset>
+                        <fieldset>
+                            <label for="card-expiration">Дата</label><br>
+                            <i class="fa fa-calendar" aria-hidden="true"></i><input type='text' id='card-expiration'
+                                                                                    name='card-expiration'
+                                                                                    placeholder='YY/MM'
+                                                                                    title='Expiration'
+                                                                                    class="card-expiration">
+                        </fieldset>
+                        <fieldset>
+                            <label for="card-ccv">CVC/CCV</label>&nbsp;<i class="fa fa-info-circle" aria-hidden="true"
+                                                                          data-toggle="tooltip" data-placement="right"
+                                                                          title="The CVV Number on your credit card or debit card is a 3 digit number on VISA, MasterCard and Discover branded credit and debit cards. On your American Express branded credit or debit card it is a 4 digit numeric code."></i><br>
+                            <i class="fa fa-lock" aria-hidden="true"></i><input type='text' id='card-ccv'
+                                                                                name='card-ccv' placeholder='123'
+                                                                                title='CVC/CCV'>
+                        </fieldset>
+                        <div class="row">
+                            <div class="col-12 align-right">
+                                <button class="cancel">Cancel</button>&nbsp;<button type="submit" class="confirm">
+                                Confirm & Pay
+                            </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
 
             </div>
+        </div>
+    </div>
 
+</div>
 
 
 {% endblock %}
