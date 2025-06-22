@@ -4,7 +4,7 @@ from django.urls import path
 
 from products.models import Category, Product
 from products.views import (index_view, categories_list_view,
-                            product_view, ParentCategoryCreate, ParentCategoryUpdate, ParentCategoryDelete,
+                             ParentCategoryCreate, ParentCategoryUpdate, ParentCategoryDelete,
                             CategoryCreate, CategoryUpdate, ProductCreate, ProductUpdate, CategoryDelete, ProductDelete,
                             ProductChoice, CartClear, SearchProduct, ProductRemove, ProductDetail)
 from products.apps import ProductsConfig
@@ -15,7 +15,7 @@ urlpatterns = [
     path('',index_view,name='index'),
     # path('',products_view, name = 'categories'),
     path('products/<int:pk>/categories/',categories_list_view, name = 'categories'),
-    path('products/categories/product',product_view,name = 'product_card'),
+
 
     #parentcategory crud
     path('product/<int:pk>/change',ParentCategoryUpdate.as_view(),name = 'change'),
@@ -28,13 +28,13 @@ urlpatterns = [
 
     #product crud
     path("products/create/product" ,ProductCreate.as_view(),name= 'product_create'),
-    path("products/update/<int:pk>/product",ProductUpdate.as_view(),name= 'product_update'),
+    path("products/<int:pk>/update/product",ProductUpdate.as_view(),name='product_update'),
     path('product/<int:pk>/delete/product', ProductDelete.as_view(), name='product_delete'),
     path('product/<int:pk>/detail/product', ProductDetail.as_view(), name='product_detail'),
 
     #cart choice
     path('product/<int:pk>/choice/product', ProductChoice.as_view(), name='product_choice'),
-    path('product/clear/,',CartClear.as_view(),name='cart_clear'),
+    path('product/clear/',CartClear.as_view(),name='cart_clear'),
     path('product/<int:pk>/remove/product',ProductRemove.as_view(),name='product_remove'),
 
     #search

@@ -83,14 +83,7 @@ class CategoryDelete(StaffRequiredMixin,DeleteView):
     success_url = reverse_lazy('products:index')
 
 
-def product_view(request):
-    product_obj = Product.objects.all()
 
-    context = {"title": "hi",
-               "objects_list": product_obj,
-
-               }
-    return render(request, 'products/product_card.html')
 
 
 class ProductDetail(DetailView):
@@ -110,8 +103,7 @@ class ProductCreate(StaffRequiredMixin,CreateView):
         category = Category.objects.get(pk=28)
         if form.cleaned_data['discount'] > 0:
             category.products.add(self.object)
-        else:
-            category.products.remove(self.object)
+
         return response
 
        
@@ -130,7 +122,7 @@ class ProductUpdate(StaffRequiredMixin,UpdateView):
         if form.is_valid():
 
             if form.cleaned_data['discount'] > 0:
-                print('here')
+
                 category.products.add(product)
 
             else:
@@ -168,23 +160,19 @@ class ProductChoice(View):
         else:
             cart = request.session['cart']
 
-        # if cart == [] :
-        #     print('here')
-        #     cart.append(createdProduct)
-
         for item in cart:
-            print(item['quantity'],product.quantity)
-            if createdProduct['id'] == item['id'] and item['quantity'] <= product.quantity-1 :
+            if createdProduct['id'] == item['id'] and item['quantity'] < product.quantity:
                 item['quantity'] += 1
-                item['price'] = price *  item['quantity']
+                item['price'] = price * item['quantity']
                 break
-
         for prod in cart:
             if prod['id'] == createdProduct['id']:
                 break
         else:
             cart.append(createdProduct)
         request.session['cart'] = cart
+        request.session.modified = True
+
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
@@ -210,8 +198,6 @@ class ProductRemove(View):
         request.session['cart'] = cart
 
 
-        if product.id in cart:
-            print(product)
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 class CartClear(View):
