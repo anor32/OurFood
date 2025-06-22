@@ -50,7 +50,7 @@ class ProductForm(forms.ModelForm):
         }
 
     def clean(self):
-        print(self.cleaned_data)
+
 
         cleaned_price = self.cleaned_data['price']
         cleaned_orig_price = self.cleaned_data['original_price']
