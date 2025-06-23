@@ -1,5 +1,6 @@
 from itertools import product
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
@@ -15,7 +16,7 @@ from utils.suply_functions import to_json
 # Create your views here.
 
 
-class OrderCreate(CreateView):
+class OrderCreate(LoginRequiredMixin,CreateView):
     model = Order
     template_name = 'payment_page.html'
 
@@ -31,7 +32,7 @@ class OrderCreate(CreateView):
         OrderProducts = []
         for i in range(len(cart)):
             product = Product.objects.get(id=cart[i]['id'])
-            total_sum += cart[i]['price']
+            total_sum += cart[i]['price']*cart[i]['quantity']
             ordProd = OrderProduct.objects.create(product=product, quantity=cart[i]['quantity'])
             OrderProducts.append(ordProd)
 
@@ -78,7 +79,7 @@ class OrderCreate(CreateView):
         return redirect(reverse('orders:success_payment'))
 
 
-class OrderList(ListView):
+class OrderList(LoginRequiredMixin,ListView):
     model = Order
     template_name = 'orderPanel.html'
 
@@ -86,10 +87,10 @@ class OrderList(ListView):
         return Order.objects.all()
 
 
-class OrderDelete(DeleteView):
+class OrderDelete(LoginRequiredMixin,DeleteView):
     model = Order
     success_url = reverse_lazy('orders:order_panel')
 
 
-class OrderSuccess(TemplateView):
+class OrderSuccess(LoginRequiredMixin,TemplateView):
     template_name = 'success_payment.html'

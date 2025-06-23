@@ -1,6 +1,3 @@
-import random
-import string
-
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -81,10 +78,10 @@ class UserUpdateView(UpdateView):
 
 
 class UserLogoutView(LoginRequiredMixin,LogoutView):
-    template_name = 'users/user_logout.html'
-    extra_context = {
-        'title': 'Выход из аккаунта',
-    }
+        template_name = 'users/user_logout.html'
+        extra_context = {
+            'title': 'Выход из аккаунта',
+        }
 
 
 class UserChangePasswordView(PasswordChangeView):
@@ -96,25 +93,7 @@ class UserChangePasswordView(PasswordChangeView):
     }
 
 
-class UserListView(LoginRequiredMixin, ListView):
-    model = User
-    extra_context = {
-        "title": "питомник все наши пользователи"
-    }
-    template_name = 'users/users.html'
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.filter(is_active = True)
-        return queryset
-
-def user_generate_new_passport_view(request):
-    new_password = ''.join(random.sample((string.ascii_letters + string.digits), 12))
-    request.user.set_password(new_password)
-    request.user.save()
-
-    send_new_password(request.user.email, new_password)
-    return redirect(reverse('dogs:index'))
 
 
 
