@@ -1,5 +1,6 @@
 {% load static %}
 {% load my_tags %}
+{% load cache %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,8 +131,23 @@
 
         <div class="cont" style="margin-top:10px">
             <div class="album py-5 bg-light" style="margin:20px;height:50%;">
-                {% block content %}
-                {% endblock %}
+
+
+
+{% block content %}
+
+    {% if request.path == '/' %}
+
+        {% cache 900 homepage_content request.get_full_path %}
+
+            {% block cache_content %}{% endblock %}
+        {% endcache %}
+
+    {% else %}
+
+    {% endif %}
+{% endblock %}
+
             </div>
 
         </div>

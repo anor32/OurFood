@@ -136,6 +136,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+cache_status = os.getenv('CACHE_ENABLED')
+CACHE_ENABLED = cache_status
+
+if CACHE_ENABLED:
+    CACHES =  {
+        'default' :{
+            "BACKEND":"django.core.cache.backends.redis.RedisCache",
+            "LOCATION":os.getenv('CACHE_LOCATION')
+        }
+    }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
