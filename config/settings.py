@@ -88,14 +88,14 @@ PASSWORD = os.getenv('POSTGRESQL_PASSWORD')
 PORT = os.getenv('POSTGRESQL_PORT')
 doker_host = os.getenv('POSTGRESQL_HOST_DOCKER')
 PAD_DATABASE = os.getenv('POSTGRESQL_PAD_DATABASE')
-HOST = os.getenv('POSTGRESQL_HOST') #postgree
+HOST = os.getenv('POSTGRESQL_HOST')
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
         'NAME': DATABASE,
         'USER': USER,
         'PASSWORD':PASSWORD,
-        #'HOST':doker_host,
+
         'HOST':HOST,
         'PORT':PORT,
 
@@ -143,7 +143,8 @@ if CACHE_ENABLED:
     CACHES =  {
         'default' :{
             "BACKEND":"django.core.cache.backends.redis.RedisCache",
-            "LOCATION":os.getenv('CACHE_LOCATION')
+            "LOCATION":os.getenv('CACHE_LOCATION'),
+
         }
     }
 

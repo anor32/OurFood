@@ -1,13 +1,11 @@
-from itertools import product
 
-from django.forms import model_to_dict
 from django.test import TestCase
-from unicodedata import category
+
 
 from products.models import Product, Category, ParentCategory
-from products.views import CategoryCreate
+
 from users.models import User
-from django.test import Client
+
 
 # Create your tests here.
 

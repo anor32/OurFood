@@ -1,14 +1,8 @@
-from itertools import product
-from lib2to3.fixes.fix_input import context
-
-from PIL.ImageShow import Viewer
-from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin
-from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, get_object_or_404, redirect
-from django.template.context_processors import request
+
 from django.urls import reverse_lazy
-from unicodedata import category
+
 from django.db.models import Q
 from products.forms import ParentCategoryForm, CategoryForm, ProductForm
 from products.models import ParentCategory, Category, Product

@@ -1,8 +1,8 @@
-from itertools import product
+
 
 from django.urls import path
 from django.views.decorators.cache import cache_page, never_cache
-from products.models import Category, Product
+
 from products.views import (index_view, categories_list_view,
                              ParentCategoryCreate, ParentCategoryUpdate, ParentCategoryDelete,
                             CategoryCreate, CategoryUpdate, ProductCreate, ProductUpdate, CategoryDelete, ProductDelete,
