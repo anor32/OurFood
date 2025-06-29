@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #my app
-    'users'
-    'products'
+    'users',
+    'products',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'utils.context_processors.category_context',
+                'utils.context_processors.cart_context',
             ],
         },
     },
@@ -76,31 +79,34 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 load_dotenv()
-DRIVER = os.getenv('MS_SQL_DRIVER')
-SERVER = os.getenv('MS_SQL_SERVER')
-DATABASE = os.getenv('MS_SQL_DATABASE')
-USER = os.getenv('MS_SQL_USER')
-PASSWORD = os.getenv('MS_SQL_KEY')
-PAD_DATABASE = os.getenv('MS_PAD_DATA_BASE')
-
+DATABASE =os.getenv('POSTGRESQL_DATABASE')
+USER = os.getenv('POSTGRESQL_USER')
+PASSWORD = os.getenv('POSTGRESQL_PASSWORD')
+PORT = os.getenv('POSTGRESQL_PORT')
+doker_host = os.getenv('POSTGRESQL_HOST_DOCKER')
+PAD_DATABASE = os.getenv('POSTGRESQL_PAD_DATABASE')
+HOST = os.getenv('POSTGRESQL_HOST')
 DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
         'NAME': DATABASE,
-        'PASSWORD': PASSWORD,
-        'HOST': SERVER,
-        'PORT': "",
-        "OPTIONS":{
-            'driver': DRIVER
-        }
+        'USER': USER,
+        'PASSWORD':PASSWORD,
+
+        'HOST':HOST,
+        'PORT':PORT,
+
     }
 }
 
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+LOGIN_REDIRECT_URL = 'products:index'
 
+
+LOGIN_URL = '/users/user_login/'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -128,6 +134,17 @@ USE_I18N = True
 
 USE_TZ = True
 
+cache_status = os.getenv('CACHE_ENABLED')
+CACHE_ENABLED = cache_status
+
+if CACHE_ENABLED:
+    CACHES =  {
+        'default' :{
+            "BACKEND":"django.core.cache.backends.redis.RedisCache",
+            "LOCATION":os.getenv('CACHE_LOCATION'),
+
+        }
+    }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -139,3 +156,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = (
+    BASE_DIR/ 'static',
+)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = (
+    BASE_DIR / 'media'
+)

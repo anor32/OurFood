@@ -1,20 +1,28 @@
 from django.core.management import BaseCommand
-import pyodbc
-from config.settings import USER, SERVER, PASSWORD, PAD_DATABASE, DRIVER, DATABASE
+import psycopg2
+from config.settings import USER, HOST, PASSWORD, PAD_DATABASE, PORT, DATABASE
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        conectString = f'''DRIVER={DRIVER};
-                              SERVER={SERVER};
-                              DATABASE={PAD_DATABASE};
-                              UID={USER};
-                              PWD={PASSWORD};'''
+        connectString = f"""
+            dbname={PAD_DATABASE}
+            user={USER}
+            password={PASSWORD}
+            host={HOST}
+            port={PORT}
+        """
+
         try:
-            conn = pyodbc.connect(conectString)
-            conn.autocommit =True
-            conn.execute(f"DROP DATABASE MyDjangoBase")
-        except pyodbc.ProgrammingError as ex:
-            print(ex)
+
+            conn = psycopg2.connect(connectString)
+            conn.autocommit = True
+
+
+            cursor = conn.cursor()
+
+            cursor.execute(f"DROP DATABASE {DATABASE}")
+        except psycopg2.Error as ex:
+            print(f"Произошла ошибка: {ex}")
         else:
             print("База данных Удалена успешно")

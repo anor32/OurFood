@@ -1,0 +1,143 @@
+{%extends 'products/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+<form method="post" enctype="multipart/form-data" >
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=a83c6e59-01e9-494f-940c-8ab2f02a5e1a&lang=ru_RU"></script>
+
+
+    <h3 class="col-md" style="margin:0 40%">Мой профиль </h3>
+    <hr style="border-color:#75caeb">
+    <div class="update" style="width:80%;margin:0 auto;">
+        <div class="f">
+            <img src="/static/products/profile_icon.png" alt="Логотип" style="height:40px; width: auto;">
+            <div style="margin-left: 10px;width: 100%;">
+                <div class="my-text">Имя фамилия</div>
+                <p style="font-size: 18px; margin: 0;">
+                    {%csrf_token%}
+                    {{form.first_name}}
+                    {{form.last_name}}
+
+                </p>
+            </div>
+        </div>
+
+        <div class="f">
+            <img src="/static/products/profile_phone.png" alt="Логотип" style="height:40px; width: auto;">
+            <div style="margin-left: 10px;width: 100%;">
+                <div class="my-text">Телефон</div>
+                {{form.phone}}
+            </div>
+        </div>
+
+        <div>
+        <div class="f">
+            <img src="/static/products/profile_adress.png" alt="Логотип" style="height:40px; width: auto;margin-right:10px">
+            <div style="margin-left: 10px;width: 100%;">
+                <div class="my-text">Адрес</div>
+
+                {{form.address}}</div>
+            </div>
+            <div id="map" style="width: 92%; height:300px;margin-left:8%;"></div>
+        </div>
+        <div class="f">
+            <img src="/static/products/profile_calendar.png" alt="Логотип"
+                 style="height:40px; width: auto;margin-right:10px">
+            <div style="margin-left: 10px;width: 100%;">
+                <div class="my-text">Дата рождения</div>
+                <input type="date" name="date_birth" class="form-control" value="{{user.date_birth }}">
+            </div>
+        </div>
+        <div class="f">
+            <img src="/static/products/profile_mail.png" alt="Логотип"
+                 style="height:40px; width: auto; margin-right:11px">
+             <div style="margin-left: 10px;width: 100%;">
+                <div class="my-text">Почта</div>
+                {{form.email}}
+            </div>
+        </div>
+
+        </div>
+
+    <!--    <p class="profile-decorate my-text"><div> Дата Рождения:</div> {{user.date_birth|default:"Не указано"}}</p>-->
+    <!--    <p class="profile-decorate my-text">Телефон: {{user.phone|default:"Не указано"}}</p>-->
+    <!--    <p class="profile-decorate my-text">адрес: {{user.address|default:"Не указано"}}</p>-->
+
+
+    <div class="mt-1">
+        <div style="margin:0 150px ;">
+        <button  type="submit" class="btn btn-primary">Обновить</button>
+
+        <a class="btn btn-outline-warning me-2" href="{% url 'users:user_profile' %}">К профилю</a>
+        <a class="btn btn-outline-warning me-2" href="{% url 'products:index' %}">Мои заказы</a>
+        </div>
+
+        <hr style="border-color:#75caeb">
+    </div>
+
+</form>
+<script>
+  marks = []
+    function init() {
+        let map = new ymaps.Map('map', {
+            center: ['55.755814', '37.617673'],
+            zoom: 14
+        })
+        map.events.add('click',function(event){
+            let cords = event._sourceEvent.originalEvent.coords
+            map.setCenter(cords,17,{duration:500,checkZoomRange:true})
+            ymaps.geocode(cords, { results: 1 }).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0);
+                var  address = firstGeoObject.getAddressLine();
+
+
+                var myPlacemark = new ymaps.Placemark(cords, null,{
+
+                        iconLayout: 'default#image',
+                        iconImageHref: "/static/products/marker.png",
+                        iconImageSize: [28, 28],
+                        iconImageOffset: [-14, -34],
+
+                    });
+
+
+                marks.push(myPlacemark)
+                if (marks.length >1 ){
+
+                map.geoObjects.remove(marks[0]);
+                map.geoObjects.add(myPlacemark);
+
+                console.log(map)
+                marks= []
+                marks.push(myPlacemark)
+                } else if (marks.length ==1 ){
+                    {
+
+                        map.geoObjects.add(myPlacemark);
+                    }}
+                   document.getElementById('id_address').value = address.slice(address.indexOf(',')+2);
+                });
+
+    })
+    map.controls.remove('geolocationControl')
+    map.controls.remove('searchControl')
+    map.controls.remove('trafficControl')
+    map.controls.remove('typeSelector')
+    map.controls.remove('fullscreenControl')
+    map.controls.remove('zoomControl')
+    map.controls.remove('rulerControl')
+    map.controls.remove('rulerControl')
+    }
+    ymaps.ready(init);
+
+
+
+</script>
+{% endblock %}
+
+
+
+

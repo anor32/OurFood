@@ -1,0 +1,92 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$ktrFcVWMz1LHHpJ8iLFcyy$nu6K6Q8Lnm4gxn/TLuwFeGoV1g0hHwR1/RGIgIjottA=",
+      "last_login": "2025-06-14T16:23:33.627Z",
+      "is_superuser": true,
+      "is_staff": true,
+      "date_joined": "2025-03-23T10:15:53Z",
+      "username": "admin_ya",
+      "role": "admin",
+      "email": "admin@web.top",
+      "phone": "+8911233333",
+      "first_name": "Andrei",
+      "last_name": "Nikanov",
+      "is_active": true,
+        "address": null,
+      "date_birth": null,
+      "groups": [],
+      "user_permissions": [
+        9
+      ]
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 14,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$evtjIomFyaakPvjkCQwJLE$JZmwQsNkHeHw5xHxwhe3dqL45sH8B+/BqseEVc53Iww=",
+      "last_login": "2025-04-20T16:51:50.792Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-04-20T16:50:29.265Z",
+      "username": "Anonymous",
+      "role": "user",
+      "email": "user2@mail.ru",
+      "phone": null,
+      "first_name": "Anonymous",
+      "last_name": "Anonymous",
+      "is_active": true,
+      "address": null,
+      "date_birth": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 15,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$AQh2sb9kihhdxTLKmulXnH$ROZvjUsjdB8DtEOn4+rNQX6Xup+rmB+KOQIXWbfI2+8=",
+      "last_login": "2025-06-14T13:14:54.308Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-04-25T16:00:35.037Z",
+      "username": null,
+      "role": "user",
+      "email": "user@web.top",
+      "phone": null,
+      "first_name": "Anonymous",
+      "last_name": "Anonymous",
+      "is_active": true,
+      "address": null,
+      "date_birth": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 16,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$50pRkXvPwi0jmoNKUS2Jtd$Y3owxvTyJTIwrJ9JbFlpMlga/H1CHPaaAhiV6b/Zuiw=",
+      "last_login": "2025-06-14T19:15:00.132Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-05-07T16:11:37.105Z",
+      "username": null,
+      "role": "user",
+      "email": "user1@web.top",
+      "phone": "+8911233333",
+      "first_name": null,
+      "last_name": null,
+      "is_active": true,
+      "address": null,
+      "date_birth": "2025-05-17",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

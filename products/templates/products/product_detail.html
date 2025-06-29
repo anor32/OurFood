@@ -1,0 +1,38 @@
+{%extends 'products/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div style="margin:30px">
+
+
+
+    <div class="f" style="gap:130px">
+        <div>
+        <h3> О товаре </h3>
+        <img src="{{ object.img|products_media }}" width="250" height="250" alt="{{ object.name }}">
+        </div>
+        <div class="inf" style="width:400px"><h4>{{object}}</h4>
+            <div style="font-size:12px;color:gray;">Код товара: {{object.barcode}}</div>
+
+            {%if object.discount == 0 %}
+            <p style="color:blue; font-size: 30px;">{{ object.original_price|floatformat:0 }} ₽</p>
+            {%else%}
+            <div class="f">
+                <p style="color:blue; font-size: 30px;">{{ object.price|floatformat:0 }} ₽</p><s
+                    style="margin-left:15px;font-size:25px;color:gray;">{{object.original_price}}</s>
+            </div>
+            {% endif %}
+            <form action="{% url 'products:product_choice' object.pk %}" method="POST">
+                {% csrf_token %}<input type="hidden" name="category_pk" value="{{ object.pk }}">
+                <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+                <div>{{object.description}}</div>
+                <div class><h5> <b> Состав</b>:</h5>
+                    <div>{{object.composition}}</div>
+                </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

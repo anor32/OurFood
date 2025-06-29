@@ -1,0 +1,63 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data" class="form-horizontal" style="margin:35px">
+    {% if object%}
+    <legend>Изменение подкатегории {{object.name}}</legend>
+    {% else %}
+    <legend>Cоздание новой категории</legend>
+    {% endif %}
+    <div class="form-group">
+        {% csrf_token %}
+
+        <label class="col-lg-2 control-label">{{form.name.label}}</label>
+        <div class="col-lg-10">
+            {{form.name}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">{{form.parent_category.label}}</label>
+        <div class="col-lg-10">
+            {{form.parent_category}}
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="col-lg-2 control-label">{{form.products.label}}</label>
+        <div class="col-lg-10">
+            {{form.products}}
+    </div>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">{{form.priority.label}}</label>
+        <div class="col-lg-10">
+            {{form.priority}}
+    </div>
+     <div class="form-group">
+        <label class="col-lg-2 control-label">{{form.has_slider.label}}</label>
+        <div class="col-lg-10">
+            {{form.has_slider}}
+    </div>
+
+     </div>
+
+    <div class="form-group">
+        <button type="reset" class="btn btn-default" style="margin-left:20%">
+            <a href="{% url 'products:index' %}" class="text">Вернуться</a></button>
+        <button type="submit" class="btn btn-primary">
+            {%if object%} Изменить {% else %}
+            Создать {% endif %}
+        </button>
+    </div>
+
+</form>
+{%if object%}
+<div style="margin-left:25%; margin-top:-25px;">
+
+    <form action="{% url 'products:category_delete' object.pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-default">Удалить</button>
+    </form>
+</div>
+{%endif%}
+
+{% endblock %}

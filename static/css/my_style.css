@@ -1,0 +1,297 @@
+.backCol {
+    background-color: #f8f9fa
+}
+
+.f {
+    display: flex;
+}
+
+
+.card {
+    width: 100px; /* Adjust this width based on how many cards you want visible */
+    flex-shrink: 0;
+}
+
+.d{ background-color: rgb(234, 250, 250);}
+.cont {
+    width: 60%;
+    
+    background-color: #ffffff;
+    border-radius: 35px;
+    padding: 7px;
+    position: relative;
+    left: 21.5%;
+    top: 70px;
+}
+
+.card-body:hover {
+
+
+    transition: transform 0.2s, box-shadow 0.2s;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+    width: 200px;
+}
+
+.card-body img {
+    object-fit: cover;
+    
+}
+
+.card-body {
+    background-color: rgb(242, 243, 243);
+    
+    position: relative;
+   
+    border-radius: 30px;
+    width: 210px;
+    margin: 5px;
+    font-family: 'Roboto', sans-serif;
+    
+}
+.CartFont{
+   font-family: 'Poppins', sans-serif;
+   font-weight: 600;
+
+
+}
+.cartTextFont{
+      font-family: 'Montserrat', sans-serif;
+       font-weight: 400;
+       font-size:17px;
+}
+.card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight:300;
+    margin-left:5px;
+    font-size: 17px;
+}
+.priceCss{
+    color:rgb(81, 81, 235); 
+    font-size: 23px;
+}
+
+
+.card-text {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      letter-spacing: 0.2px;
+
+    color: rgb(61, 61, 61);
+    position: absolute;
+
+    top: -2px;
+
+}
+
+.image-container {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; 
+    border-radius: 30px;
+}
+.list-category {
+    margin: 15px;
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.list-category li {
+    padding: 10px 0; 
+    border-bottom: 1px solid #ddd; 
+    transition: background-color 0.3s; 
+}
+
+.list-category li:hover {
+    background-color: rgb(240, 240, 240); 
+}
+
+
+.elemAdd{
+    border: 1px solid black;
+   height: 100%;
+    display: flex; align-items: center;
+    justify-content: center;}
+
+a.text{
+  color: black;
+
+  
+}
+a.text:hover{
+   text-decoration: none;
+}
+
+.changer {
+    position: relative; 
+    display: inline-block;
+}
+
+.changer:hover {
+    transform: scale(1.1); 
+}
+
+.changer::after {
+    
+    content: "Изменить";
+    position: absolute; 
+    bottom:  25%; 
+    left: 145%; 
+    transform: translateX(-50%); 
+    opacity: 0; 
+    transition: opacity 0.3s; 
+    color: rgb(231, 158, 0); 
+}
+
+.changer:hover::after {
+    opacity: 1;
+}
+
+
+.fixed-left {
+    position: fixed;
+    top: 80px;
+    left: 20;
+    height: 140px;
+    padding-bottom: 141px;
+    overflow-y: auto;
+
+}
+.fixed-left::-webkit-scrollbar {
+    display: none;
+}
+.leftBar {
+    width: 20%;
+    height: 100%;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-right: 2px solid #ccc;
+    border-radius: 30px;
+}
+
+.fixed-right {
+    position: fixed;
+    top: 80px;
+    right: 4px;
+    width: 17%;
+    height: 100%;
+    padding-top: 0px;
+    overflow-y: auto;
+    background-color: white;
+    border-left: 1px solid #ddd;
+    border-radius: 30px;
+}
+
+.fixed-right::-webkit-scrollbar {
+    display: none;
+}
+
+.rightBar {
+    /* Adjust as needed */
+    height: 100%;
+    padding-left: 10px; /* Add padding for spacing */
+
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Изменён на -2px для тени с правой стороны */
+    background-color: #ffffff;
+    border-left: 2px solid #ccc; /* Изменено на border-left */
+}
+
+.CartBar{
+    height:70%;
+    overflow:scroll ;
+
+}
+.CartBar::-webkit-scrollbar {
+    display: none;
+}
+
+.user-form{
+    width:60%; margin:auto; background-color:rgb(255, 255, 255 ); padding:15px; border-radius:15px;
+}
+
+.profile-decorate{
+
+    border-radius:30px;
+    padding:0 15%;
+  
+    
+}
+
+.my-text{
+    
+    font-size: 15px;
+    color: #abc1ca;
+    width:100%;
+   
+}
+[class*="copyrights-pane"]{display: none}
+
+.left-arrow{
+    width: 50px;
+    height: 50px;
+    left:  0px;
+    top: 150px;
+    position: relative;
+    transition: 0.5 ease;
+}
+.right-arrow{
+    width: 50px;
+    height: 50px;
+    
+    position: relative;
+    top: 150px;
+    right: 0px;
+    
+}
+
+
+.slider {
+    width: 100%;
+    max-width: 880px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    flex-shrink: 0;
+    transition: 0.5s ease;
+}
+
+
+
+
+
+.my-button{
+    font-size:20px;
+    
+    border-radius:30px;
+    padding: 10px 0; 
+   
+}
+
+
+
+.slider-card{
+    transition:1s ease;
+}
+
+.adress_srz{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height:30px; 
+    width:200px;
+
+    white-space: nowrap;
+}
+
+
+.product_srz{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height:50px;
+    
+    white-space: wrap;
+}

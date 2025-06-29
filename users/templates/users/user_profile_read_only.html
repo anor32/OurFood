@@ -1,0 +1,72 @@
+{% extends 'products/base.html' %}
+{%load my_tags %}
+{%block content%}
+{% load static %}
+
+<h3 class="col-md-" style="margin:0 40%">Мой профиль </h3>
+<hr style="border-color:#75caeb">
+
+<div class="f">
+    <img src="/static/products/profile_icon.png" alt="Логотип" style="height:40px; width: auto;">
+    <div style="margin-left: 10px;">
+        <div class="my-text">Имя фамилия</div>
+        <p style="font-size: 18px; margin: 0;">
+            {{user.first_name|default:"Не указано"}} {{user.last_name|default:"Не указано"}}
+        </p>
+    </div>
+</div>
+
+<div class="f">
+    <img src="/static/products/profile_phone.png" alt="Логотип" style="height:40px; width: auto;">
+    <div style="margin-left: 10px;">
+        <div class="my-text">Телефон</div>
+        <p style="font-size:18px">{{user.phone|default:"Не указан"}}</p>
+    </div>
+</div>
+
+
+<div class="f">
+    <img src="/static/products/profile_adress.png" alt="Логотип" style="height:40px; width: auto;margin-right:10px">
+    <div>
+        <div class="my-text">Адрес</div>
+        <p style="font-size:18px">{{user.address|default:"Не указан"}}</p>
+    </div>
+</div>
+<div class="f">
+    <img src="/static/products/profile_calendar.png" alt="Логотип" style="height:40px; width: auto;margin-right:10px">
+    <div>
+        <div class="my-text">Дата рождения</div>
+        <p style="font-size:18px">{{user.date_birth|default:"Не указана"}}</p>
+    </div>
+</div>
+<div class="f">
+     <img src="/static/products/profile_mail.png" alt="Логотип" style="height:40px; width: auto; margin-right:11px">
+    <div>
+    <div class="my-text">Почта</div>
+    <p style="font-size:18px">{{user.email|default:"Не указана"}}</p></div>
+</div>
+
+<!--    <p class="profile-decorate my-text"><div> Дата Рождения:</div> {{user.date_birth|default:"Не указано"}}</p>-->
+<!--    <p class="profile-decorate my-text">Телефон: {{user.phone|default:"Не указано"}}</p>-->
+<!--    <p class="profile-decorate my-text">адрес: {{user.address|default:"Не указано"}}</p>-->
+
+
+<div class="mt-1">
+    <a class=" btn btn-outline-warning me-2" href="{% url 'users:user_update' %}">Обновить</a>
+    <a class="btn btn-outline-warning me-2" href="{% url 'products:index' %}">На главную</a>
+    <a class="btn btn-outline-warning me-2" href="{% url 'products:index' %}">Мои заказы</a>
+     <a class="btn btn-outline-warning me-2" href="{% url 'users:user_change_password' %}">Cменить пароль</a>
+    {% if user.role == "admin" %}
+
+    <a class="btn btn-outline-warning me-2" href="{% url 'orders:order_panel' %}">Все заказы</a>
+
+    {% endif %}
+
+
+    <hr style="border-color:#75caeb">
+</div>
+{% endblock %}
+
+
+
+

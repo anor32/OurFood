@@ -1,0 +1,11 @@
+{% extends 'products/base.html' %}
+{%load my_tags %}
+{% block content%}
+<div>
+<h2> Оплата прошла успешно</h2>
+    <p> {{user.first_name}} ваш заказ скоро будет у вас по адресу {{user.address}}</p>
+    <p>  Пытаемся доставить как можно скорее</p>
+    <p> Спасибо за заказ</p>
+     <a href="{%url 'products:index'%}" >Вернуться на главную</a>
+</div>
+{%endblock%}

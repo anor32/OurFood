@@ -1,0 +1,12 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<h3>Найденные товары по вашему запросу</h3>
+<div class="f" style="flex-wrap:wrap;">
+    {%for object in object_list%}
+
+        {% include 'products/includes/product_card.html' with object=object %}
+
+    {% endfor %}
+</div>
+{% endblock %}
