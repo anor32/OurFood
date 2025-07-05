@@ -138,10 +138,10 @@
 
     {% if request.path == '/' or '/categories/' in request.path    %}
 
-        {% cache 600 homepage_content request.get_full_path %}
+
 
             {% block cache_content %}{% endblock %}
-        {% endcache %}
+
 
     {% else %}
 
