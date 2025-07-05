@@ -79,8 +79,8 @@
 7. Загрузите начальные данные из фикстур:
 
    ```bash
-   python -Xutf8 manage.py loaddata sections.json
-   python -Xutf8 manage.py loaddata users.json
+   python -Xutf8 manage.py loaddata backup/products.json
+   python -Xutf8 manage.py loaddata backup/users.json
     ```
 8. Запустите Redis сервер (если он не запущен):
 
