@@ -42,7 +42,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Product_name')
 
-    categoryID = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Category")
+    categoryID = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Category",related_name='category')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Price')
     quantity = models.IntegerField(null=False, default=0, verbose_name="Quantity")
     description= models.CharField(max_length=1000, verbose_name='Description', **NULLABLE)

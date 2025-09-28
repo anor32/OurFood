@@ -18,7 +18,7 @@ from users.mixins import StaffRequiredMixin
 
 def index_view(request):
     context = {
-        'objects_list': ParentCategory.objects.all(),
+
         'products_list': Product.objects.all(),
         'title': 'Моя Доставка Главная страница',
     }
@@ -28,10 +28,10 @@ def index_view(request):
 def categories_list_view(request, pk):
     category_item = ParentCategory.objects.get(pk=pk)
     categories = Category.objects.filter(parent_category=pk)
-    products_list = Product.objects.filter(categoryID__in=categories)
+    products_list = Product.objects.filter(categoryID__in=categories).prefetch_related('categoryID')
 
     context = {
-        "objects_list": categories,
+        "parent_obj_pk":category_item.pk,
         "title": category_item.name,
         'products_list': products_list
     }

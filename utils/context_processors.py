@@ -5,7 +5,7 @@ from products.models import ParentCategory, Category, Product
 
 def category_context(request):
     parent_obj = ParentCategory.objects.all()
-    category_obj = Category.objects.all()
+    category_obj = Category.objects.all().prefetch_related('products').select_related('parent_category')
     return {
         'parent_category_list': parent_obj,
         'category_list': category_obj,

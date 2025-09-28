@@ -5,15 +5,24 @@
 <div class="container">
 
 
-    {% for object in objects_list %}
+    {% for object in category_list  %}
+
+    {% if parent_obj_pk  ==  object.parent_category.pk %}
      <div class="col-12">
             <div id="targetElement{{ object.pk }}" style="width:100%">
-          {% if user.role == "admin" %}      <a class="text changer" href="{% url 'products:category_update' object.pk %}"> {%endif%}
-                    <h2 style="width:100%">{{ object.name }}</h2>
+
+                    {% if user.role == "admin" %}
+                    <a class="text changer" href="{% url 'products:category_update' object.pk %}">
+                    {%endif%}
+
+                    <h2 style="width:100%">{{ object.name }} </h2>
+
                 </a>
             </div>
         </div>
     <div class="row " style="width:80%;">
+
+
 
 
         {% for product in products_list %}
@@ -41,6 +50,7 @@
 
         {% endif %}
     </div>
+     {% endif %}
     {% endfor %}
 </div>
 
