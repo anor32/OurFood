@@ -34,5 +34,41 @@
             "444"
         ],
         "user": "admin@web.top"
+    },
+    {
+        "csrfmiddlewaretoken": [
+            "dOHWtbuXZq00fqFKma6UF8gErM1WgyxezbXA6ty1YutHkRwwwkxyq8QpHFn3IUrY"
+        ],
+        "card-name": [
+            "NIKANOV ANDREY"
+        ],
+        "card-number": [
+            "4539 1488 0343 6467"
+        ],
+        "card-expiration": [
+            "22/30"
+        ],
+        "card-ccv": [
+            "122"
+        ],
+        "user": "admin@web.top"
+    },
+    {
+        "csrfmiddlewaretoken": [
+            "mGnqUSZAp1iiqGoSvnuUr5WXQvYfqxsCI3D4xa3Eo5LZv7fEFxVyc5wI6okmSTmm"
+        ],
+        "card-name": [
+            "Name"
+        ],
+        "card-number": [
+            "4539 1488 0343 6467"
+        ],
+        "card-expiration": [
+            "22/33"
+        ],
+        "card-ccv": [
+            "333"
+        ],
+        "user": "admin@web.top"
     }
 ]
