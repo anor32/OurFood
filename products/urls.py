@@ -29,7 +29,7 @@ urlpatterns = [
         path("products/create/product" ,never_cache(ProductCreate.as_view()),name= 'product_create'),
         path("products/<int:pk>/update/product",ProductUpdate.as_view(),name='product_update'),
         path('product/<int:pk>/delete/product', ProductDelete.as_view(), name='product_delete'),
-        path('product/<int:pk>/detail/product', cache_page(30)(ProductDetail.as_view()), name='product_detail'),
+        path('product/<int:pk>/detail/product', ProductDetail.as_view(), name='product_detail'),
 
         #cart choice
         path('product/<int:pk>/choice/product', never_cache(ProductChoice.as_view()), name='product_choice'),
@@ -40,3 +40,4 @@ urlpatterns = [
         path('products/search/results',SearchProduct.as_view(),name='search')
 
 ]
+

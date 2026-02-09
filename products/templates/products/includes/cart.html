@@ -1,6 +1,8 @@
 {% load static %}
 {% load my_tags %}
+
 <div>
+
     <aside class="rightBar fixed-right">
 
         <div class="f"><h3 class="CartFont"> Корзина</h3></div>
@@ -8,7 +10,8 @@
 
         <div class="CartBar">
             <ul style="list-style:none; padding:0; ">
-                {% for product in products_list %}
+
+                {% for product in cart_products %}
 
                 <li class="f" style="margin-top:20px;">
                     <div>
